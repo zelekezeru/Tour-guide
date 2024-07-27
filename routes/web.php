@@ -9,10 +9,6 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('index');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -25,13 +21,17 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+// FOR THE HOME PAGE
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);
 
 Route::resource('blogs', BlogController::class);
 
 Route::resource('contacts', ContactController::class);
 
-Route::resource('homes', HomeController::class);
+Route::resource('homes', HomeController::class)->except('index');
 
 Route::resource('hotels', HotelController::class);
 
