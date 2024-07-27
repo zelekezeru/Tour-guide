@@ -258,8 +258,8 @@
                         <span class="icon">
                             <i class="flaticon-around"></i>
                         </span>
-                        <h3>Amazing Travel</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                        <h3>Custom-made Service</h3>
+                        <p>We do the research, pre-check all roads and routes, and consistently deliver the best guides, accommodations, food, and service.</p>
                     </div>
                 </div>
                 <div class="col-md-3 animate-box text-center">
@@ -267,8 +267,8 @@
                         <span class="icon">
                             <i class="flaticon-boat"></i>
                         </span>
-                        <h3>Our Cruises</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                        <h3>Packages and pricing</h3>
+                        <p>Travel should be life-changing. That’s why we offer diverse packages, allowing customers to choose what suits them based on their capacity—all at an affordable price without compromising quality. </p>
                     </div>
                 </div>
                 <div class="col-md-3 animate-box text-center">
@@ -276,8 +276,8 @@
                         <span class="icon">
                             <i class="flaticon-car"></i>
                         </span>
-                        <h3>Book Your Trip</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                        <h3>Smart Guides</h3>
+                        <p>Caring, knowledgeable, and passionate—our guides bring the world to life with insights and stories that can only come from a local. We immerse you into local culture through our guides who knows the best cultural restaurants, shop, and lodges. </p>
                     </div>
                 </div>
                 <div class="col-md-3 animate-box text-center">
@@ -285,8 +285,8 @@
                         <span class="icon">
                             <i class="flaticon-postcard"></i>
                         </span>
-                        <h3>Nice Support</h3>
-                        <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies</p>
+                        <h3>Team Work </h3>
+                        <p>Our biggest asset is a team of highly trained, multi-lingual, expert guides, drivers, and tour leaders. We pleasantly make sure that from the moment you get off the plane until the moment you leave, your trip is personally supervised.</p>
                     </div>
                 </div>
             </div>
