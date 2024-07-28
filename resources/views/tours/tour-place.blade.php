@@ -9,8 +9,8 @@
 					   <div class="row">
 						   <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 							   <div class="slider-text-inner text-center">
-								   <h2>by colorlib.com</h2>
-								   <h1>Tour Overview</h1>
+									<h2>By GRACE Tour And Travel</h2>
+									<h1>Tour Overview</h1>
 							   </div>
 						   </div>
 					   </div>

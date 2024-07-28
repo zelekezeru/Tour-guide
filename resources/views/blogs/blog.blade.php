@@ -9,7 +9,7 @@
 					<div class="row">
 						<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 							<div class="slider-text-inner text-center">
-								<h2>by colorlib.com</h2>
+								<h2>By GRACE Tour And Travel</h2>
 								<h1>Blog</h1>
 							</div>
 						</div>
@@ -85,6 +85,8 @@
 				<div class="col-md-4">
 					<div class="sidebar-wrap">
 						<div class="side animate-box">
+							<a href="{{ route('blogs.create') }}"><button type="submit" class="btn btn-primary">Create Blog</button></a>
+							<br> 
 							<h3 class="sidebar-heading">Recent Post</h3>
 							<div class="blog-entry-side">
 								<a href="blog.html" class="blog-post">

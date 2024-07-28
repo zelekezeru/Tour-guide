@@ -8,8 +8,8 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h2>2 Days Tour</h2>
-                                <h1>Amazing Addis Tour</h1>
+                                <h2>Grace Tour and Travel</h2>
+                                <h1>Your satisfaction is our primary goal</h1>
                             </div>
                         </div>
                     </div>
@@ -21,8 +21,8 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h2>10 Days Cruises</h2>
-                                <h1>From Addis Ababa to Bahir Dar</h1>
+                                <h2>Transportation</h2>
+                                <h1> Best vehicles that consider the Landscape</h1>
                             </div>
                         </div>
                     </div>
@@ -34,8 +34,8 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h2>Explore our most tavel agency</h2>
-                                <h1>Our Travel Agency</h1>
+                                <h2>Bucket-List Destinations</h2>
+                                <h1>Must-visit Memorable locations</h1>
                             </div>
                         </div>
                     </div>
@@ -47,8 +47,8 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h2>Experience the</h2>
-                                <h1>Best Trip Ever</h1>
+                                <h2>Smart Guides</h2>
+                                <h1>Caring, knowledgeable, and passionate</h1>
                             </div>
                         </div>
                     </div>

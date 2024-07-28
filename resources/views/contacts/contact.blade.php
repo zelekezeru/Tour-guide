@@ -9,7 +9,7 @@
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 								<div class="slider-text-inner text-center">
-									<h2>by colorlib.com</h2>
+									<h2>By GRACE Tour And Travel</h2>
 									<h1>Contact us</h1>
 								</div>
 							</div>
@@ -67,16 +67,16 @@
 					<h3>Contact Information</h3>
 					<div class="row contact-info-wrap">
 						<div class="col-md-3">
-							<p><span><i class="icon-location"></i></span> 198 West 21th Street, <br> Suite 721 New York NY 10016</p>
+							<p><span><i class="icon-location"></i></span> Southern region of Ethiopia, <br>  Arba Minch city</p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+							<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+251 9162 79488</a></p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+							<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@gracetourtravel.com</a></p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-globe"></i></span> <a href="#">yoursite.com</a></p>
+							<p><span><i class="icon-globe"></i></span> <a href="#">gracetourtravel.com</a></p>
 						</div>
 					</div>
 				</div>
