@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUs;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -15,6 +17,19 @@ class ContactController extends Controller
         return view('contacts.contact');
     }
 
+    public function send (Request $request)
+    {
+        $data = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+        
+        Mail::to('meseleeyasu42@gmail.com')->send(new ContactUs($data));
+        dd('sent');
+    }
     /**
      * Show the form for creating a new resource.
      */

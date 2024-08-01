@@ -24,6 +24,7 @@ require __DIR__.'/auth.php';
 // FOR THE HOME PAGE
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::post('/contacts/send', [ContactController::class, 'send'])->name('contacts.send');
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);
 

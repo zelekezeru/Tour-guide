@@ -25,36 +25,52 @@
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 animate-box">
 					<h3>Get In Touch</h3>
-					<form action="#">
+					<form action="{{ route('contacts.send') }}" method="POST">
+						@csrf
 						<div class="row form-group">
 							<div class="col-md-6 padding-bottom">
 								<label for="fname">First Name</label>
-								<input type="text" id="fname" class="form-control" placeholder="Your firstname">
+								<input type="text" id="fname" name="first_name" value="{{ old('first_name') ? old('first_name') : '' }}" class="form-control" placeholder="Your firstname">
+								@error('first_name')
+									<div class="error text-danger">{{ $message }}</div>
+								@enderror
 							</div>
 							<div class="col-md-6">
 								<label for="lname">Last Name</label>
-								<input type="text" id="lname" class="form-control" placeholder="Your lastname">
+								<input type="text" id="lname" name="last_name" value="{{ old('last_name') ? old('last_name') : '' }}" class="form-control" placeholder="Your lastname">
+								@error('last_name')
+									<div class="error text-danger">{{ $message }}</div>
+								@enderror
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label for="email">Email</label>
-								<input type="text" id="email" class="form-control" placeholder="Your email address">
+								<input type="text" id="email" name="email" value="{{ old('email') ? old('email') : '' }}" class="form-control" placeholder="Your email address">
+								@error('email')
+									<div class="error text-danger">{{ $message }}</div>
+								@enderror
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label for="subject">Subject</label>
-								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+								<input type="text" id="subject" name="subject" value="{{ old('subject') ? old('subject') : '' }}" class="form-control" placeholder="Your subject of this message">
+								@error('subject')
+									<div class="error text-danger">{{ $message }}</div>
+								@enderror
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+								<textarea name="message" id="message" name="message" cols="30" rows="10" class="form-control" placeholder="Say something about us">{{ old('message') ? old('message') : '' }}</textarea>
+								@error('message')
+									<div class="error text-danger">{{ $message }}</div>
+								@enderror
 							</div>
 						</div>
 						<div class="form-group text-center">
