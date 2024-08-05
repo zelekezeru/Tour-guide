@@ -17,7 +17,7 @@ class ContactController extends Controller
         return view('contacts.contact');
     }
 
-    public function send (Request $request)
+    public function send(Request $request)
     {
         $data = $request->validate([
             'first_name' => 'required',
@@ -26,9 +26,10 @@ class ContactController extends Controller
             'subject' => 'required',
             'message' => 'required',
         ]);
-        
+
         Mail::to('meseleeyasu42@gmail.com')->send(new ContactUs($data));
-        dd('sent');
+
+        return view('contacts.contact');
     }
     /**
      * Show the form for creating a new resource.

@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\SweetAlertNotification;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -19,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // FOR THE HOME PAGE
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -37,3 +38,5 @@ Route::resource('homes', HomeController::class)->except('index');
 Route::resource('hotels', HotelController::class);
 
 Route::resource('tours', TourController::class);
+
+Route::get('allert', SweetAlertNotification::class);
