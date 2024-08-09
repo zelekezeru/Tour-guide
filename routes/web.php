@@ -25,13 +25,11 @@ require __DIR__ . '/auth.php';
 // FOR THE HOME PAGE
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-<<<<<<< Updated upstream
 Route::post('/contacts/send', [ContactController::class, 'send'])->name('contacts.send');
-=======
+
 // FOR SENDING EMAIL
 route::post('contacts/send', [ContactController::class, 'send'])->name('contacts.send');
 
->>>>>>> Stashed changes
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);
 
