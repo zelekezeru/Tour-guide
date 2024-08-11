@@ -44,8 +44,3 @@ Route::resource('hotels', HotelController::class);
 Route::resource('tours', TourController::class);
 
 Route::get('allert', SweetAlertNotification::class);
-
-
-Route::get('/admin', function () {
-    return view('layouts.admin-layout');
-});
