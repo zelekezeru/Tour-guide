@@ -8,6 +8,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use App\Livewire\SweetAlertNotification;
 
 Route::get('/dashboard', function () {
@@ -43,4 +44,6 @@ Route::resource('hotels', HotelController::class);
 
 Route::resource('tours', TourController::class);
 
-Route::get('allert', SweetAlertNotification::class);
+Route::get('alert', SweetAlertNotification::class);
+
+Route::resource('admins', AdminController::class);
