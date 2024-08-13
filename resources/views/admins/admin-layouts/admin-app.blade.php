@@ -8,18 +8,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link href="img/logo/logo.png" rel="icon">
-    <title>RuangAdmin - Dashboard</title>
+    <title>Grace Tour - Dashboard</title>
     <!-- Animate.css -->
     <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('admin/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
-
+    
     {{-- For the Footer --}}
     <link href="{{ asset('admin/css/ruang-admin.min.css') }}" rel="stylesheet">
     <!-- Flaticons  -->
     <!-- Theme style  -->
     {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
     <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="{{ asset('css/icomoon.css') }}"> 
+    <link  href="{{ asset('css/icomoon.css') }}" rel="stylesheet"> 
 </head>
 
 <body id="page-top">

@@ -181,7 +181,7 @@ h1, h2, h3, h4, h5, h6, figure {
           display: -moz-inline-stack;
           display: inline-block;
           zoom: 1;
-          *display: inline;
+          display: inline;
           -webkit-transition: 0.3s;
           -o-transition: 0.3s;
           transition: 0.3s;
@@ -450,7 +450,7 @@ h1, h2, h3, h4, h5, h6, figure {
       padding: 15px 20px !important;
       color: #000; }
     #colorlib-reservation .nav-tabs li.active {
-      color: #fff !important !important;
+      color: #fff !important;
       background: #2C2E3E !important; }
   @media screen and (max-width: 768px) {
     #colorlib-reservation .nav-tabs {
@@ -1377,12 +1377,12 @@ input[type="text"] {
     display: -moz-inline-stack;
     display: inline-block;
     zoom: 1;
-    *display: inline; }
+    display: inline; }
     .colorlib-social-icons li a {
       display: -moz-inline-stack;
       display: inline-block;
       zoom: 1;
-      *display: inline;
+      display: inline;
       color: #FFDD00;
       padding-left: 10px;
       padding-right: 10px; }
@@ -1548,7 +1548,7 @@ input[type="text"] {
           position: absolute;
           right: 0px;
           font-family: 'icomoon';
-          speak: none;
+          /* speak: none; */
           font-style: normal;
           font-weight: normal;
           font-variant: normal;

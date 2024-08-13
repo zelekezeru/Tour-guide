@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TourController;
+use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ContactController;
@@ -43,6 +44,8 @@ Route::resource('homes', HomeController::class)->except('index');
 Route::resource('hotels', HotelController::class);
 
 Route::resource('tours', TourController::class);
+
+Route::resource('testimonials', TestimonialController::class);
 
 Route::get('alert', SweetAlertNotification::class);
 
