@@ -11,14 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('travel', function (Blueprint $table) {
             $table->id();
+            $table->string('city');
+            $table->string('country');
+            $table->string('starting');
+            $table->string('destination');
             $table->string('title');
-            $table->longText('content');
-            $table->date('date');
-            $table->integer('user_id')->unsigned();
-            $table->string('comment_id');
-            $table->integer('views');
+            $table->float('price');
+            $table->integer('duration');
+            $table->integer('people');
+            $table->boolean('round_trip');
+            $table->integer('rating');
+            $table->integer('reviews');
             $table->string('image');
             $table->timestamps();
         });
@@ -29,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('travel');
     }
 };

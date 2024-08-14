@@ -36,18 +36,9 @@
                             <li><a href="#">Well-done tour arrangements</a></li>
                             <li><a href="#">Quick responses to all urgent situations </a></li>
                             <li><a href="#">Available for communication at any time</a></li>
-                            <li><a href="#">Hotel Epikk</a></li>
                         </ul>
                     </p>
                 </div>
-                {{-- <div class="col-md-3">
-                    <h4>Blog Post</h4>
-                    <ul class="colorlib-footer-links">
-                        <li><a href="#">The Ultimate Packing List For Female Travelers</a></li>
-                        <li><a href="#">How These 5 People Found The Path to Their Dream Trip</a></li>
-                        <li><a href="#">A Definitive Guide to the Best Dining and Drinking Venues in the City</a></li>
-                    </ul>
-                </div> --}}
 
                 <div class="col-md-3 col-md-push-1">
                     <h4>Contact Information</h4>

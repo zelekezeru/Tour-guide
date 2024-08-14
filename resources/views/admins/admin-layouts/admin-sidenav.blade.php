@@ -9,7 +9,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{ route('home')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -40,8 +40,8 @@
                 <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tour and Travel</h6>
-                        <a class="collapse-item" href="alerts.html">Tour</a>
-                        <a class="collapse-item" href="buttons.html">Travel</a>
+                        <a class="collapse-item" href="{{ route('tours.index') }}">Tour</a>
+                        <a class="collapse-item" href="{{ route('travels.index') }}">Travel</a>
                     </div>
                 </div>
             </li>
@@ -54,8 +54,8 @@
                 <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Hotels</h6>
-                        <a class="collapse-item" href="alerts.html">Alerts</a>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="{{ route('hotels.index') }}">Hotels List</a>
+                        <a class="collapse-item" href="#">Buttons</a>
                     </div>
                 </div>
             </li>
@@ -68,8 +68,8 @@
                 <div id="collapseBootstrap4" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Bookings</h6>
-                        <a class="collapse-item" href="alerts.html">Alerts</a>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="{{ route('bookings.index') }}">Bookings List</a>
+                        <a class="collapse-item" href="#">Buttons</a>
                     </div>
                 </div>
             </li>
@@ -88,8 +88,8 @@
                 <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Meta Data</h6>
-                        <a class="collapse-item" href="alerts.html">About Us</a>
-                        <a class="collapse-item" href="buttons.html">Contact Info</a>
+                        <a class="collapse-item" href="{{ route('abouts.index') }}">About Us</a>
+                        <a class="collapse-item" href="#">Buttons</a>
                     </div>
                 </div>
             </li>
@@ -102,8 +102,8 @@
                 <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog</h6>
-                        <a class="collapse-item" href="alerts.html">Alerts</a>
-                        <a class="collapse-item" href="buttons.html">Buttons</a>
+                        <a class="collapse-item" href="{{ route('blogs.index') }}">Blogs List</a>
+                        <a class="collapse-item" href="#">Buttons</a>
                     </div>
                 </div>
             </li>
@@ -116,8 +116,8 @@
                 <div id="collapseBootstrap6" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Contacts</h6>
-                        <a class="collapse-item" href="alerts.html">Comments</a>
-                        <a class="collapse-item" href="{{ route('testimonial.index') }}">Testimonials</a>
+                        <a class="collapse-item" href="{{ route('contacts.index') }}">Contacts</a>
+                        <a class="collapse-item" href="{{ route('testimonials.index') }}">Testimonials</a>
                     </div>
                 </div>
             </li>

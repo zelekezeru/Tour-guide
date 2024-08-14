@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->longText('address');
-            $table->string('testimony');
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->string('address');
+            $table->longText('testimony');
             $table->string('email');
             $table->string('image');
             $table->timestamps();
