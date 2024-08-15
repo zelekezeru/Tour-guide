@@ -28,7 +28,21 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'user_id' => '',
+            'title' => 'required|string',
+            'content' => 'required|string',
+            'image' => 'required|image|mimes:jpg,png'
+        ]);
+        
+        $file_name = date('YmdHi').(Blog::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension();
+
+        $request->file('image')->move(public_path('uploads/blogs'), $file_name);
+
+        $blog = Blog::create($data);
+        $blog->image = $file_name;
+        $blog->save();
+        return redirect(route('blogs.show', $blog->id));
     }
 
     /**
