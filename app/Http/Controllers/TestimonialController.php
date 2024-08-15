@@ -29,7 +29,24 @@ class TestimonialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $data = $request->validate([
+            // 'user_id' => '',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'email' => 'required|email',
+            'testimony' => 'required|string',
+            'image' => 'required'
+        ]);
+        
+        $file_name = Testimonial::exists() ? date('YmdHi').(Testimonial::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi');
+
+        $request->file('image')->move(public_path('uploads/testimonials'), $file_name);
+
+        $testimonial = Testimonial::create($data);
+        $testimonial->image = $file_name;
+        $testimonial->save();
+        return redirect(route('testimonials.show', $testimonial->id));
     }
 
     /**

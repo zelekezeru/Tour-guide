@@ -18,40 +18,52 @@
         <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
         </div>
         <div class="card-body">
-        <form>
+        <form action="{{ route('testimonials.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="row">
                 <div class="form-group col-lg-6">
                     <label for="name">Full Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
-                    placeholder="Full Name">
-                    <small id="nameHelp" class="form-text text-muted">Enter your name here.</small>
+                    <input type="text" value="{{ old('name') ? old('name') : '' }}" name="name" class="form-control" id="name" aria-describedby="nameHelp"
+                    placeholder="Full Name" required>
+                    @if ($errors->has('name'))
+                        <small id="nameHelp" class="form-text text-danger">{{$errors->first('name')}}</small>
+                    @else
+                        <small id="nameHelp" class="form-text text-muted">Enter your name here.</small>
+                    @endif
                 </div>
                 <div class="form-group col-lg-6">
                     <label for="address">Address</label>
-                    <input type="text" class="form-control" id="address" aria-describedby="addressHelp"
+                    <input type="text" value="{{ old('address') ? old('address') : '' }}" name="address"  class="form-control" id="address" aria-describedby="addressHelp"
                     placeholder="Address">
-                    <small id="addressHelp" class="form-text text-muted">Enter your living address here.</small>
+                    @if ($errors->has('address'))
+                        <small id="nameHelp" class="form-text text-danger">{{$errors->first('address')}}</small>
+                    @else
+                        <small id="addressHelp" class="form-text text-muted">Enter your living address here.</small>
+                    @endif
                 </div>
             </div>
             <div class="row">
                 <div class="form-group col-lg-6">
                     <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    <input type="email" value="{{ old('email') ? old('email') : '' }}" name="email" class="form-control" id="email" aria-describedby="emailHelp"
                     placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your
-                    email with anyone else.</small>
+                    @if ($errors->has('email'))
+                        <small id="nameHelp" class="form-text text-danger">{{$errors->first('email')}}</small>
+                    @else
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    @endif
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="email">Testimonial Picture</label>
                     <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFile">
+                    <input type="file" name="image" class="custom-file-input" id="customFile" required>
                     <label class="custom-file-label" for="customFile">Choose Picture</label>
                     </div>
                 </div>
             </div>
             <div class="form-group col-lg-8">
                 <label for="longText">Testimony</label>
-                <textarea class="form-control" id="longText" rows="6" placeholder="Enter testimony here"></textarea>
+                <textarea class="form-control" name="testimony" id="longText" rows="6" placeholder="Enter testimony here">{{ old('testimony') ? old('testimony') : '' }}</textarea>
                 <small class="form-text text-muted">Type the testimony in the field.</small>
             </div>
 

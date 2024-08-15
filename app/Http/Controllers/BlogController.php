@@ -35,7 +35,7 @@ class BlogController extends Controller
             'image' => 'required|image|mimes:jpg,png'
         ]);
         
-        $file_name = date('YmdHi').(Blog::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension();
+        $file_name = Blog::exists() ? date('YmdHi').(Blog::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi');
 
         $request->file('image')->move(public_path('uploads/blogs'), $file_name);
 

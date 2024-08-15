@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreignId('user_id')->constrained()->nullable()->onDelete('set null');
             $table->string('address');
             $table->longText('testimony');
             $table->string('email');
