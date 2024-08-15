@@ -20,7 +20,7 @@ class TourController extends Controller
      */
     public function create()
     {
-        //
+        return view('tours.create');
     }
 
     /**
@@ -28,7 +28,27 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            // 'user_id' => '',
+            'title' => 'required|string',
+            'country' => 'required|string',
+            'city' => 'required|string',
+            'location' => 'required|string',
+            'price' => 'required',
+            'duration' => 'required',
+            'rating' => 'required',
+            'reviews' => 'required',
+            'image' => 'required'
+        ]);
+        
+        $file_name = Tour::exists() ? date('YmdHi').(Tour::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
+
+        $request->file('image')->move(public_path('uploads/tours'), $file_name);
+
+        $tour = Tour::create($data);
+        $tour->image = $file_name;
+        $tour->save();
+        return redirect(route('tours.show', $tour->id));
     }
 
     /**

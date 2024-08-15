@@ -39,7 +39,7 @@ class TestimonialController extends Controller
             'image' => 'required'
         ]);
         
-        $file_name = Testimonial::exists() ? date('YmdHi').(Testimonial::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi');
+        $file_name = Testimonial::exist() ? date('YmdHi').(Testimonial::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
 
         $request->file('image')->move(public_path('uploads/testimonials'), $file_name);
 
