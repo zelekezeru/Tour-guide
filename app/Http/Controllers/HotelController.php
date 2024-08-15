@@ -20,7 +20,7 @@ class HotelController extends Controller
      */
     public function create()
     {
-        //
+        return view('hotels.create');
     }
 
     /**
@@ -28,7 +28,25 @@ class HotelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $data = $request->validate([
+            'name' => 'required|string',
+            'location' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required',
+            'rating' => 'required',
+            'reviews' => 'required',
+            'image' => 'required'
+        ]);
+        
+        $file_name = Hotel::exists() ? date('YmdHi').(Hotel::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
+
+        $request->file('image')->move(public_path('uploads/hotels'), $file_name);
+
+        $hotel = Hotel::create($data);
+        $hotel->image = $file_name;
+        $hotel->save();
+        return redirect(route('hotels.show', $hotel->id));
     }
 
     /**
