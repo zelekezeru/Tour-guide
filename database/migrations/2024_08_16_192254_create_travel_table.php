@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
-            $table->string('city');
+            $table->string('title');
             $table->string('country');
+            $table->string('city');
             $table->string('starting');
             $table->string('destination');
-            $table->string('title');
             $table->float('price');
-            $table->integer('duration');
             $table->integer('people');
-            $table->boolean('round_trip');
+            $table->integer('duration');
+            $table->boolean('round_trip')->default(false);
             $table->integer('rating');
             $table->integer('reviews');
             $table->string('image');

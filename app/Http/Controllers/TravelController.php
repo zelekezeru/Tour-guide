@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class TravelController extends Controller
      */
     public function create()
     {
-        //
+        return view('travels.create');
     }
 
     /**
@@ -28,7 +29,31 @@ class TravelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        // Log::info('Submitted Data:', $request->all());
+        
+        $data = $request->validate([
+            'title' => 'required|string',
+            'country' => 'required|string',
+            'city' => 'required|string',
+            'starting' => 'required|string',
+            'destination' => 'required|string',
+            'price' => 'required',
+            'people' => 'required',
+            'duration' => 'required',
+            'rating' => 'required',
+            'round_trip' => '',
+            'reviews' => 'required',
+            'image' => 'required'
+        ]);
+        $file_name = Travel::exists() ? date('YmdHi').(Travel::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
+
+        $request->file('image')->move(public_path('uploads/travels'), $file_name);
+
+        $travel = Travel::create($data);
+        $travel->image = $file_name;
+        $travel->save();
+        return redirect(route('travels.show', $travel->id));
     }
 
     /**
