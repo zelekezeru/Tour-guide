@@ -1,5 +1,21 @@
 @extends('admins.admin-layouts.admin-app')
 
+    {{-- Blog Text api and cdn --}}
+
+@section('blogTextarea')
+    <script src="{{ asset('/tinymce/tinymce/tinymce.min.js')}}" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea',
+        license_key: 'gpl|<9z73ebkjltuhje2m75aqu41fp73kaqxigq4259ygoykka3es>'
+      });
+    </script>
+
+@endsection
+
+    {{-- Main Content Here --}}
+
 @section('content')
 
 
@@ -23,6 +39,7 @@
 					@csrf
             <div class="row">
 								<input type="hidden" name="user_id" value="1" >
+
                 <div class="form-group col-lg-6">
                     <label for="name">Title</label>
                     <input type="text" name="title" value="{{ old('title') ? old('title') : '' }}" class="form-control" id="name" aria-describedby="nameHelp"
@@ -31,7 +48,7 @@
                     	<small id="nameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
 												
 										@else
-                    	<small id="nameHelp" class="form-text text-muted">Enter The Title Of Your Blog Here.</small>
+                    	<small id="nameHelp" class="form-text text-muted">Blog Title Here.</small>
 												
 										@endif
                 </div>
@@ -42,19 +59,23 @@
 										<input type="file" name="image" class="custom-file-input" id="customFile" required>
 										<label class="custom-file-label" for="customFile">Choose Picture</label>
 										@error('image')
-                    	<small id="nameHelp" class="form-text text-danger"{{$message}}</small>
+                    	<small id="nameHelp" class="form-text text-danger">{{$message}}</small>
 										@enderror
 									</div>
 								</div>
             </div>
+
             <div class="form-group col-lg">
-                <label for="longText">Blog Content</label>
-                <textarea class="form-control" name="content" id="longText" rows="6" placeholder="Enter testimony here" required>{{ old('content') ? old('content') : '' }}</textarea>
-								@if ($errors->has('content'))
+                <label for="mytextarea">Blog Content</label>
+                
+                <textarea  class="form-control" name="content" id="mytextarea"  rows="6"  placeholder="Enter Blog content here" required></textarea>
+                
+                @if ($errors->has('content'))
 									<small class="form-text text-danger">{{$errors->first('content')}}</small>												
 								@else
 									<small class="form-text text-muted">Type the blog content here.</small>
-								@endif
+								@endif 
+                
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

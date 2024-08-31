@@ -1,7 +1,7 @@
 
         <!-- Sidebar -->
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home') }}">
                 <div class="sidebar-brand-icon">
                     <img src="{{ asset('admin/img/logo/logo2.png') }}">
                 </div>
@@ -9,7 +9,7 @@
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('home')}}">
+                <a class="nav-link" href="{{ route('admins.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -31,17 +31,31 @@
                     </div>
                 </div>
             </li>
-            {{-- Tour and Travel --}}
+            {{-- Tours --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2" aria-expanded="true" aria-controls="collapseBootstrap2">
                     <i class="far fa-fw fa-window-maximize"></i>
-                    <span>Tour and Travel</span>
+                    <span>Tour</span>
                 </a>
                 <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Tour and Travel</h6>
-                        <a class="collapse-item" href="{{ route('tours.index') }}">Tour</a>
-                        <a class="collapse-item" href="{{ route('travels.index') }}">Travel</a>
+                        <h6 class="collapse-header">Tour</h6>
+                        <a class="collapse-item" href="{{ route('tours.index') }}">Tour List</a>
+                        <a class="collapse-item" href="{{ route('tours.create') }}">Add Tour</a>
+                    </div>
+                </div>
+            </li>
+            {{-- Travel --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap8" aria-expanded="true" aria-controls="collapseBootstrap8">
+                    <i class="far fa-fw fa-window-maximize"></i>
+                    <span>Travel</span>
+                </a>
+                <div id="collapseBootstrap8" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Travel</h6>
+                        <a class="collapse-item" href="{{ route('travels.index') }}">Travels List</a>
+                        <a class="collapse-item" href="{{ route('travels.create') }}">Add Travel</a>
                     </div>
                 </div>
             </li>
@@ -55,7 +69,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Hotels</h6>
                         <a class="collapse-item" href="{{ route('hotels.index') }}">Hotels List</a>
-                        <a class="collapse-item" href="#">Buttons</a>
+                        <a class="collapse-item" href="{{ route('hotels.create') }}">Add Hotel</a>
                     </div>
                 </div>
             </li>
@@ -103,7 +117,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog</h6>
                         <a class="collapse-item" href="{{ route('blogs.index') }}">Blogs List</a>
-                        <a class="collapse-item" href="#">Buttons</a>
+                        <a class="collapse-item" href="{{ route('blogs.create') }}">Create Blog</a>
                     </div>
                 </div>
             </li>

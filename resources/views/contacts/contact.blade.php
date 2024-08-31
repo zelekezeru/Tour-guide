@@ -1,3 +1,7 @@
+
+@section('title') Contacts @endsection
+
+
 <x-guest-layout>
 
 	<aside id="colorlib-hero">

@@ -1,5 +1,22 @@
 @extends('admins.admin-layouts.admin-app')
 
+
+    {{-- Blog Text api and cdn --}}
+
+    @section('blogTextarea')
+    <script src="{{ asset('/tinymce/tinymce/tinymce.min.js')}}" referrerpolicy="origin"></script>
+
+    <script>
+      tinymce.init({
+        selector: '#mytextarea',
+        license_key: 'gpl|<9z73ebkjltuhje2m75aqu41fp73kaqxigq4259ygoykka3es>'
+      });
+    </script>
+
+@endsection
+
+        {{-- Main Content --}}
+
 @section('content')
 
 
@@ -61,10 +78,17 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group col-lg-8">
-                <label for="longText">Testimony</label>
-                <textarea class="form-control" name="testimony" id="longText" rows="6" placeholder="Enter testimony here">{{ old('testimony') ? old('testimony') : '' }}</textarea>
-                <small class="form-text text-muted">Type the testimony in the field.</small>
+            
+            <div class="form-group col-lg">
+                <label for="mytextarea">Testimony</label>
+                
+                <textarea  class="form-control" name="testimony" id="mytextarea"  rows="6"  placeholder="Enter testimony here" required></textarea>
+
+                @if ($errors->has('testimony'))
+                    <small class="form-text text-danger">{{$errors->first('testimony')}}</small>												
+                @else
+                    <small class="form-text text-muted">Type the testimony here.</small>
+                @endif 
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

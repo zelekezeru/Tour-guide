@@ -29,7 +29,7 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'user_id' => '',
+            'user_id' => 'required|string',
             'title' => 'required|string',
             'content' => 'required|string',
             'image' => 'required|image|mimes:jpg,png'
