@@ -138,8 +138,6 @@
                 <label class="custom-control-label" for="customControlAutosizing">The travel has round trip</label>
                 @if ($errors->has('round_trip'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('round_trip')}}</small>
-                @else
-                    <small id="nameHelp" class="form-text text-muted">Enter the rating of the tour.</small>
                 @endif
               </div>
             </div>
