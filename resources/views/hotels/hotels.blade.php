@@ -1,3 +1,7 @@
+
+@section('title') Hotels @endsection
+
+
 <x-guest-layout>
 
 	<aside id="colorlib-hero">

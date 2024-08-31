@@ -1,3 +1,6 @@
+
+@section('title') About Us @endsection
+
 <x-guest-layout>
 	<aside id="colorlib-hero">
 		<div class="flexslider">

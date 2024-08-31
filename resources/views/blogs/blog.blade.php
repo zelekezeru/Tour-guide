@@ -1,3 +1,7 @@
+
+@section('title') Blogs @endsection
+
+
 <x-guest-layout>
 
 	<aside id="colorlib-hero">

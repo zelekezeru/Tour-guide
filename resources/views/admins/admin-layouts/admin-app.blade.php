@@ -15,11 +15,12 @@
     
     {{-- For the Footer --}}
     <link href="{{ asset('admin/css/ruang-admin.min.css') }}" rel="stylesheet">
-    <!-- Flaticons  -->
-    <!-- Theme style  -->
-    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
-    <!-- Icomoon Icon Fonts-->
+
     <link  href="{{ asset('css/icomoon.css') }}" rel="stylesheet"> 
+    
+    {{-- Blog Text api and cdn --}}
+    @yield('blogTextarea')
+    
 </head>
 
 <body id="page-top">

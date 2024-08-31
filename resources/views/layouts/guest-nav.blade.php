@@ -9,12 +9,12 @@
                     <ul>
                         <li class="active"><a href="{{ route('home')}} ">Home</a></li>
                         <li class="has-dropdown">
-                            <a href="{{ route('tours.index') }}">Tours</a>
+                            <a href="">Tours</a>
                             <ul class="dropdown">
-                                <li><a href="#">Destination</a></li>
-                                <li><a href="#">Cruises</a></li>
-                                <li><a href="#">Hotels</a></li>
-                                <li><a href="#">Booking</a></li>
+                                <li><a href="{{ route('tours.index') }}">Tours</a></li>
+                                <li><a href="#">Travels</a></li>
+                                <li><a href="#">Bookings</a></li>
+                                <li><a href="#">Destinations</a></li>
                             </ul>
                         </li>
                         <li><a href="{{ route('hotels.index') }}">Hotels</a></li>
