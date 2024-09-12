@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TourController extends Controller
 {
@@ -12,7 +13,8 @@ class TourController extends Controller
      */
     public function index()
     {
-        return view('tours.tours');
+        $tours = Tour::all();
+        return view('tours.index', compact('tours'));
     }
 
     /**
@@ -28,8 +30,9 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $data = $request->validate([
-            // 'user_id' => '',
+            // 'user_id' => '', 
             'title' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string',
@@ -38,19 +41,18 @@ class TourController extends Controller
             'duration' => 'required',
             'rating' => 'required',
             'reviews' => 'required',
-            'image' => 'required'
+            'image' => 'image'
         ]);
         
-        $file_name = Tour::exists() ? date('YmdHi').(Tour::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
-
-        $request->file('image')->move(public_path('uploads/tours'), $file_name);
-
+        $file = $request->file('image');
+        $path = $file->store('uploads', 'public');
+        
         $tour = Tour::create($data);
-        $tour->image = $file_name;
+        $tour->image = 'storage/'.$path;
         $tour->save();
         return redirect(route('tours.show', $tour->id));
     }
-
+    
     /**
      * Display the specified resource.
      */
@@ -58,13 +60,13 @@ class TourController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Tour $tour)
     {
-        //
+        return view('tours.edit', compact('tour'));
     }
 
     /**
@@ -72,7 +74,29 @@ class TourController extends Controller
      */
     public function update(Request $request, Tour $tour)
     {
-        //
+        $data = $request->validate([
+            // 'user_id' => '', 
+            'title' => 'required|string',
+            'country' => 'required|string',
+            'city' => 'required|string',
+            'location' => 'required|string',
+            'price' => 'required',
+            'duration' => 'required',
+            'rating' => 'required',
+            'reviews' => 'required',
+            'image' => 'image'
+        ]);
+        
+        $tour->update($data);
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($tour->image);
+            $file = $request->file('image');
+            $path = $file->store('uploads', 'public');   
+            // dd($path);         
+            $tour->image = 'storage/'.$path;
+        }
+        $tour->save();
+        return redirect(route('tours.index'));
     }
 
     /**
@@ -80,6 +104,8 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        //
+        Storage::disk('public')->delete($tour->image);
+        $tour->delete();
+        return redirect(route('tours.index'));
     }
 }

@@ -5,13 +5,13 @@
 
 <div class="container-fluid" id="container-wrapper">
     <ul>
-      @foreach ($testimonials as $testimonial)
+      @foreach ($tours as $tour)
         <li>
-          <img width="50px" src="{{asset($testimonial->image)}}"/>{{$testimonial->name}} 
+          <img width="50px" src="{{asset($tour->image)}}"/>{{$tour->title}} 
 
-          <a href="{{route('testimonials.edit', $testimonial)}}">Edit</a>
+          <a href="{{route('tours.edit', $tour)}}">Edit</a>
         
-          <form action="{{ route('testimonials.destroy', $testimonial) }}" method="post">
+          <form action="{{ route('tours.destroy', $tour) }}" method="post">
             @csrf
             @method('delete')
             <input type="submit" value="Delete">

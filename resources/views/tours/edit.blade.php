@@ -18,12 +18,13 @@
         <h6 class="m-0 font-weight-bold text-primary">Form Basic</h6>
         </div>
         <div class="card-body">
-        <form action="{{ route('tours.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('tours.update', $tour) }}" method="POST" enctype="multipart/form-data">
           @csrf
+          @method('PATCH')
           <div class="row">
             <div class="form-group col-lg-4">
                 <label for="title">Title</label>
-                <input type="text" value="{{ old('title') ? old('title') : '' }}" name="title"  class="form-control" id="title" aria-describedby="titleHelp"
+                <input type="text" value="{{ old('title') ? old('title') : $tour->title }}" name="title"  class="form-control" id="title" aria-describedby="titleHelp"
                 placeholder="Title">
                 @if ($errors->has('title'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
@@ -33,7 +34,7 @@
             </div>
             <div class="form-group col-lg-4">
                 <label for="address">Country</label>
-                <input type="text" value="{{ old('country') ? old('country') : '' }}" name="country"  class="form-control" id="country" aria-describedby="countryHelp"
+                <input type="text" value="{{ old('country') ? old('country') : $tour->country }}" name="country"  class="form-control" id="country" aria-describedby="countryHelp"
                 placeholder="Country">
                 @if ($errors->has('country'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('country')}}</small>
@@ -43,7 +44,7 @@
             </div>
             <div class="form-group col-lg-4">
                 <label for="city">City</label>
-                <input type="text" value="{{ old('city') ? old('city') : '' }}" name="city" class="form-control" id="city" aria-describedby="nameHelp"
+                <input type="text" value="{{ old('city') ? old('city') : $tour->city }}" name="city" class="form-control" id="city" aria-describedby="nameHelp"
                 placeholder="City" required>
                 @if ($errors->has('city'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('city')}}</small>
@@ -55,7 +56,7 @@
         <div class="row">
               <div class="form-group col-lg-4">
                   <label for="location">Location</label>
-                  <input type="text" value="{{ old('location') ? old('location') : '' }}" name="location" class="form-control" id="location" aria-describedby="nameHelp"
+                  <input type="text" value="{{ old('location') ? old('location') : $tour->location }}" name="location" class="form-control" id="location" aria-describedby="nameHelp"
                   placeholder="Location" required>
                   @if ($errors->has('location'))
                       <small id="nameHelp" class="form-text text-danger">{{$errors->first('location')}}</small>
@@ -66,7 +67,7 @@
               <div class="form-group col-lg-4">
                   <label for="image">Tour Thumbnail Picture</label>
                   <div class="custom-file">
-                  <input type="file" name="image" class="custom-file-input" id="image" required>
+                  <input type="file" name="image" class="custom-file-input" id="image">
                   <label class="custom-file-label" for="customFile">Choose Picture</label>
                   </div>
               </div>
@@ -74,7 +75,7 @@
           <div class="row">
               <div class="form-group col-lg-3">
                 <label for="price">Price</label>
-                <input type="number" value="{{ old('price') ? old('price') : '' }}" name="price" class="form-control" id="name" aria-describedby="nameHelp"
+                <input type="number" value="{{ old('price') ? old('price') : $tour->price }}" name="price" class="form-control" id="name" aria-describedby="nameHelp"
                 placeholder="Price" required>
                 @if ($errors->has('price'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('price')}}</small>
@@ -84,7 +85,7 @@
               </div>
               <div class="form-group col-lg-3">
                 <label for="duration">Duration</label>
-                <input type="number" value="{{ old('duration') ? old('duration') : '' }}" name="duration" class="form-control" id="name" aria-describedby="nameHelp"
+                <input type="number" value="{{ old('duration') ? old('duration') : $tour->duration }}" name="duration" class="form-control" id="name" aria-describedby="nameHelp"
                 placeholder="Duration(In days)" required>
                 @if ($errors->has('duration'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('duration')}}</small>
@@ -97,7 +98,7 @@
           <div class="row">
             <div class="form-group col-lg-3">
                 <label for="rating">Rating</label>
-                <input type="number" value="{{ old('rating') ? old('rating') : '' }}" name="rating" class="form-control" id="name" aria-describedby="nameHelp"
+                <input type="number" value="{{ old('rating') ? old('rating') : $tour->rating }}" name="rating" class="form-control" id="name" aria-describedby="nameHelp"
                 placeholder="Rating" required>
                 @if ($errors->has('rating'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('rating')}}</small>
@@ -107,7 +108,7 @@
               </div>
               <div class="form-group col-lg-3">
                 <label for="reviews">Reviews</label>
-                <input type="number" value="{{ old('reviews') ? old('reviews') : '' }}" name="reviews" class="form-control" id="name" aria-describedby="nameHelp"
+                <input type="number" value="{{ old('reviews') ? old('reviews') : $tour->reviews }}" name="reviews" class="form-control" id="name" aria-describedby="nameHelp"
                 placeholder="Reviews" required>
                 @if ($errors->has('reviews'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('reviews')}}</small>

@@ -45,6 +45,20 @@
                     </div>
                 </div>
             </li>
+            {{-- Testimonials --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap22" aria-expanded="true" aria-controls="collapseBootstrap22">
+                    <i class="far fa-fw fa-window-maximize"></i>
+                    <span>Testimonial</span>
+                </a>
+                <div id="collapseBootstrap22" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Testimonial</h6>
+                        <a class="collapse-item" href="{{ route('testimonials.index') }}">Testimonial List</a>
+                        <a class="collapse-item" href="{{ route('testimonials.create') }}">Add Testimonial</a>
+                    </div>
+                </div>
+            </li>
             {{-- Travel --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap8" aria-expanded="true" aria-controls="collapseBootstrap8">

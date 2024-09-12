@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hotel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HotelController extends Controller
 {
@@ -12,7 +13,9 @@ class HotelController extends Controller
      */
     public function index()
     {
-        return view('hotels.hotels');
+        // return view('hotels.hotels');
+        $hotels = Hotel::all();
+        return view('hotels.index', compact('hotels'));
     }
 
     /**
@@ -38,15 +41,14 @@ class HotelController extends Controller
             'reviews' => 'required',
             'image' => 'required'
         ]);
-        
-        $file_name = Hotel::exists() ? date('YmdHi').(Hotel::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
 
-        $request->file('image')->move(public_path('uploads/hotels'), $file_name);
+        $file = $request->file('image');
+        $path = $file->store('uploads', 'public');
 
         $hotel = Hotel::create($data);
-        $hotel->image = $file_name;
+        $hotel->image = 'storage/'.$path;
         $hotel->save();
-        return redirect(route('hotels.show', $hotel->id));
+        return redirect(route('hotels.index'));
     }
 
     /**
@@ -62,7 +64,7 @@ class HotelController extends Controller
      */
     public function edit(Hotel $hotel)
     {
-        //
+        return view('hotels.edit', compact('hotel'));
     }
 
     /**
@@ -70,7 +72,26 @@ class HotelController extends Controller
      */
     public function update(Request $request, Hotel $hotel)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|string',
+            'location' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required',
+            'rating' => 'required',
+            'reviews' => 'required',
+            'image' => 'required'
+        ]);
+
+        $hotel->update($data);
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($hotel->image);
+            $file = $request->file('image');
+            $path = $file->store('uploads', 'public');   
+            // dd($path);         
+            $hotel->image = 'storage/'.$path;
+        }
+        $hotel->save();
+        return redirect(route('hotels.index'));
     }
 
     /**
@@ -78,6 +99,8 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        //
+        Storage::disk('public')->delete($hotel->image);
+        $hotel->delete();
+        return redirect(route('hotels.index'));
     }
 }

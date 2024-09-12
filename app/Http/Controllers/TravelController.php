@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Log;
 use App\Models\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TravelController extends Controller
 {
@@ -13,7 +14,8 @@ class TravelController extends Controller
      */
     public function index()
     {
-        //
+        $travels = Travel::all();
+        return view('travels.index', compact('travels'));
     }
 
     /**
@@ -46,12 +48,12 @@ class TravelController extends Controller
             'reviews' => 'required',
             'image' => 'required'
         ]);
-        $file_name = Travel::exists() ? date('YmdHi').(Travel::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
 
-        $request->file('image')->move(public_path('uploads/travels'), $file_name);
+        $file = $request->file('image');
+        $path = $file->store('uploads', 'public');
 
         $travel = Travel::create($data);
-        $travel->image = $file_name;
+        $travel->image = 'storage/'.$path;
         $travel->save();
         return redirect(route('travels.show', $travel->id));
     }
@@ -69,7 +71,7 @@ class TravelController extends Controller
      */
     public function edit(Travel $travel)
     {
-        //
+        return view('travels.edit', compact('travel'));
     }
 
     /**
@@ -77,7 +79,34 @@ class TravelController extends Controller
      */
     public function update(Request $request, Travel $travel)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string',
+            'country' => 'required|string',
+            'city' => 'required|string',
+            'starting' => 'required|string',
+            'destination' => 'required|string',
+            'price' => 'required',
+            'people' => 'required',
+            'duration' => 'required',
+            'rating' => 'required',
+            'round_trip' => '',
+            'reviews' => 'required',
+            'image' => 'image'
+        ]);
+
+        $travel->update($data);
+        if (!$request->input('round_trip')) {
+            $travel->round_trip = false;
+        }
+
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($travel->image);
+            $file = $request->file('image');
+            $path = $file->store('uploads', 'public');
+            $travel->image = 'storage/'.$path;
+        }
+        $travel->save();
+        return redirect(route('travels.index'));
     }
 
     /**
@@ -85,6 +114,8 @@ class TravelController extends Controller
      */
     public function destroy(Travel $travel)
     {
-        //
+        Storage::disk('public')->delete($travel->image);
+        $travel->delete();
+        return redirect(route('travels.index'));
     }
 }

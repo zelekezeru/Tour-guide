@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Testimonial;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -21,7 +22,7 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        //
+        return view('testimonials.create');
     }
 
     /**
@@ -39,14 +40,13 @@ class TestimonialController extends Controller
             'image' => 'required'
         ]);
         
-        $file_name = Testimonial::exists() ? date('YmdHi').(Testimonial::orderBy('created_at', 'desc')->first()->id + 1).'.'.$request->file('image')->extension() : date('YmdHi').'.'.$request->file('image')->extension();
-
-        $request->file('image')->move(public_path('uploads/testimonials'), $file_name);
+        $file = $request->file('image');
+        $path = $file->store('uploads', 'public');
 
         $testimonial = Testimonial::create($data);
-        $testimonial->image = $file_name;
+        $testimonial->image = 'storage/'.$path;
         $testimonial->save();
-        return redirect(route('testimonials.show', $testimonial->id));
+        return redirect(route('testimonials.index'));
     }
 
     /**
@@ -62,7 +62,7 @@ class TestimonialController extends Controller
      */
     public function edit(Testimonial $testimonial)
     {
-        //
+        return view('testimonials.edit', compact('testimonial'));
     }
 
     /**
@@ -70,7 +70,24 @@ class TestimonialController extends Controller
      */
     public function update(Request $request, Testimonial $testimonial)
     {
-        //
+        $data = $request->validate([
+            // 'user_id' => '',
+            'name' => 'required|string',
+            'address' => 'required|string',
+            'email' => 'required|email',
+            'testimony' => 'required|string',
+            'image' => 'required'
+        ]);
+        $testimonial->update($data);
+        if ($request->hasFile('image')) {
+            Storage::disk('public')->delete($testimonial->image);
+            $file = $request->file('image');
+            $path = $file->store('uploads', 'public');   
+            // dd($path);         
+            $testimonial->image = 'storage/'.$path;
+        }
+        $testimonial->save();
+        return redirect(route('testimonials.index'));
     }
 
     /**
@@ -78,6 +95,8 @@ class TestimonialController extends Controller
      */
     public function destroy(Testimonial $testimonial)
     {
-        //
+        Storage::disk('public')->delete($testimonial->image);
+        $testimonial->delete();
+        return redirect(route('testimonials.index'));
     }
 }
