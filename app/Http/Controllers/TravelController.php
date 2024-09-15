@@ -17,7 +17,7 @@ class TravelController extends Controller
         $travels = Travel::all();
         return view('travels.index', compact('travels'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */

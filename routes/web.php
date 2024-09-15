@@ -34,6 +34,10 @@ Route::post('/contacts/send', [ContactController::class, 'send'])->name('contact
 // FOR SENDING EMAIL
 route::post('contacts/send', [ContactController::class, 'send'])->name('contacts.send');
 
+//ADMIN PANEL LIST AND SHOW METHODS
+Route::get('/hotels/list', [HotelController::class, 'list'])->name('hotels.list');
+// Route::get('/', [HotelController::class, 'view'])->name('hotels.view');
+
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);
 

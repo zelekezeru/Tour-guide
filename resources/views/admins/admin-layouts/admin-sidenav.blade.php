@@ -5,7 +5,7 @@
                 <div class="sidebar-brand-icon">
                     <img src="{{ asset('admin/img/logo/logo2.png') }}">
                 </div>
-                <div class="sidebar-brand-text mx-3">Grace Tour</div>
+                <div class="sidebar-brand-text mx-3">Grace Tour, Main</div>
             </a>
             <hr class="sidebar-divider my-0">
             <li class="nav-item active">
@@ -82,7 +82,7 @@
                 <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Hotels</h6>
-                        <a class="collapse-item" href="{{ route('hotels.index') }}">Hotels List</a>
+                        <a class="collapse-item" href="{{ route('hotels.list') }}">Hotels List</a>
                         <a class="collapse-item" href="{{ route('hotels.create') }}">Add Hotel</a>
                     </div>
                 </div>

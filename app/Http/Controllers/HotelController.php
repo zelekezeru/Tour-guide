@@ -18,6 +18,17 @@ class HotelController extends Controller
         return view('hotels.index', compact('hotels'));
     }
 
+    
+    /**
+     * Display a Admin list of the resource.
+     */
+    public function list()
+    {
+        // return view('hotels.hotels');
+        $hotels = Hotel::all();
+        return view('hotels.list', compact('hotels'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -56,7 +67,8 @@ class HotelController extends Controller
      */
     public function show(Hotel $hotel)
     {
-        //
+        // Return a view with the hotel details
+        return view('hotels.show', compact('hotel'));
     }
 
     /**
