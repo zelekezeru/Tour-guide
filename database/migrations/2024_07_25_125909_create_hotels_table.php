@@ -15,11 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('location');
-            $table->string('description');
+            $table->longText('description');
             $table->float('price');
             $table->integer('rating');
+            $table->integer('capacity');
             $table->integer('reviews');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

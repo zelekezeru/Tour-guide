@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hotel;
+use App\Models\Blog;
+use App\Models\Tour;
+use App\Models\Travel;
+use App\Models\Testimonial;
 use App\Models\Home;
 use Illuminate\Http\Request;
 
@@ -12,7 +17,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $hotels = Hotel::all();
+        $blogs = Blog::all();
+        $tours = Tour::all();
+        $travels = Travel::all();
+        $testimonials = Testimonial::all();
+        
+        return view('index', compact('hotels', 'blogs', 'tours', 'travels', 'testimonials'));
     }
 
     /**

@@ -122,21 +122,16 @@
                         </form>
                     </div>
                     <div id="hotel" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
+                        <form action="{{ route('hotels.search') }}" method="GET" class="colorlib-form">
                             <div class="row">
-                            <div class="col-md-2">
-                                <div class="booknow">
-                                    <h2>Book Now</h2>
-                                    <span>Best Price Online</span>
-                                </div>
-                            </div>
+                            
                             <div class="col-md-3">
                             <div class="form-group">
                                 <label for="date">Check-in:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                </div>
+                                <input type="text" name="check_in_date" id="date" class="form-control date" placeholder="Check-in date">
+                            </div>
                             </div>
                             </div>
                             <div class="col-md-3">
@@ -144,8 +139,8 @@
                                 <label for="date">Check-out:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                </div>
+                                <input type="text" name="check_out_date" id="date" class="form-control date" placeholder="Check-out date">
+                            </div>
                             </div>
                             </div>
                             <div class="col-md-2">
@@ -153,16 +148,33 @@
                                 <label for="guests">Guest</label>
                                 <div class="form-field">
                                 <i class="icon icon-arrow-down3"></i>
-                                <select name="people" id="people" class="form-control">
-                                    <option value="#">1</option>
-                                    <option value="#">2</option>
-                                    <option value="#">3</option>
-                                    <option value="#">4</option>
-                                    <option value="#">5+</option>
+                                <select name="guest" id="people" class="form-control">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5+</option>
                                 </select>
                                 </div>
                             </div>
                             </div>
+
+                            <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="guests">Guest</label>
+                                <div class="form-field">
+                                <i class="icon icon-arrow-down3"></i>
+                                <select name="location" id="location" class="form-control bg-dark">
+                                    <option value="Arbaminch, Gamo Zone, Ethiopia">Arbaminch</option>
+                                    <option value="Hawassa, Ethiopia">Hawassa</option>
+                                    <option value="Omo_Valley_Tribes, Ethiopia">Omo Valley Tribes</option>
+                                    <option value="Konso, Ethiopia">Konso</option>
+                                    <option value="Sodo, Ethiopia">Sodo</option>
+                                </select>
+                                </div>
+                            </div>
+                            </div>
+
                             <div class="col-md-2">
                             <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
                             </div>
@@ -482,61 +494,31 @@
                     <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12 animate-box">
                     <div class="owl-carousel">
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-1.jpg);">
-                                    <p class="price"><span>$120</span><small> /night</small></p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        @foreach ($hotels as $hotel)
+                            
+                            <div class="item">
+                                <div class="hotel-entry">
+                                    <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->images->first()->image ) }}">
+                                        <p class="price"><span>{{ $hotel->price}}</span><small> /night</small></p>
+                                    </a>
+                                    <div class="desc">
+                                        <p class="star">
+                                            @for ($i = 0; $i < $hotel->rating; $i++)
+                                            <span><i class="icon-star-full"></i></span>
+                                            @endfor
+                                            <h3><p>{{$hotel->name}} </p></h3>
+                                        <span class="place">{{ $hotel->address}}</span>                                        
+									    <p>{{ Str::limit($hotel->description, 95, '...') }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-2.jpg);">
-                                    <p class="price"><span>$120</span><small> /night</small></p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-3.jpg);">
-                                    <p class="price"><span>$120</span><small> /night</small></p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="hotel-entry">
-                                <a href="hotels.html" class="hotel-img" style="background-image: url(images/hotel-4.jpg);">
-                                    <p class="price"><span>$120</span><small> /night</small></p>
-                                </a>
-                                <div class="desc">
-                                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                                    <h3><a href="#">Hotel Edison</a></h3>
-                                    <span class="place">New York, USA</span>
-                                    <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                </div>
-                            </div>
-                        </div>
+
+                        @endforeach
+
                     </div>
                 </div>
             </div>

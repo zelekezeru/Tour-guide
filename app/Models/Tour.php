@@ -9,4 +9,14 @@ class Tour extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function images()
+    {
+        return $this->hasMany(Image::class);
+    }
+
+    public function locations()
+    {
+        return $this->hasany(Location::class);
+    }
 }

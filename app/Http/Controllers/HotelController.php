@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hotel;
+use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -13,7 +14,6 @@ class HotelController extends Controller
      */
     public function index()
     {
-        // return view('hotels.hotels');
         $hotels = Hotel::all();
         return view('hotels.index', compact('hotels'));
     }
@@ -24,8 +24,9 @@ class HotelController extends Controller
      */
     public function list()
     {
-        // return view('hotels.hotels');
+        
         $hotels = Hotel::all();
+
         return view('hotels.list', compact('hotels'));
     }
 
@@ -50,16 +51,40 @@ class HotelController extends Controller
             'price' => 'required',
             'rating' => 'required',
             'reviews' => 'required',
-            'image' => 'required'
         ]);
+
+        $hotel = Hotel::create($data);
+
+        
+
+        $image = new Image();
+        $image->hotel_id = $hotel->id;
 
         $file = $request->file('image');
         $path = $file->store('uploads', 'public');
 
-        $hotel = Hotel::create($data);
-        $hotel->image = 'storage/'.$path;
+        $image->image = 'storage/'.$path;
+
+        $image->save();
+
         $hotel->save();
-        return redirect(route('hotels.index'));
+
+        return redirect(url('hotels.detail/{$hotel->id}'));
+    }
+
+
+
+    /**
+     * Search Results
+     */
+    public function search(Request $request)
+    {
+
+        $hotels = Hotel::where('location', $request->location)
+                        ->where('capacity', '>=', $request->guest)
+                        ->get();        
+
+        return view('hotels.index', compact('hotels'));
     }
 
     /**
@@ -69,6 +94,15 @@ class HotelController extends Controller
     {
         // Return a view with the hotel details
         return view('hotels.show', compact('hotel'));
+    }
+
+    public function detail($hotel)
+    {
+        // Return a view with the hotel details
+
+        $hotel = Hotel::find($hotel);
+        
+        return view('hotels.detail', compact('hotel'));
     }
 
     /**
@@ -91,18 +125,19 @@ class HotelController extends Controller
             'price' => 'required',
             'rating' => 'required',
             'reviews' => 'required',
-            'image' => 'required'
         ]);
 
         $hotel->update($data);
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($hotel->image);
             $file = $request->file('image');
-            $path = $file->store('uploads', 'public');   
-            // dd($path);         
+            $path = $file->store('uploads', 'public'); 
+            
             $hotel->image = 'storage/'.$path;
         }
+
         $hotel->save();
+
         return redirect(route('hotels.index'));
     }
 
@@ -113,6 +148,6 @@ class HotelController extends Controller
     {
         Storage::disk('public')->delete($hotel->image);
         $hotel->delete();
-        return redirect(route('hotels.index'));
+        return redirect(route('hotels.list'));
     }
 }

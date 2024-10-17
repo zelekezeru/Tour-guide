@@ -12,11 +12,18 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LocationController;
 use App\Livewire\SweetAlertNotification;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/zeru', function () {
+    return view('zerubbabelzeleke');
+})->name('zeru');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,7 +43,16 @@ route::post('contacts/send', [ContactController::class, 'send'])->name('contacts
 
 //ADMIN PANEL LIST AND SHOW METHODS
 Route::get('/hotels/list', [HotelController::class, 'list'])->name('hotels.list');
-// Route::get('/', [HotelController::class, 'view'])->name('hotels.view');
+
+Route::get('/hotels/search', [HotelController::class, 'search'])->name('hotels.search');
+
+//Images to Contents
+Route::get('/image/hotel/{id}', [ImageController::class, 'hotel'])->name('images.hotel');
+
+Route::post('/hotels/image', [ImageController::class, 'hotel_image'])->name('hotels.image');
+
+Route::get('/hotels/detail/{id}', [HotelController::class, 'detail'])->name('hotels.detail');
+
 
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);

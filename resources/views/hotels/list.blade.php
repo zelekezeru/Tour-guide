@@ -15,8 +15,8 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light ">
                         <tr>
-                            <th class="col-2">Name</th>
-                            <th class="col-3">Photo</th>
+                            <th class="col-3">Name</th>
+                            <th class="col-2">Photo</th>
                             <th class="col-3">Location</th>
                             <th class="col-2">Rating</th>
                             <th class="col-1">Edit</th>
@@ -26,21 +26,27 @@
                     <tbody>
                         @foreach ($hotels as $hotel)
                           <tr>
-                            <td class="col-2"> <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}" > <p style="">{{$hotel->name}} </p> </a> </td>
-                            <td class="col-3"> <img width="50px" src="{{asset($hotel->image)}}"/> </td>
-                            <td class="col-3"> <p style="">{{$hotel->location}} </p></td>
+                            {{-- <a href="{{ route('hotels.detail', ['id' => $hotel->id]) }}">View Hotel Details</a> --}}
+
+                            <td class="col-3"> <a href="{{ route('hotels.detail', ['id' => $hotel->id]) }}" > <h3 style="">{{$hotel->name}} </h3> </a> </td>
+                            <td class="col-2"> <img width="200px" src="{{ asset($hotel->images->first()->image )}}"/> </td>
+                            <td class="col-3"> <h5 style="">{{$hotel->location}} </h5></td>
                             <td  class="row">
                                 @for ($i = 0; $i < $hotel->rating; $i++)
                                     <img width="25px" src="{{ asset('images/star.png') }}"/>
                                 @endfor
                             </td>
-                            <td class="col-1"><span class="btn btn-sm btn-warning"><a href="{{route('hotels.edit', $hotel)}}"> Edit </a></span></td>
+                            <td class="col-1">
+                                <span class="btn btn-sm btn-warning"><a href="{{route('hotels.edit', $hotel)}}"> Edit </a></span>
+                                <br>
+                                <span class="btn btn-sm btn-success text-secondaty"><a href="{{route('images.hotel', $hotel->id)}}"> Add Photos </a></span>
+                            </td>
                             
                             <td class="col-1">
                                 <form action="{{ route('hotels.destroy', $hotel) }}" method="post">
-                                @csrf
-                                @method('delete')
-                                <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="submit" value="Delete" class="btn btn-sm btn-danger">
                                 </form>
                             </td>
                           </tr>
@@ -48,7 +54,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer"></div>
+            
         </div>
     </div>
 </div>
