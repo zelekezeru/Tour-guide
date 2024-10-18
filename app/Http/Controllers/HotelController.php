@@ -34,8 +34,10 @@ class HotelController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view('hotels.create');
+    {        
+        $hotel = new Hotel();
+
+        return view('hotels.create', compact('hotel'));
     }
 
     /**

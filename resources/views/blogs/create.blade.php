@@ -1,19 +1,5 @@
 @extends('admins.admin-layouts.admin-app')
 
-    {{-- Blog Text api and cdn --}}
-
-@section('blogTextarea')
-    <script src="{{ asset('/tinymce/tinymce/tinymce.min.js')}}" referrerpolicy="origin"></script>
-
-    <script>
-      tinymce.init({
-        selector: '#mytextarea',
-        license_key: 'gpl|<9z73ebkjltuhje2m75aqu41fp73kaqxigq4259ygoykka3es>'
-      });
-    </script>
-
-@endsection
-
     {{-- Main Content Here --}}
 
 @section('content')

@@ -19,8 +19,7 @@
                             <th class="col-2">Photo</th>
                             <th class="col-3">Location</th>
                             <th class="col-2">Rating</th>
-                            <th class="col-1">Edit</th>
-                            <th class="col-1">Delete</th>
+                            <th class="col-2">Image</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,19 +35,9 @@
                                     <img width="25px" src="{{ asset('images/star.png') }}"/>
                                 @endfor
                             </td>
-                            <td class="col-1">
-                                <span class="btn btn-sm btn-warning"><a href="{{route('hotels.edit', $hotel)}}"> Edit </a></span>
-                                <br>
-                                <span class="btn btn-sm btn-success text-secondaty"><a href="{{route('images.hotel', $hotel->id)}}"> Add Photos </a></span>
-                            </td>
-                            
-                            <td class="col-1">
-                                <form action="{{ route('hotels.destroy', $hotel) }}" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="submit" value="Delete" class="btn btn-sm btn-danger">
-                                </form>
-                            </td>
+                            <td class="col-2">
+                                <span class="btn btn-sm btn-info"><a href="{{route('images.hotel', $hotel->id)}}"> Add Photos </a></span>
+                            </td>                            
                           </tr>
                         @endforeach
                     </tbody>
