@@ -17,6 +17,12 @@ class TourController extends Controller
         return view('tours.index', compact('tours'));
     }
 
+    public function list()
+    {
+        $tours = Tour::all();
+        return view('tours.list', compact('tours'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -61,6 +67,10 @@ class TourController extends Controller
         //
     }
     
+    public function detail(Tour $tour)
+    {
+        return view('tours.detail', compact('tour'));
+    }
     /**
      * Show the form for editing the specified resource.
      */
@@ -89,7 +99,7 @@ class TourController extends Controller
         
         $tour->update($data);
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($tour->image);
+            Storage::disk('public')->delete('uploads/'.basename($tour->image));
             $file = $request->file('image');
             $path = $file->store('uploads', 'public');   
             // dd($path);         
@@ -104,7 +114,10 @@ class TourController extends Controller
      */
     public function destroy(Tour $tour)
     {
-        Storage::disk('public')->delete($tour->image);
+        Storage::disk('public')->delete('uploads/'.basename($tour->image));
+        foreach ($tour->images as $image) {
+            Storage::disk('public')->delete('uploads/'.basename($image->image));
+        }
         $tour->delete();
         return redirect(route('tours.index'));
     }

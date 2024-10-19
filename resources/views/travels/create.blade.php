@@ -28,7 +28,7 @@
                 @if ($errors->has('title'))
                     <small id="n  ameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
                 @else
-                    <small id="addressHelp" class="form-text text-muted">Enter the title of the tour here.</small>
+                    <small id="addressHelp" class="form-text text-muted">Enter the title of the travel here.</small>
                 @endif
             </div>
             <div class="form-group col-lg-4">
@@ -74,7 +74,7 @@
                   @endif
               </div>
               <div class="form-group col-lg-4">
-                  <label for="image">Tour Thumbnail Picture</label>
+                  <label for="image">Travel Thumbnail Picture</label>
                   <div class="custom-file">
                   <input type="file" name="image" class="custom-file-input" id="image" required>
                   <label class="custom-file-label" for="customFile">Choose Picture</label>
@@ -89,7 +89,7 @@
               @if ($errors->has('price'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('price')}}</small>
               @else
-                  <small id="nameHelp" class="form-text text-muted">Enter the price of the tour.</small>
+                  <small id="nameHelp" class="form-text text-muted">Enter the price of the travel.</small>
               @endif
             </div>
             <div class="form-group col-lg-2">
@@ -99,7 +99,7 @@
               @if ($errors->has('duration'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('duration')}}</small>
               @else
-                  <small id="nameHelp" class="form-text text-muted">Enter the duration of the tour in days.</small>
+                  <small id="nameHelp" class="form-text text-muted">Enter the duration of the travel in days.</small>
               @endif
             </div>
             <div class="form-group col-lg-2">
@@ -109,7 +109,7 @@
               @if ($errors->has('people'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('people')}}</small>
               @else
-                  <small id="nameHelp" class="form-text text-muted">Enter the people of the tour in days.</small>
+                  <small id="nameHelp" class="form-text text-muted">Enter the people of the travel in days.</small>
               @endif
             </div>
             <div class="form-group col-lg-2">
@@ -119,7 +119,7 @@
               @if ($errors->has('rating'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('rating')}}</small>
               @else
-                  <small id="nameHelp" class="form-text text-muted">Enter the rating of the tour.</small>
+                  <small id="nameHelp" class="form-text text-muted">Enter the rating of the travel.</small>
               @endif
             </div>
             <div class="form-group col-lg-2">
@@ -129,7 +129,7 @@
               @if ($errors->has('reviews'))
                   <small id="nameHelp" class="form-text text-danger">{{$errors->first('reviews')}}</small>
               @else
-                  <small id="nameHelp" class="form-text text-muted">Enter the reviews of the tour.</small>
+                  <small id="nameHelp" class="form-text text-muted">Enter the reviews of the travel.</small>
               @endif
             </div>
             <div class="form-group ">

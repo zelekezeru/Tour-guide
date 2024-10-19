@@ -17,6 +17,12 @@ class TravelController extends Controller
         $travels = Travel::all();
         return view('travels.index', compact('travels'));
     }
+
+    public function list()
+    {
+        $travels = Travel::all();
+        return view('travels.list', compact('travels'));
+    }
     
     /**
      * Show the form for creating a new resource.
@@ -64,6 +70,11 @@ class TravelController extends Controller
     public function show(Travel $travel)
     {
         //
+    }
+
+    public function detail(Travel $travel)
+    {
+        return view('travels.detail', compact('travel'));
     }
 
     /**

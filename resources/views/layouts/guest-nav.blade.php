@@ -9,7 +9,7 @@
                     <ul>
                         <li class="active"><a href="{{ route('home')}} ">Home</a></li>
                         <li class="has-dropdown">
-                            <a href="">Tours</a>
+                            <a href="{{ route('tours.index') }}">Tours</a>
                             <ul class="dropdown">
                                 <li><a href="{{ route('tours.index') }}">Tours</a></li>
                                 <li><a href="#">Travels</a></li>

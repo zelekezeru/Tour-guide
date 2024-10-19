@@ -52,11 +52,30 @@ Route::get('/hotels/detail/{hotel}', [HotelController::class, 'detail'])->name('
 Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
 
 Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
+//Tour
+Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list');
+
+Route::get('/tours/detail/{tour}', [TourController::class, 'detail'])->name('tours.detail');
+
+//Travel
+Route::get('/travels/list', [TravelController::class, 'list'])->name('travels.list');
+
+Route::get('/travels/detail/{travel}', [TravelController::class, 'detail'])->name('travels.detail');
 
 //Images to Contents
 Route::get('/image/hotel/{id}', [ImageController::class, 'hotel'])->name('images.hotel');
 
 Route::post('/hotels/image', [ImageController::class, 'hotel_image'])->name('hotels.image');
+
+//Images to Tour
+Route::get('/image/tour/{id}', [ImageController::class, 'tour'])->name('images.tour');
+
+Route::post('/tours/image', [ImageController::class, 'tour_image'])->name('tours.image');
+
+//Images to Travel
+Route::get('/image/travel/{id}', [ImageController::class, 'travel'])->name('images.travel');
+
+Route::post('/travels/image', [ImageController::class, 'travel_image'])->name('travels.image');
 
 
 //blog images uploader
