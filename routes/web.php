@@ -41,18 +41,26 @@ Route::post('/contacts/send', [ContactController::class, 'send'])->name('contact
 // FOR SENDING EMAIL
 route::post('contacts/send', [ContactController::class, 'send'])->name('contacts.send');
 
-//ADMIN PANEL LIST AND SHOW METHODS
+//ADMIN PANEL LIST, Search AND SHOW METHODS
+//Hotel
 Route::get('/hotels/list', [HotelController::class, 'list'])->name('hotels.list');
 
 Route::get('/hotels/search', [HotelController::class, 'search'])->name('hotels.search');
+
+Route::get('/hotels/detail/{hotel}', [HotelController::class, 'detail'])->name('hotels.detail');
+//Blog
+Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
+
+Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
 
 //Images to Contents
 Route::get('/image/hotel/{id}', [ImageController::class, 'hotel'])->name('images.hotel');
 
 Route::post('/hotels/image', [ImageController::class, 'hotel_image'])->name('hotels.image');
 
-Route::get('/hotels/detail/{id}', [HotelController::class, 'detail'])->name('hotels.detail');
 
+//blog images uploader
+Route::post('/upload-blog-images', [BlogController::class, 'upload'])->name('ckeditor.blog.upload');
 
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);

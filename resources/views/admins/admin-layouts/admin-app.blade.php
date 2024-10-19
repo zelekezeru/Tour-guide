@@ -15,7 +15,7 @@
     
     {{-- For the Footer --}}
     <link href="{{ asset('admin/css/ruang-admin.min.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css" />
     <link  href="{{ asset('css/icomoon.css') }}" rel="stylesheet"> 
     
     {{-- Blog Text api and cdn --}}

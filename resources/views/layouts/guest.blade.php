@@ -59,14 +59,16 @@
 	</head>
 	<body>
         <div class="colorlib-loader"></div>
-        @include('layouts.guest-nav')
-                                {{-- Main Page Contents go here --}}
-                                
-        {{ $slot }}
-
-        @include('layouts.footer')
+        <div id="page">
+            @include('layouts.guest-nav')
+            {{-- Main Page Contents go here --}}
+            
+            {{ $slot }}
+            
+            @include('layouts.footer')
+        </div>
+        <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
         <div class="gototop js-top">
-            <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
 	    </div>
 	
 	<!-- jQuery -->

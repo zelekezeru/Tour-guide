@@ -72,7 +72,7 @@ class HotelController extends Controller
 
         $hotel->save();
 
-        return redirect(url('hotels.detail/{$hotel->id}'));
+        return redirect(route('hotels.detail', $hotel));
     }
 
 
@@ -99,12 +99,8 @@ class HotelController extends Controller
         return view('hotels.show', compact('hotel'));
     }
 
-    public function detail($hotel)
+    public function detail(Hotel $hotel)
     {
-        // Return a view with the hotel details
-
-        $hotel = Hotel::find($hotel);
-        
         return view('hotels.detail', compact('hotel'));
     }
 
@@ -150,7 +146,10 @@ class HotelController extends Controller
      */
     public function destroy(Hotel $hotel)
     {
-        Storage::disk('public')->delete($hotel->image);
+        // dd($hotel->images);
+        foreach ($hotel->images as $image) {
+            Storage::disk('public')->delete('uploads/'.basename($image->image));
+        }
         $hotel->delete();
         return redirect(route('hotels.list'));
     }

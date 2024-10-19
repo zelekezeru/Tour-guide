@@ -29,48 +29,22 @@
 			<div class="row">
 				<div class="col-md-8">
 					<div class="wrap-division">
-						<article class="animate-box">
-							<div class="blog-img" style="background-image: url(images/blog-1.jpg);"></div>
-							<div class="desc">
-								<div class="meta">
-									<p>
-										<span>Feb 24, 2018 </span>
-										<span>admin </span>
-										<span><a href="#">2 Comments</a></span>
-									</p>
+						@foreach ($blogs as $blog)
+							<article class="animate-box">
+								<div class="blog-img" style="background-image: url('{{asset($blog->image)}}');"></div>
+								<div class="desc">
+									<div class="meta">
+										<p>
+											<span>{{ $blog->created_at }}</span>
+											<span>admin </span>
+											{{-- <span><a href="#">2 Comments</a></span> --}}
+										</p>
+									</div>
+									<h2><a href="{{ route('blogs.show', $blog) }}">{{ $blog->title }}</a></h2>
+									<p>{{ $blog->teaser }}</p>
 								</div>
-								<h2><a href="#">A Definitive Guide to the Best Dining</a></h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
-							</div>
-						</article>
-						<article class="animate-box">
-							<div class="blog-img" style="background-image: url(images/blog-2.jpg);"></div>
-							<div class="desc">
-								<div class="meta">
-									<p>
-										<span>Feb 24, 2018 </span>
-										<span>admin </span>
-										<span><a href="#">1 Comments</a></span>
-									</p>
-								</div>
-								<h2><a href="#">How These 5 People Found The Path to Their Dream Trip</a></h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
-							</div>
-						</article>
-						<article class="animate-box">
-							<div class="blog-img" style="background-image: url(images/blog-3.jpg);"></div>
-							<div class="desc">
-								<div class="meta">
-									<p>
-										<span>Feb 24, 2018 </span>
-										<span>admin </span>
-										<span><a href="#">0 Comments</a></span>
-									</p>
-								</div>
-								<h2><a href="#">Our Secret Island Boat Tour Is just for You</a></h2>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, qui quod ipsum harum id, minima nesciunt! Saepe soluta, vitae quas expedita voluptatem voluptates placeat numquam provident quis, atque nisi iure?</p>
-							</div>
-						</article>
+							</article>
+						@endforeach
 					</div>
 					<div class="row">
 						<div class="col-md-12">

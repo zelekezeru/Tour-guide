@@ -26,7 +26,7 @@
             <div class="row">
 								<input type="hidden" name="user_id" value="1" >
 
-                <div class="form-group col-lg-6">
+                <div class="form-group col-lg-4">
                     <label for="name">Title</label>
                     <input type="text" name="title" value="{{ old('title') ? old('title') : '' }}" class="form-control" id="name" aria-describedby="nameHelp"
                     placeholder="Title" required>
@@ -35,6 +35,18 @@
 												
 										@else
                     	<small id="nameHelp" class="form-text text-muted">Blog Title Here.</small>
+												
+										@endif
+                </div>
+                <div class="form-group col-lg-4">
+                    <label for="teaser">Teaser</label>
+                    <input type="text" name="teaser" value="{{ old('teaser') ? old('teaser') : '' }}" class="form-control" id="teaser" aria-describedby="nameHelp"
+                    placeholder="Teaser" required>
+										@if ($errors->has('teaser'))
+                    	<small id="nameHelp" class="form-text text-danger">{{$errors->first('teaser')}}</small>
+												
+										@else
+                    	<small id="nameHelp" class="form-text text-muted">Blog Teaser Here.</small>
 												
 										@endif
                 </div>
@@ -54,7 +66,7 @@
             <div class="form-group col-lg">
                 <label for="mytextarea">Blog Content</label>
                 
-                <textarea  class="form-control" name="content" id="mytextarea"  rows="6"  placeholder="Enter Blog content here" required></textarea>
+                <textarea name="content" id="editor"></textarea>
                 
                 @if ($errors->has('content'))
 									<small class="form-text text-danger">{{$errors->first('content')}}</small>												
@@ -71,4 +83,31 @@
 </div>
 
     
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js">{{old('title')}}</script>
+
+<script>
+  // Initialize CKEditor
+  ClassicEditor
+      .create(document.querySelector('#editor'),{ ckfinder: {
+        uploadUrl: "{{ route('ckeditor.blog.upload', ['_token'=>csrf_token()]) }}"
+      }})
+      .then(editor => {
+          console.log('Editor was initialized', editor);
+      })
+      .catch(error => {
+          console.error('Error during initialization of the editor', error);
+      });
+
+  document.getElementById('file-input').addEventListener('change', function() {
+    const file = this.files[0];
+      if (file) {
+          const reader = new FileReader();
+        reader.onload = function(e) {
+        document.getElementById('preview').src = e.target.result;
+      }
+        reader.readAsDataURL(file);
+      }
+  });
+</script>
+
 @endsection
