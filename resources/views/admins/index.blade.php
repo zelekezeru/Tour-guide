@@ -22,15 +22,15 @@
                                 <div class="card-body">
                                     <div class="row align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Users</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                                <span>Since last month</span>
+                                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> Total registered users</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-calendar fa-2x text-primary"></i>
+                                            <i class="fas fa-users fa-2x text-primary"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -42,15 +42,15 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Hotels</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $hotel }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                                                <span>Since last years</span>
+                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> Registered Hotels in the System</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-shopping-cart fa-2x text-success"></i>
+                                            <i class="fas fa-hotel fa-2x text-success"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -62,15 +62,15 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Tours</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $tour }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                                                <span>Since last month</span>
+                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> Available Tour Options</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-info"></i>
+                                            <i class="fas fa-map-pin fa-2x text-info"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -82,15 +82,15 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Travels</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $travel }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                                <span>Since yesterday</span>
+                                                <span class="text-success mr-2"><i class="fas fa-arrow-down"></i> Travel Options Offered</span>
+                                                
                                             </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-comments fa-2x text-warning"></i>
+                                            <i class="fas fa-plane fa-2x text-warning"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -253,39 +253,27 @@
                         <div class="col-xl-4 col-lg-5 ">
                             <div class="card">
                                 <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
+                                    <h6 class="m-0 font-weight-bold text-light">Message From Clients</h6>
                                 </div>
                                 <div>
-                                    <div class="customer-message align-items-center">
+                                    @foreach ($contacts as $contact)
+                                        <div class="customer-message align-items-center">
                                         <a class="font-weight-bold" href="#">
-                                            <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                            <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
+                                            <div class="text-truncate message-title">{{ Str::limit($contact->message, 15, '...') }}</div>
+                                            <div class="small text-gray-500 message-time font-weight-bold">{{ $contact->firstName }} {{ $contact->lastName }}</div>
                                         </a>
                                     </div>
-                                    <div class="customer-message align-items-center">
-                                        <a href="#">
-                                            <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
-                                            </div>
-                                            <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
-                                        </a>
-                                    </div>
-                                    <div class="customer-message align-items-center">
-                                        <a class="font-weight-bold" href="#">
-                                            <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                            </div>
-                                            <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
-                                        </a>
-                                    </div>
-                                    <div class="customer-message align-items-center">
-                                        <a class="font-weight-bold" href="#">
-                                            <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                            </div>
-                                            <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
-                                        </a>
-                                    </div>
+                                    @endforeach
+                                    @if (count($contacts ) < 1)                                            
+                                        <div class="customer-message align-items-center">
+                                            <a href="#">
+                                                <div class="text-warning message-title">No comments yet!
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
                                     <div class="card-footer text-center">
-                                        <a class="m-0 small text-primary card-link" href="#">View More <i
-                        class="fas fa-chevron-right"></i></a>
+                                        <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
                                     </div>
                                 </div>
                             </div>

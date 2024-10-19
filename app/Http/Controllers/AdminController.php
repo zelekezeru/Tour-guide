@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use App\Models\Hotel;
+use App\Models\Blog;
+use App\Models\Tour;
+use App\Models\Travel;
+use App\Models\User;
+use App\Models\Contact;
 
 class AdminController extends Controller
 {
@@ -12,7 +18,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admins.index');
+        $hotel = count(Hotel::all());
+        $blog = count(Blog::all());
+        $tour = count(Tour::all());
+        $travel = count(Travel::all());
+        $user = count(User::all());
+        $contacts = Contact::all();
+        
+        return view('admins.index', compact('hotel', 'blog', 'tour', 'travel', 'user', 'contacts'));
     }
 
     /**

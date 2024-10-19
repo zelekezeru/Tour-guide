@@ -6,7 +6,11 @@ use App\Models\Image;
 use App\Models\Hotel;
 use App\Models\Tour;
 use App\Models\Travel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\View\View;
 
 class ImageController extends Controller
 {

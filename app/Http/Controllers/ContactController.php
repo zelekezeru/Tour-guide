@@ -20,12 +20,14 @@ class ContactController extends Controller
     public function send(Request $request)
     {
         $data = $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+            'firstName' => 'required',
+            'lastName' => 'required',
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
         ]);
+
+        $contact = Contact::create($data);
 
         Mail::to('meseleeyasu42@gmail.com')->send(new ContactUs($data));
 

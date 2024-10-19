@@ -34,15 +34,15 @@
 						<div class="row form-group">
 							<div class="col-md-6 padding-bottom">
 								<label for="fname">First Name</label>
-								<input type="text" id="fname" name="first_name" value="{{ old('first_name') ? old('first_name') : '' }}" class="form-control" placeholder="Your firstname">
-								@error('first_name')
+								<input type="text" id="fname" name="firstName" value="{{ old('firstName') ? old('firstName') : '' }}" class="form-control" placeholder="Your firstname">
+								@error('firstName')
 									<div class="error text-danger">{{ $message }}</div>
 								@enderror
 							</div>
 							<div class="col-md-6">
 								<label for="lname">Last Name</label>
-								<input type="text" id="lname" name="last_name" value="{{ old('last_name') ? old('last_name') : '' }}" class="form-control" placeholder="Your lastname">
-								@error('last_name')
+								<input type="text" id="lname" name="lastName" value="{{ old('lastName') ? old('lastName') : '' }}" class="form-control" placeholder="Your lastname">
+								@error('lastName')
 									<div class="error text-danger">{{ $message }}</div>
 								@enderror
 							</div>

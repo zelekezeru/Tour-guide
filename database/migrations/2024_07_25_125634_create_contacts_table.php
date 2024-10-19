@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('lastName');
             $table->integer('user_id')->unsigned()->nullable();
             $table->string('email');
+            $table->string('subject')->nullable();
             $table->longText('message');
             $table->timestamps();
         });
