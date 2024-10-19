@@ -1892,3 +1892,49 @@ input[type="text"] {
 
 .js .animate-box {
   opacity: 0; }
+
+
+/* Custom Styles By AEZ */
+
+
+.image {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px;
+}
+
+
+.image-style-side {
+  float: right;
+  width: 50%;
+}
+
+.image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+figcaption {
+  background-color: #00000029;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.blog-content {
+  font-size: 2rem;
+}
+#colorlib-blog {
+  padding-top: 3em;
+}
+
+.blog-teaser {
+  color: #e30000;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  text-shadow: 0 0 8px #000000;
+}
+}
