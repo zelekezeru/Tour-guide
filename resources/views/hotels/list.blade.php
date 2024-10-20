@@ -25,8 +25,6 @@
                     <tbody>
                         @foreach ($hotels as $hotel)
                           <tr>
-                            {{-- <a href="{{ route('hotels.detail', ['id' => $hotel->id]) }}">View Hotel Details</a> --}}
-
                             <td class="col-3"> <a href="{{ route('hotels.detail', $hotel) }}" > <h3 style="">{{$hotel->name}} </h3> </a> </td>
                             <td class="col-2"> <img width="200px" src="{{ asset($hotel->images->first()->image )}}"/> </td>
                             <td class="col-3"> <h5 style="">{{$hotel->location}} </h5></td>

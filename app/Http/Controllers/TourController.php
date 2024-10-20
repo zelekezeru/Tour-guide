@@ -14,12 +14,14 @@ class TourController extends Controller
     public function index()
     {
         $tours = Tour::all();
+
         return view('tours.index', compact('tours'));
     }
 
     public function list()
     {
         $tours = Tour::all();
+
         return view('tours.list', compact('tours'));
     }
 
@@ -56,6 +58,7 @@ class TourController extends Controller
         $tour = Tour::create($data);
         $tour->image = 'storage/'.$path;
         $tour->save();
+        
         return redirect(route('tours.show', $tour->id));
     }
     

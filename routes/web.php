@@ -62,6 +62,11 @@ Route::get('/travels/list', [TravelController::class, 'list'])->name('travels.li
 
 Route::get('/travels/detail/{travel}', [TravelController::class, 'detail'])->name('travels.detail');
 
+//Testimonial
+Route::get('/testimonials/list', [TestimonialController::class, 'list'])->name('testimonials.list');
+
+Route::get('/testimonials/detail/{testimonial}', [TestimonialController::class, 'detail'])->name('testimonials.detail');
+
 //Images to Contents
 Route::get('/image/hotel/{id}', [ImageController::class, 'hotel'])->name('images.hotel');
 

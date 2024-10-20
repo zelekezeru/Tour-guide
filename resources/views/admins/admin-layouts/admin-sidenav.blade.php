@@ -40,7 +40,7 @@
                 <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tour</h6>
-                        <a class="collapse-item" href="{{ route('tours.index') }}">Tour List</a>
+                        <a class="collapse-item" href="{{ route('tours.list') }}">Tour List</a>
                         <a class="collapse-item" href="{{ route('tours.create') }}">Add Tour</a>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
                 <div id="collapseBootstrap22" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Testimonial</h6>
-                        <a class="collapse-item" href="{{ route('testimonials.index') }}">Testimonial List</a>
+                        <a class="collapse-item" href="{{ route('testimonials.list') }}">Testimonial List</a>
                         <a class="collapse-item" href="{{ route('testimonials.create') }}">Add Testimonial</a>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 <div id="collapseBootstrap8" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Travel</h6>
-                        <a class="collapse-item" href="{{ route('travels.index') }}">Travels List</a>
+                        <a class="collapse-item" href="{{ route('travels.list') }}">Travels List</a>
                         <a class="collapse-item" href="{{ route('travels.create') }}">Add Travel</a>
                     </div>
                 </div>

@@ -21,6 +21,7 @@ class TravelController extends Controller
     public function list()
     {
         $travels = Travel::all();
+        
         return view('travels.list', compact('travels'));
     }
     

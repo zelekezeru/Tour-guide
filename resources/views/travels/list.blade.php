@@ -15,26 +15,23 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light ">
                         <tr>
-                            <th class="col-3">Name</th>
-                            <th class="col-2">Photo</th>
-                            <th class="col-3">Starting</th>
+                            <th class="col-2"> Title </th>
+                            <th class="col-3">Address</th>
+                            <th class="col-2">Starting</th>
                             <th class="col-2">Destination</th>
-                            <th class="col-2">Price</th>
-                            <th class="col-2">Image</th>
+                            <th class="col-1">Price</th>
+                            <th class="col-2">Duration</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($travels as $travel)
                           <tr>
-                            {{-- <a href="{{ route('travels.detail', ['id' => $travel->id]) }}">View Travel Details</a> --}}
-                            <td class="col-3"> <a href="{{ route('travels.detail', $travel) }}" > <h3 style="">{{$travel->title}} </h3> </a> </td>
-                            <td class="col-2"> <img width="200px" src="{{ asset($travel->image )}}"/> </td>
-                            <td class="col-3"> <h5 style="">{{$travel->starting}} </h5></td>
-                            <td class="col-3"> <h5 style="">{{$travel->destination}} </h5></td>
-                            <td class="col-3"> <h5 style="">{{$travel->price}} </h5></td>
-                            <td class="col-2">
-                                <span class="btn btn-sm btn-info"><a href="{{route('images.travel', $travel->id)}}"> Add Photos </a></span>
-                            </td>                            
+                            <td class="col-2"> <a href="{{ route('travels.detail', $travel) }}" > <h3 style="">{{$travel->title}} </h3> </a> </td>
+                            <td class="col-3"> <h5 style="">{{$travel->country}}, {{$travel->city}} </h5></td>
+                            <td class="col-2"> <h5 style="">{{$travel->starting}} </h5></td>
+                            <td class="col-2"> <h5 style="">{{$travel->destination}} </h5></td>
+                            <td class="col-1"> <h5 style="">{{$travel->price}} </h5></td>
+                            <td class="col-2"> <h5 style="">{{$travel->duration}} </h5> </td>                            
                           </tr>
                         @endforeach
                     </tbody>

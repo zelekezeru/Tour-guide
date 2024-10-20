@@ -15,26 +15,27 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light ">
                         <tr>
-                            <th class="col-3">Name</th>
-                            <th class="col-2">Photo</th>
-                            <th class="col-3">Starting</th>
-                            <th class="col-2">Destination</th>
-                            <th class="col-2">Price</th>
-                            <th class="col-2">Image</th>
+                            <th class="col-3">Title</th>
+                            <th class="col-3">Address</th>
+                            <th class="col-2">Location</th>
+                            <th class="col-1">Duration</th>
+                            <th class="col-1">Price</th>
+                            <th class="col-2">Rating</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($tours as $tour)
                           <tr>
-                            {{-- <a href="{{ route('tours.detail', ['id' => $tour->id]) }}">View Tour Details</a> --}}
-
-                            <td class="col-3"> <a href="{{ route('travels.show', ['travel' => $travel->title]) }}" > <h3 style="">{{$travel->name}} </h3> </a> </td>
-                            <td class="col-2"> <img width="200px" src="{{ asset($travel->image )}}"/> </td>
-                            <td class="col-3"> <h5 style="">{{$travel->starting}} </h5></td>
-                            <td class="col-3"> <h5 style="">{{$travel->destination}} </h5></td>
-                            <td class="col-3"> <h5 style="">{{$travel->price}} </h5></td>
-                            <td class="col-2">
-                                <span class="btn btn-sm btn-info"><a href="{{route('images.tour', $tour->id)}}"> Add Photos </a></span>
+                            <td class="col-3"> <a href="{{ route('tours.detail', ['tour' => $tour->id]) }}" > <h3 style="">{{$tour->title }} </h3> </a> </td>
+                            <td class="col-3"> <h5 style="">{{$tour->country }}, {{$tour->city }} </h5></td>
+                            <td class="col-2"> <h5 style="">{{$tour->location }} </h5></td>
+                            <td class="col-1"> <h5 style="">{{$tour->duration}} </h5></td>
+                            <td class="col-1"> <h5 style="">{{$tour->price}} </h5></td>
+                            <td class="col-2"> 
+                                @for ($i = 0; $i < $tour->rating; $i++)
+                                    <img width="25px" src="{{ asset('images/star.png') }}"/>
+                                @endfor
+                            </td>
                             </td>                            
                           </tr>
                         @endforeach
