@@ -38,25 +38,17 @@ class ImageController extends Controller
     public function hotel_image(Request $request)
     {
         //
-        $hotel_id = $request->input('hotel_id');
-
-        $description = $request->input('description');
-
-        $image = new Image();
-
-        $image->hotel_id = $hotel_id;
-
-        $image->description = $description;
-
-        $file = $request->file('image');
-
-        $path = $file->store('uploads', 'public');
-
-        $image->image = 'storage/'.$path;
-
-        $image->save();
-
-        $hotel = Hotel::find($hotel_id);
+        for ($i = 0; $i < count($request->file('images')); $i++) { 
+            $file = $request->file('images')[$i];
+            $path = $file->store('uploads', 'public');
+            $image = Image::create([
+                'hotel_id' => $request->hotel_id,
+                'description' => $request->descriptions[$i] ?? '', 
+                'image' => 'storage/' . $path,
+            ]);
+        }
+        
+        $hotel = Hotel::find($request->hotel_id);
 
         return redirect(route('hotels.show', compact('hotel')));
     }
@@ -77,28 +69,21 @@ class ImageController extends Controller
     public function travel_image(Request $request)
     {
         //
-        $travel_id = $request->input('travel_id');
-
-        $description = $request->input('description');
-
-        $image = new Image();
-
-        $image->travel_id = $travel_id;
-
-        $image->description = $description;
-
-        $file = $request->file('image');
-
-        $path = $file->store('uploads', 'public');
-
-        $image->image = 'storage/'.$path;
-
-        $image->save();
-
-        $travel = Travel::find($travel_id);
+        for ($i = 0; $i < count($request->file('images')); $i++) { 
+            $file = $request->file('images')[$i];
+            $path = $file->store('uploads', 'public');
+            $image = Image::create([
+                'travel_id' => $request->travel_id,
+                'description' => $request->descriptions[$i] ?? '', 
+                'image' => 'storage/' . $path,
+            ]);
+        }
+        
+        $travel = Travel::find($request->travel_id);
 
         return redirect(route('travels.show', compact('travel')));
     }
+
 
 
     /**
@@ -117,25 +102,18 @@ class ImageController extends Controller
     public function tour_image(Request $request)
     {
         //
-        $tour_id = $request->input('tour_id');
-
-        $description = $request->input('description');
-
-        $image = new Image();
-
-        $image->tour_id = $tour_id;
-
-        $image->description = $description;
-
-        $file = $request->file('image');
-
-        $path = $file->store('uploads', 'public');
-
-        $image->image = 'storage/'.$path;
-
-        $image->save();
-
-        $tour = Tour::find($tour_id);
+        for ($i = 0; $i < count($request->file('images')); $i++) { 
+            $file = $request->file('images')[$i];
+            $path = $file->store('uploads', 'public');
+            $image = Image::create([
+                'tour_id' => $request->tour_id,
+                'description' => $request->descriptions[$i] ?? '', 
+                'image' => 'storage/' . $path,
+            ]);
+            
+        }
+        
+        $tour = Tour::find($request->tour_id);
 
         return redirect(route('tours.show', compact('tour')));
     }

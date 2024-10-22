@@ -38,22 +38,13 @@
             <div class="form-group col-lg-4">
                 <label for="image">Add More Pictures Here</label>
                 <div class="custom-file">
-                <input type="file" name="image" class="custom-file-input" id="image" required>
+                <input type="file" name="images[]" class="custom-file-input" id="images" multiple required>
                 <label class="custom-file-label" for="customFile">Choose Picture</label>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="form-group col-lg-8">
-                    <label for="description">Description about the Image</label>
-                    <textarea  class="form-control"  value="{{ old('description') ? old('description') : $hotel->description }}" name="description" id="mytextarea"  rows="5"  placeholder="Enter Hotel description Here" required></textarea>
-                                
-                    @if ($errors->has('description'))
-                        <small id="nameHelp" class="form-text text-danger">{{$errors->first('description')}}</small>
-                    @else
-                        <small id="nameHelp" class="form-text text-muted">Description the hotel.</small>
-                    @endif
-                </div>
+            <div id="textAreasSection">
+
             </div>
 
           <button type="submit" class="btn btn-primary">Add Image</button>
@@ -62,5 +53,57 @@
     </div>
 </div>
 
+<script>
+// document.getElementById('images').addEventListener('change', function() {
+//     const fileCount = this.files.length;
+
+
+
+
+//     for (let index = 0; index < fileCount; index++) {
+    //     }
+    
+    // });
+    
+    document.getElementById('images').addEventListener('change', function() {
+        let textAreas = "";
+        let i = 0;
+        let filesProcessed = 0; // Counter for processed files
+        const totalFiles = this.files.length;
+
+        Array.from(this.files).forEach(file => {
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    textAreas += `
+                        <div class="row">
+                            <img width="100px"  height="100px"src="${e.target.result}" />
+                            <div class="form-group col-lg-8">
+                                <label for="description">Description about the Image</label>
+                                <textarea  class="form-control" value="{{ old('description') ? old('description') : $hotel->description }}" name="descriptions[${filesProcessed}]" id="mytextarea" rows="5" placeholder="Enter Hotel description Here" required></textarea>
+                                @if ($errors->has('description'))
+                                    <small id="nameHelp" class="form-text text-danger">{{$errors->first('description')}}</small>
+                                @else
+                                    <small id="nameHelp" class="form-text text-muted">Description the hotel.</small>
+                                @endif
+                            </div>
+                        </div>
+                    `;
+                    filesProcessed++;
+                        
+                    // Once all files have been processed, update the innerHTML
+                    if (filesProcessed === totalFiles) {
+                        console.log(textAreas);
+                        document.getElementById('textAreasSection').innerHTML = textAreas;
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+            i += 1;
+        });
+    });
+
+
+</script>
     
 @endsection
