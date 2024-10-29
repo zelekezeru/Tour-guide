@@ -24,7 +24,11 @@
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
               <h3 class="m-0 font-weight-bold text-primary">Day {{ $itenarary->day_number }}</h3>
             </div>
-            <form action="{{route('itenararies.destroy', $itenarary)}}"></form>
+            <form action="{{route('itenararies.destroy', $itenarary)}}" method="post">
+              @csrf
+              @method('delete')
+              <button class="btn btn-danger">Remove</button>
+            </form>
             <div class="card-body">
               <form action="{{route('itenararies.update', $itenarary)}}" method="POST" enctype="multipart/form-data">
                 @csrf

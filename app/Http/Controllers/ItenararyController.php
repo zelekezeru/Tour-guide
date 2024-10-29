@@ -33,4 +33,20 @@ class ItenararyController extends Controller
         $itenarary->save();
         return redirect(route('itenararies.edit', $itenarary->tour->id));
     }
+
+    public function destroy(Itenarary $itenarary)
+    {
+        $tour = $itenarary->tour_id;
+        $tour_itenararies = $itenarary->tour->itenararies()->where('id', '>', $itenarary->id)->pluck('id')->toArray();
+        foreach ($tour_itenararies as $tour_itenarary) {
+            $update_tour = Itenarary::find($tour_itenarary);
+            $update_tour->day_number--;
+            $update_tour->save();
+        }
+        $itenarary->tour->duration--;
+        $itenarary->tour->save();
+        $itenarary->delete();
+        
+        return redirect(route('itenararies.edit', $tour));
+    }
 }
