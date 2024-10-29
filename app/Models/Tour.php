@@ -15,6 +15,11 @@ class Tour extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function itenararies()
+    {
+        return $this->hasMany(Itenarary::class);
+    }
+
     public function locations()
     {
         return $this->hasany(Location::class);

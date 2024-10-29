@@ -3,7 +3,7 @@
 	<aside id="colorlib-hero">
 		<div class="flexslider">
 			<ul class="slides">
-			   <li style="background-image: url(images/cover-img-3.jpg);">
+			   <li style="background-image: url({{asset($tour->image)}});">
 				   <div class="overlay"></div>
 				   <div class="container-fluid">
 					   <div class="row">
@@ -28,110 +28,53 @@
 						<div class="col-md-12">
 							<div class="wrap-division">
 								<div class="col-md-12 col-md-offset-0 heading2 animate-box">
-									<h2>Athens, Greece Tour</h2>
+									<h2>{{ $tour->title }}</h2>
 								</div>
 								<div class="row">
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-1.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 1</span>
-														<h2>Athens, Greece</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+									
+									@if (count($tour->itenararies) !== 0)
+										@foreach ($tour->itenararies as $itenarary)
+											@if ($itenarary->title)
+												<div class="col-md-12 animate-box">
+													<div class="room-wrap">
+														<div class="row">
+															<div class="col-md-6 col-sm-6">
+																<div class="room-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});"></div>
+															</div>
+															<div class="col-md-6 col-sm-6">
+																<div class="desc">
+																	<span class="day-tour">Day {{ $itenarary->day_number }}</span>
+																	<h2>{{ $itenarary->title }}</h2>
+																	<p>{{ $itenarary->description }}</p>
+																</div>
+															</div>
+														</div>
 													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-	
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-2.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 2</span>
-														<h2>Thailand</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+												@else
+													<div class="col-md-12 animate-box">
+														<div class="room-wrap">
+															<div class="row">
+																<div class="col-md-6 col-sm-6">
+																	<div class="room-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});"></div>
+																</div>
+																<div class="col-md-6 col-sm-6">
+																	<div class="desc">
+																		<span class="day-tour">Day {{ $itenarary->day_number }}</span>
+																		<h2> Sorry, Day {{ $itenarary->day_number }} 	Has Not Been Defined Yet </h2>
+																		{{-- <p>{{ $itenarary->description }}</p> --}}
+																	</div>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-	
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-3.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 3</span>
-														<h2>Boracay, Philippines</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-	
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-4.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 4</span>
-														<h2>Tokyo, Japan</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-	
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-5.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 5</span>
-														<h2>Paris, Italy</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-	
-									<div class="col-md-12 animate-box">
-										<div class="room-wrap">
-											<div class="row">
-												<div class="col-md-6 col-sm-6">
-													<div class="room-img" style="background-image: url(images/tour-6.jpg);"></div>
-												</div>
-												<div class="col-md-6 col-sm-6">
-													<div class="desc">
-														<span class="day-tour">Day 6</span>
-														<h2>Greece</h2>
-														<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+
+											@endif
+										@endforeach
+								
+									@else
+											<h2>Itenararies Coming Soon!</h2>
+									@endif
 									<div class="col-md-12 animate-box text-center">
 										<p><a href="#" class="btn btn-primary">Book Now!</a></p>
 									</div>
@@ -412,5 +355,4 @@
 			</div>
 		</div>
 	</div>
-
 </x-guest-layout>

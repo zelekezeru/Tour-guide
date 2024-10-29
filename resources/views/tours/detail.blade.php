@@ -16,6 +16,9 @@
                     <span class="btn btn-sm btn-info"><a href="{{route('images.tour', $tour->id)}}"> Add Photos </a></span>
                 </div>
                 <div class="col-1">
+                    <span class="btn btn-sm btn-info"><a href="{{route('itenararies.edit', $tour->id)}}"> Update Itenararies </a></span>
+                </div>
+                <div class="col-1">
                     <span class="btn btn-lg btn-warning"><a href="{{route('tours.edit', $tour)}}"> Edit </a></span>
                 </div>
                 <div class="col-1">

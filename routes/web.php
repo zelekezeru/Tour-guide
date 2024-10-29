@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ItenararyController;
 use App\Http\Controllers\LocationController;
 use App\Livewire\SweetAlertNotification;
 
@@ -83,6 +84,13 @@ Route::get('/image/travel/{id}', [ImageController::class, 'travel'])->name('imag
 Route::post('/travels/image', [ImageController::class, 'travel_image'])->name('travels.image');
 
 
+//Itenarary routes
+Route::get('itenararies/{tour}/edit', [ItenararyController::class, 'edit'])->name('itenararies.edit');
+
+Route::patch('itenararies/{itenarary}', [ItenararyController::class, 'update'])->name('itenararies.update');
+
+Route::delete('itenararies/{itenarary}', [ItenararyController::class, 'destroy'])->name('itenararies.destroy');
+
 //blog images uploader
 Route::post('/upload-blog-images', [BlogController::class, 'upload'])->name('ckeditor.blog.upload');
 
@@ -108,3 +116,4 @@ Route::resource('testimonials', TestimonialController::class);
 Route::get('alert', SweetAlertNotification::class);
 
 Route::resource('admins', AdminController::class);
+

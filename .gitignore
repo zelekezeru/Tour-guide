@@ -13,4 +13,4 @@
 /storage/logs
 /bootstrap/cache/*.php
 .env
-.env
+.env  
