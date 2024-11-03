@@ -54,7 +54,7 @@
                 <div id="collapseBootstrap22" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Testimonial</h6>
-                        <a class="collapse-item" href="{{ route('testimonials.list') }}">Testimonial List</a>
+                        <a class="collapse-item" href="{{ route('testimonials.index') }}">Testimonial List</a>
                         <a class="collapse-item" href="{{ route('testimonials.create') }}">Add Testimonial</a>
                     </div>
                 </div>
@@ -107,20 +107,6 @@
             <div class="sidebar-heading">
                 Website Structure
             </div>
-            {{-- Meta Data --}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7" aria-expanded="true" aria-controls="collapseBootstrap7">
-                    <i class="far fa-fw fa-window-maximize"></i>
-                    <span>Meta Data</span>
-                </a>
-                <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Meta Data</h6>
-                        <a class="collapse-item" href="{{ route('abouts.index') }}">About Us</a>
-                        <a class="collapse-item" href="#">Buttons</a>
-                    </div>
-                </div>
-            </li>
             {{-- Blog --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5" aria-expanded="true" aria-controls="collapseBootstrap5">
@@ -130,7 +116,7 @@
                 <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Blog</h6>
-                        <a class="collapse-item" href="{{ route('blogs.index') }}">Blogs List</a>
+                        <a class="collapse-item" href="{{ route('blogs.list') }}">Blogs List</a>
                         <a class="collapse-item" href="{{ route('blogs.create') }}">Create Blog</a>
                     </div>
                 </div>
@@ -144,8 +130,22 @@
                 <div id="collapseBootstrap6" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Contacts</h6>
-                        <a class="collapse-item" href="{{ route('contacts.index') }}">Contacts</a>
+                        <a class="collapse-item" href="{{ route('contacts.list') }}">Messages</a>
                         <a class="collapse-item" href="{{ route('testimonials.index') }}">Testimonials</a>
+                    </div>
+                </div>
+            </li>
+            {{-- Meta Data --}}
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap7" aria-expanded="true" aria-controls="collapseBootstrap7">
+                    <i class="far fa-fw fa-window-maximize"></i>
+                    <span>Meta Data</span>
+                </a>
+                <div id="collapseBootstrap7" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Meta Data</h6>
+                        <a class="collapse-item" href="{{ route('abouts.index') }}">About Us</a>
+                        <a class="collapse-item" href="#">Buttons</a>
                     </div>
                 </div>
             </li>

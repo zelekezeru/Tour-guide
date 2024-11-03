@@ -4,7 +4,7 @@
         <aside id="colorlib-hero">
             <div class="flexslider">
                 <ul class="slides">
-                <li style="background-image: url({{ asset($hotel->images->first()->image ) }});">
+                <li style="background-image: url({{ asset($hotel->images->first()->image ) }});" alt="url(images/cover-img-4.jpg);">
                     <div class="overlay"></div>
                     <div class="container-fluid">
                         <div class="row">
@@ -12,7 +12,7 @@
                                 <div class="slider-text-inner text-center">
                                         <h2>By GRACE Tour And Travel</h2>
                                         <h1>{{ $hotel->name}}</h1>
-                                        <h3 style="color:aliceblue">{{ $hotel->location}}</h3>
+                                        <h3 style="color:rgb(218, 234, 249)">{{ $hotel->location}}</h3>
                                 </div>
                             </div>
                         </div>

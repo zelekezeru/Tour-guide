@@ -56,12 +56,21 @@ Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blo
 //Tour
 Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list');
 
+Route::get('/tours/search', [TourController::class, 'search'])->name('tours.search');
+
 Route::get('/tours/detail/{tour}', [TourController::class, 'detail'])->name('tours.detail');
 
 //Travel
 Route::get('/travels/list', [TravelController::class, 'list'])->name('travels.list');
 
+Route::get('/travels/search', [TravelController::class, 'search'])->name('travels.search');
+
 Route::get('/travels/detail/{travel}', [TravelController::class, 'detail'])->name('travels.detail');
+
+//Contact
+Route::get('/contacts/list', [ContactController::class, 'list'])->name('contacts.list');
+
+Route::get('/contacts/detail/{contact}', [ContactController::class, 'detail'])->name('contacts.detail');
 
 //Testimonial
 Route::get('/testimonials/list', [TestimonialController::class, 'list'])->name('testimonials.list');

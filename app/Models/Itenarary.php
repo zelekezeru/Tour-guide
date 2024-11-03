@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Itenarary extends Model
 {
     protected $guarded = [];
+    
     public function tour()
     {
         return $this->belongsTo(Tour::class);
+    }
+
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
     }
 }

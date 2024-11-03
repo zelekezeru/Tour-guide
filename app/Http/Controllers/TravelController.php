@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
 use App\Models\Travel;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -23,6 +24,19 @@ class TravelController extends Controller
         $travels = Travel::all();
         
         return view('travels.list', compact('travels'));
+    }
+
+    /**
+     * Search Results
+     */
+
+    public function search(Request $request)
+    {
+
+        $travels = Travel::where('location', $request->location)
+                        ->get();        
+        
+        return view('travels.index', compact('travels'));
     }
     
     /**
@@ -60,6 +74,12 @@ class TravelController extends Controller
         $path = $file->store('uploads', 'public');
 
         $travel = Travel::create($data);
+        
+        $location = Location::create([
+            'travel_id' => $travel->id,
+            'location' => $travel->location, ]);
+
+
         $travel->image = 'storage/'.$path;
         $travel->save();
         return redirect(route('travels.show', $travel->id));
@@ -106,7 +126,14 @@ class TravelController extends Controller
             'image' => 'image'
         ]);
 
-        $travel->update($data);
+        $travel->update($data);        
+
+        $location = Location::where('travel_id', $travel->id )->first();
+
+        $loc = $request->validate([ 'location' => 'required|string',]);
+        
+        $location->update($loc);
+
         if (!$request->input('round_trip')) {
             $travel->round_trip = false;
         }
@@ -118,6 +145,7 @@ class TravelController extends Controller
             $travel->image = 'storage/'.$path;
         }
         $travel->save();
+
         return redirect(route('travels.index'));
     }
 

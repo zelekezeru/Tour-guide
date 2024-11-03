@@ -66,11 +66,15 @@ class BlogController extends Controller
         $data['user_id'] = auth()->user()->id;
 
         $file = $request->file('image');
+
         $path = $file->store('uploads/blog-images', 'public');
         
         $blog = Blog::create($data);
+
         $blog->image = 'storage/'.$path;
+
         $blog->save();
+        
         return redirect(route('blogs.show', $blog->id));
     }
 

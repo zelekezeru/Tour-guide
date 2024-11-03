@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Itenarary;
 use App\Models\Tour;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,6 +25,19 @@ class TourController extends Controller
         $tours = Tour::all();
 
         return view('tours.list', compact('tours'));
+    }
+
+    /**
+     * Search Results
+     */
+
+    public function search(Request $request)
+    {
+
+        $tours = Tour::where('location', $request->location)
+                        ->get();        
+        
+        return view('tours.index', compact('tours'));
     }
 
     /**
@@ -59,6 +73,10 @@ class TourController extends Controller
         $tour = Tour::create($data);
         $tour->image = 'storage/'.$path;
         $tour->save();
+        
+        $location = Location::create([
+            'tour_id' => $tour->id,
+            'location' => $tour->location, ]);
 
         for ($i=1; $i <= $tour->duration; $i++) { 
             Itenarary::create([
@@ -111,6 +129,7 @@ class TourController extends Controller
         $redirect_route_name = route('tours.detail', $tour);
 
         if ($request->duration > $tour->duration) {
+
             $redirect_route_name = route('itenararies.edit', $tour->id);
 
             $added_days = $request->duration - $tour->duration;
@@ -118,6 +137,7 @@ class TourController extends Controller
             $last_day = count($tour->itenararies);
 
             for ($i=1; $i <= $added_days ; $i++) { 
+
                 Itenarary::create([
                     'tour_id' => $tour->id,
                     'day_number' => $last_day + 1,
@@ -136,7 +156,14 @@ class TourController extends Controller
                 $itenarary->delete();
             }
         }
+
         $tour->update($data);
+
+        $location = Location::where('tour_id', $tour->id )->first();
+
+        $loc = $request->validate([ 'location' => 'required|string',]);
+        
+        $location->update($loc);
 
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete('uploads/'.basename($tour->image));
@@ -144,7 +171,9 @@ class TourController extends Controller
             $path = $file->store('uploads', 'public');         
             $tour->image = 'storage/'.$path;
         }
+
         $tour->save();
+
         return redirect($redirect_route_name);
     }
 
@@ -154,10 +183,13 @@ class TourController extends Controller
     public function destroy(Tour $tour)
     {
         Storage::disk('public')->delete('uploads/'.basename($tour->image));
-        foreach ($tour->images as $image) {
+
+        foreach ($tour->images as $image) {            
             Storage::disk('public')->delete('uploads/'.basename($image->image));
         }
+
         $tour->delete();
+
         return redirect(route('tours.index'));
     }
 }

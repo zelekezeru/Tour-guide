@@ -5,7 +5,9 @@
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Add Itenararies To Tour "{{ $tour->title }}"</h1>
+      <div class="col h3 mb-0 text-gray-800">
+        <h1 class="h3 mb-0 text-gray-800">Add Itenararies To Tour </h1> <h1 class="text-warning"> {{ $tour->title }}</h1>
+      </div>
       <form action="" method="POST">
         @csrf
         @method('delete')
@@ -94,8 +96,6 @@
                   </div>
                   
                 </div>
-
-
 
                 <button type="submit" class="btn btn-primary">Update Day {{ $itenarary->day_number }} </button>
               </form> 

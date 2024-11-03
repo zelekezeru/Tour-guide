@@ -27,24 +27,22 @@
                         <thead class="thead-light ">
                             <tr>
                                 <th class="col-3">Name</th>
-                                <th class="col-2">Photo</th>
-                                <th class="col-3">Teaser</th>
+                                <th class="col-4">Photo</th>
+                                {{-- <th class="col-3">Teaser</th> --}}
+                                <th class="col-5">Content</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="col-3"> <a href="{{ route('blogs.show', ['blog' => $blog->id]) }}" > <h3 style="">{{$blog->title}} </h3> </a> </td>
-                                <td class="col-2"> <img width="200px" src="{{ asset($blog->image )}}"/> </td>
-                                <td class="col-3"> <h5 style="">{{$blog->teaser}} </h5></td>
+                                <td class="col-3"> <a href="{{ route('blogs.show', ['blog' => $blog->id]) }}" > <h5 style="">{{$blog->title}} </h5> </a> </td>
+                                <td class="col-4"> <img width="300px" src="{{ asset($blog->image )}}"/> </td>
+                                {{-- <td class="col-3"> <h5 style="">{{$blog->teaser}} </h5></td> --}}
+                                <td class="col-5"> <h5 style="">{!! Str::limit( $blog->content, 150, '...') !!} </h5></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-
-
-
-            
+            </div>            
         </div>
     </div>
 </div>

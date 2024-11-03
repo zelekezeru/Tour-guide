@@ -1,4 +1,5 @@
 <x-guest-layout>
+    
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
@@ -57,6 +58,8 @@
             </ul>
         </div>
     </aside>
+
+
     <div id="colorlib-reservation">
         <!-- <div class="container"> -->
         <div class="container-fluid">
@@ -67,70 +70,82 @@
                             <li class="active"><a data-toggle="tab" href="#tour"><i class="flaticon-plane"></i> Tour</a></li>
                             <li><a data-toggle="tab" href="#hotel"><i class="flaticon-resort"></i> Hotel</a></li>
                             <li><a data-toggle="tab" href="#travel"><i class="flaticon-car"></i> Travel</a></li>
-                            <li><a data-toggle="tab" href="#cruises"><i class="flaticon-boat"></i> Cruises</a></li>
                         </ul>
                     </div>
+
+                    {{-- Tour Search --}}
+                    
                     <div class="tab-content">
                         <div id="tour" class="tab-pane fade in active">
-                            <form method="post" class="colorlib-form">
-                            <div class="row">
-                            <div class="col-md-3">
+                            <form action="{{ route('tours.search') }}" method="GET" class="colorlib-form">
+                                <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                    <label for="date">Where:</label>
+                                    <div class="form-field">
+                                        <i class="icon icon-arrow-down3"></i>
+                                        <select name="location" id="location" class="form-control bg-dark">                                            
+                                            <option class="text-primary">Choose Location</option>
+                                            @foreach($tours as $tour)
+                                                <option class="text-primary" value="{{ $tour->location }}">{{ $tour->location }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                <div class="col-md-3">
                                 <div class="form-group">
-                                <label for="date">Where:</label>
-                                <div class="form-field">
-                                <input type="text" id="location" class="form-control" placeholder="Search Location">
+                                    <label for="date">Check-In:</label>
+                                    <div class="form-field">
+                                    <i class="icon icon-calendar2"></i>
+                                    <input type="text" id="date" class="form-control date"  name="check_in_date"  placeholder="Check-in date">
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="date">Check-out:</label>
+                                    <div class="form-field">
+                                    <i class="icon icon-calendar2"></i>
+                                    <input type="text" id="date" class="form-control date"  name="check_out_date" placeholder="Check-out date">
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="col-md-2">
+                                <input type="submit" name="submit" id="submit" value="Find Tours" class="btn btn-primary btn-block">
                                 </div>
                             </div>
-                            </div>
-                            <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="date">Check-in:</label>
-                                <div class="form-field">
-                                <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="date">Check-out:</label>
-                                <div class="form-field">
-                                <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-out date">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="guests">Guest</label>
-                                <div class="form-field">
-                                <i class="icon icon-arrow-down3"></i>
-                                <select name="people" id="people" class="form-control">
-                                    <option value="#">1</option>
-                                    <option value="#">2</option>
-                                    <option value="#">3</option>
-                                    <option value="#">4</option>
-                                    <option value="#">5+</option>
-                                </select>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-2">
-                            <input type="submit" name="submit" id="submit" value="Find Flights" class="btn btn-primary btn-block">
-                            </div>
-                        </div>
                         </form>
                     </div>
+
+                    {{-- Hotel Search --}}
+
                     <div id="hotel" class="tab-pane fade">
                         <form action="{{ route('hotels.search') }}" method="GET" class="colorlib-form">
                             <div class="row">
-                            
+                                <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="guests">Location</label>
+                                    <div class="form-field">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="location" id="location-hotel" class="form-control bg-dark">
+                                        <option class="text-primary" value="">Choose Location</option>
+                                        @foreach($hotels as $hotel)
+                                            <option class="text-primary" value="{{ $hotel->location }}">{{ $hotel->location }}</option>
+                                        @endforeach
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                                
                             <div class="col-md-3">
                             <div class="form-group">
                                 <label for="date">Check-in:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" name="check_in_date" id="date" class="form-control date" placeholder="Check-in date">
+                                <input type="text" id="date" class="form-control date"  name="check_in_date"  placeholder="Check-in date">
                             </div>
                             </div>
                             </div>
@@ -139,56 +154,34 @@
                                 <label for="date">Check-out:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" name="check_out_date" id="date" class="form-control date" placeholder="Check-out date">
+                                <input type="text" id="date" class="form-control date"  name="check_out_date" placeholder="Check-out date">
                             </div>
-                            </div>
-                            </div>
-                            <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="guests">Guest</label>
-                                <div class="form-field">
-                                <i class="icon icon-arrow-down3"></i>
-                                <select name="guest" id="people" class="form-control">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5+</option>
-                                </select>
-                                </div>
                             </div>
                             </div>
 
                             <div class="col-md-2">
-                            <div class="form-group">
-                                <label for="guests">Guest</label>
-                                <div class="form-field">
-                                <i class="icon icon-arrow-down3"></i>
-                                <select name="location" id="location" class="form-control bg-dark">
-                                    <option value="Arbaminch, Gamo Zone, Ethiopia">Arbaminch</option>
-                                    <option value="Hawassa, Ethiopia">Hawassa</option>
-                                    <option value="Omo_Valley_Tribes, Ethiopia">Omo Valley Tribes</option>
-                                    <option value="Konso, Ethiopia">Konso</option>
-                                    <option value="Sodo, Ethiopia">Sodo</option>
-                                </select>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="col-md-2">
-                            <input type="submit" name="submit" id="submit" value="Find Hotel" class="btn btn-primary btn-block">
+                            <input type="submit" name="submit" id="submit" value="Find Hotels" class="btn btn-primary btn-block">
                             </div>
                         </div>
                         </form>
                     </div>
-                    <div id="car" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
+
+                    {{-- Travel Search --}}
+                    
+                    <div id="travel" class="tab-pane fade">
+                        <form action="{{ route('travels.search') }}" method="GET" class="colorlib-form">
                             <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                 <label for="date">Where:</label>
                                 <div class="form-field">
-                                <input type="text" id="location" class="form-control" placeholder="Search Location">
+                                    <i class="icon icon-arrow-down3"></i>
+                                    <select name="location" id="location-travel" class="form-control bg-dark">      
+                                        <option class="text-primary" value="">Choose Location</option>
+                                        @foreach($travels as $travel)                                        
+                                            <option class="text-primary" value="{{ $travel->location }}">{{ $travel->location }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             </div>
@@ -197,7 +190,7 @@
                                 <label for="date">Start Date:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-in date">
+                                <input type="text" id="date" class="form-control date"  name="check_in_date"  placeholder="Check-in date">
                                 </div>
                             </div>
                             </div>
@@ -206,57 +199,18 @@
                                 <label for="date">Return Date:</label>
                                 <div class="form-field">
                                 <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-out date">
+                                <input type="text" id="date" class="form-control date"  name="check_out_date" placeholder="Check-out date">
                                 </div>
                             </div>
                             </div>
                             <div class="col-md-2">
-                            <input type="submit" name="submit" id="submit" value="Find Car" class="btn btn-primary btn-block">
+                            <input type="submit" name="submit" id="submit" value="Find Travels" class="btn btn-primary btn-block">
                             </div>
                         </div>
                         </form>
                     </div>
-                    <div id="cruises" class="tab-pane fade">
-                        <form method="post" class="colorlib-form">
-                            <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                <label for="date">Where:</label>
-                                <div class="form-field">
-                                <input type="text" id="location" class="form-control" placeholder="Search Location">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="date">Start Date:</label>
-                                <div class="form-field">
-                                <i class="icon icon-calendar2"></i>
-                                <input type="text" id="date" class="form-control date" placeholder="Check-in date">
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-3">
-                            <div class="form-group">
-                                <label for="guests">Categories</label>
-                                <div class="form-field">
-                                <i class="icon icon-arrow-down3"></i>
-                                <select name="category" id="category" class="form-control">
-                                    <option value="#">Suite</option>
-                                    <option value="#">Super Deluxe</option>
-                                    <option value="#">Balcony</option>
-                                    <option value="#">Economy</option>
-                                    <option value="#">Luxury</option>
-                                </select>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="col-md-2">
-                            <input type="submit" name="submit" id="submit" value="Find Cruises" class="btn btn-primary btn-block">
-                            </div>
-                        </div>
-                        </form>
-                    </div>
+
+                    
                 </div>
                 </div>
             </div>
@@ -311,91 +265,27 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <h2>Popular Destination</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
         </div>
         <div class="tour-wrap">
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-1.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Athens, Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-2.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Thailand</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-3.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Philippines</h2>
-                    <span class="city">Lipa, Philippines</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-4.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-5.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-6.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-7.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
-            <a href="#" class="tour-entry animate-box">
-                <div class="tour-img" style="background-image: url(images/tour-8.jpg);">
-                </div>
-                <span class="desc">
-                    <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p>
-                    <h2>Family Tour in Greece</h2>
-                    <span class="city">Athens, Greece</span>
-                    <span class="price">$450</span>
-                </span>
-            </a>
+            @foreach( $tours as $tour)
+            @foreach( $tour->itenararies as $itenarary)
+                @if ($itenarary->title)
+                    <a href="#" class="tour-entry animate-box">
+                        <div class="tour-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});">
+                        </div>
+                        <span class="desc">
+                            {{-- <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p> --}}
+                            <h2>{{ $itenarary->title }}</h2>
+                            <span class="city">{{ $itenarary->tour->title }}</span>
+                            <span class="price">{{ $itenarary->hotel->name }}</span>
+                        </span>
+                    </a>
+                @else
+                @endif
+            @endforeach
+            @endforeach
         </div>
     </div>
     
@@ -405,7 +295,6 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <h2>Recent Blog</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
             <div class="blog-flex">
@@ -413,85 +302,30 @@
                 </div>
                 <div class="blog-entry aside-stretch-right">
                     <div class="row">
-                        <div class="col-md-12 animate-box">
-                            <a href="blog.html" class="blog-post">
-                                <span class="img" style="background-image: url(images/blog-1.jpg);"></span>
-                                <div class="desc">
-                                    <span class="date">Feb 22, 2018</span>
-                                    <h3>A Definitive Guide to the Best Dining</h3>
-                                    <span class="cat">Activities</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-12 animate-box">
-                            <a href="blog.html" class="blog-post">
-                                <span class="img" style="background-image: url(images/blog-2.jpg);"></span>
-                                <div class="desc">
-                                    <span class="date">Feb 22, 2018</span>
-                                    <h3>How These 5 People Found The Path to Their Dream Trip</h3>
-                                    <span class="cat">Activities</span>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-12 animate-box">
-                            <a href="blog.html" class="blog-post">
-                                <span class="img" style="background-image: url(images/blog-4.jpg);"></span>
-                                <div class="desc">
-                                    <span class="date">Feb 22, 2018</span>
-                                    <h3>Our Secret Island Boat Tour Is just for You</h3>
-                                    <span class="cat">Activities</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="colorlib-intro" class="intro-img" style="background-image: url(images/cover-img-1.jpg);" data-stellar-background-ratio="0.5">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 animate-box">
-                    <div class="intro-desc">
-                        <div class="text-salebox">
-                            <div class="text-lefts">
-                                <div class="sale-box">
-                                    <div class="sale-box-top">
-                                        <h2 class="number">45</h2>
-                                        <span class="sup-1">%</span>
-                                        <span class="sup-2">Off</span>
+                        @foreach($blogs as $blog)
+                            <div class="col-md-12 animate-box">
+                                <a href="blog.html" class="blog-post">
+                                    <span class="img" style="background-image: url({{ $blog->image }});"></span>
+                                    <div class="desc">
+                                        <span class="date">{{ $blog->created_at->format('M Y') }}</span>
+                                        <h3>{{ $blog->title }}</h3>
+                                        <span class="cat">Activities</span>
                                     </div>
-                                    <h2 class="text-sale">Sale</h2>
-                                </div>
+                                </a>
                             </div>
-                            <div class="text-rights">
-                                <h3 class="title">Just hurry up limited offer!</h3>
-                                <p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                                <p><a href="#" class="btn btn-primary">Book Now</a> <a href="#" class="btn btn-primary btn-outline">Read more</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 animate-box">
-                    <div class="video-wrap">
-                        <div class="video colorlib-video" style="background-image: url(images/img_bg_2.jpg);">
-                            <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo"><i class="icon-video"></i></a>
-                            <div class="video-overlay"></div>
-                        </div>
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
+        
     <div id="colorlib-hotel">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <h2>Recommended Hotels</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
 
@@ -530,42 +364,27 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <h2>Our Satisfied Guests says</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 animate-box">						
                     <div class="owl-carousel2">
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url(images/person1.jpg);"></span>
-                                <span class="user">Alysha Myers</span>
-                                <small>Miami Florida, USA</small>
-                                <blockquote>
-                                    <p>" A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                </blockquote>
+
+                        @foreach($testimonials as $testimonial)
+
+                            <div class="item">
+                                <div class="testimony text-center">
+                                    <span class="img-user" style="background-image: url({{ $testimonial->image }});"></span>
+                                    <span class="user">{{ $testimonial->name }}</span>
+                                    <small>{{ $testimonial->address }}</small>
+                                    <blockquote>
+                                        <p>{{ $testimonial->testimony }}</p>
+                                    </blockquote>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url(images/person2.jpg);"></span>
-                                <span class="user">James Fisher</span>
-                                <small>New York, USA</small>
-                                <blockquote>
-                                    <p>One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-                                </blockquote>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony text-center">
-                                <span class="img-user" style="background-image: url(images/person3.jpg);"></span>
-                                <span class="user">Jacob Webb</span>
-                                <small>Athens, Greece</small>
-                                <blockquote>
-                                    <p>Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-                                </blockquote>
-                            </div>
-                        </div>
+
+                        @endforeach
+                        
                     </div>
                 </div>
             </div>	

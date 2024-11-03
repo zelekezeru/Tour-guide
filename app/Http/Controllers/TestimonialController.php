@@ -14,15 +14,20 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        return view('testimonials.index');
+        $testimonials = Testimonial::all();
+
+        return view('testimonials.index', compact('testimonials'));
     }
- 
+
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('testimonials.create');
+        $testimonial = new Testimonial();
+
+        return view('testimonials.create', compact('testimonial'));
     }
 
     /**

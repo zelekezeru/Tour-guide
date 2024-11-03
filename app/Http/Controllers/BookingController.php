@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Location;
 use Illuminate\Http\Request;
 
 class BookingController extends Controller
@@ -28,7 +29,12 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $booking = new Booking;
+        $location = Location::create([
+            'booking_id' => $booking->id,
+            'location' => $booking->location, ]);
+
+        
     }
 
     /**

@@ -76,18 +76,19 @@
                   </div>
               </div>
   
+
               <div class="form-group col-lg">
-                  <label for="mytextarea">Blog Content</label>
-                  
-                  <textarea name="content" id="editor"></textarea>
-                  
-                  @if ($errors->has('content'))
-                    <small class="form-text text-danger">{{$errors->first('content')}}</small>												
-                  @else
-                    <small class="form-text text-muted">Type the blog content here.</small>
-                  @endif 
-                  
-              </div>
+                <label for="mytextarea">Blog Content</label>
+                
+                <textarea name="content" id="editor"> {!! $blog->content !!}</textarea>
+                
+                @if ($errors->has('content'))
+									<small class="form-text text-danger">{{$errors->first('content')}}</small>												
+								@else
+									<small class="form-text text-muted">Type the blog content here.</small>
+								@endif 
+                
+            </div>
   
               <button type="submit" class="btn btn-primary">Submit</button>
           </form>
@@ -96,17 +97,15 @@
 </div>
 
     
+    
 <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js">{{old('title')}}</script>
 
 <script>
   // Initialize CKEditor
   ClassicEditor
-      .create(document.querySelector('#editor'), {
-          ckfinder: {
-              uploadUrl: "{{ route('ckeditor.blog.upload', ['_token'=>csrf_token()]) }}"
-          },
-          initialData: '{!! $blog->content !!}'
-      })
+      .create(document.querySelector('#editor'),{ ckfinder: {
+        uploadUrl: "{{ route('ckeditor.blog.upload', ['_token'=>csrf_token()]) }}"
+      }})
       .then(editor => {
           console.log('Editor was initialized', editor);
       })

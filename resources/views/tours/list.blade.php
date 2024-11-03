@@ -15,8 +15,9 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light ">
                         <tr>
+                            <th class="col-1">No</th>
                             <th class="col-3">Title</th>
-                            <th class="col-3">Address</th>
+                            <th class="col-2">Address</th>
                             <th class="col-2">Location</th>
                             <th class="col-1">Duration</th>
                             <th class="col-1">Price</th>
@@ -24,10 +25,21 @@
                         </tr>
                     </thead>
                     <tbody>
+
+                        {{-- Roll Number --}}
+                        @php
+                            $num = 0;
+                        @endphp
                         @foreach ($tours as $tour)
+
+                            @php
+                                $num++;
+                            @endphp
+
                           <tr>
+                            <td class="col-1 h3"> {{ $num }} </td>
                             <td class="col-3"> <a href="{{ route('tours.detail', ['tour' => $tour->id]) }}" > <h3 style="">{{$tour->title }} </h3> </a> </td>
-                            <td class="col-3"> <h5 style="">{{$tour->country }}, {{$tour->city }} </h5></td>
+                            <td class="col-2"> <h5 style="">{{$tour->country }}, {{$tour->city }} </h5></td>
                             <td class="col-2"> <h5 style="">{{$tour->location }} </h5></td>
                             <td class="col-1"> <h5 style="">{{$tour->duration}} </h5></td>
                             <td class="col-1"> <h5 style="">{{$tour->price}} </h5></td>

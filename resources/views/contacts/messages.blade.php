@@ -8,8 +8,8 @@
     <div class="col mb-4">
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h5 class="m-0 font-weight-bold text-primary">Testimonials</h5>
-                <a class="m-0 float-right btn btn-primary btn-sm" href="{{ route('testimonials.create') }}">ADD testimonial</a>
+                <h5 class="m-0 font-weight-bold text-primary">Contacts</h5>
+                <a class="m-0 float-right btn btn-primary btn-sm" href="{{ route('contacts.create') }}">ADD Contact</a>
             </div>
             <div class="table-responsive row">
                 <table class="table align-items-center table-flush">
@@ -17,10 +17,10 @@
                         <tr>
                             <th class="col-1">No</th>
                             <th class="col-2">Name</th>
-                            <th class="col-2">Photo</th>
-                            <th class="col-3">Address</th>
-                            <th class="col-5">Testimony</th>
-                            <th class="col-5">Manage</th>
+                            <th class="col-">Email</th>
+                            <th class="col-3">Subject</th>
+                            <th class="col-4">Message</th>
+                            <th class="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,7 @@
                             $num = 0;
                         @endphp
 
-                        @foreach ($testimonials as $testimonial)
+                        @foreach ($contacts as $contact)
 
                             @php
                                 $num++;
@@ -38,16 +38,16 @@
 
                           <tr>
                             <td class="col-1 h3"> {{ $num }} </td>
-                            <td class="col-2 text-info"><h5 style="">{{$testimonial->name}} </h5></td>
-                            <td class="col-2"> <img width="200px" src="{{ asset($testimonial->image )}}"/> </td>
-                            <td class="col-3"> <p style="">{{$testimonial->address}}, {{$testimonial->email}}</p></td>
-                            <td class="col-5"> <p style="">{{$testimonial->testimony}} </p></td>   
+                            <td class="col-2 text-info"><h6 style=""> {{$contact->firstName }}  {{$contact->lastName }} </h6></td>
+                            <td class="col-2"> <p style=""> {{ $contact->email }}</p></td>
+                            <td class="col-3"> <p style="">{{ $contact->subject }} </p></td>
+                            <td class="col-4"> <p style="">{{ $contact->message }} </p></td>   
                             <td>                            
-                              <div class="col-1 mb-4">
-                                <span class="btn btn-sm btn-warning"><a href="{{route('testimonials.edit', $testimonial)}}"> Edit </a></span>
-                            </div>
+                              {{-- <div class="col-1 mb-4">
+                                <span class="btn btn-sm btn-warning"><a href="{{route('contacts.edit', $contact)}}"> Reply </a></span>
+                            </div> --}}
                               <div class="col-1">
-                                  <form action="{{ route('testimonials.destroy', $testimonial) }}" method="post">
+                                  <form action="{{ route('contacts.destroy', $contact) }}" method="post">
                                       @csrf
                                       @method('delete')
                                       <input type="submit" value="Delete" class="btn btn-sm btn-danger">

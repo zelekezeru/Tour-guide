@@ -66,36 +66,19 @@
 							<a href="{{ route('blogs.create') }}"><button type="submit" class="btn btn-primary">Create Blog</button></a>
 							<br> 
 							<h3 class="sidebar-heading">Recent Post</h3>
-							<div class="blog-entry-side">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-3.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 24, 2018</span>
-										<h3>Our Secret Island Boat Tour Is just for You</h3>
-										<span class="cat">Tour</span>
-									</div>
-								</a>
-							</div>
-							<div class="blog-entry-side">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-2.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 24, 2018</span>
-										<h3>How These 5 People Found The Path to Their Dream Trip</h3>
-										<span class="cat">Hotel</span>
-									</div>
-								</a>
-							</div>
-							<div class="blog-entry-side">
-								<a href="blog.html" class="blog-post">
-									<span class="img" style="background-image: url(images/blog-3.jpg);"></span>
-									<div class="desc">
-										<span class="date">Feb 24, 2018</span>
-										<h3>Our Secret Island Boat Tour Is just for You</h3>
-										<span class="cat">Cruises</span>
-									</div>
-								</a>
-							</div>
+							@foreach($blogs as $blog)
+								<div class="blog-entry-side">
+									<a href="{{ route('blogs.show', $blog) }}" class="blog-post">
+										<span class="img" style="background-image: url({{ $blog->image }});"></span>
+										<div class="desc">
+											<span class="date">{{ $blog->created_at }}</span>
+											<p>{{ $blog->title  }}</p>
+											<span class="cat"></span>
+										</div>
+									</a>
+								</div>
+							@endforeach
+							
 						</div>
 						<div class="side animate-box">
 							<div class="sidebar-heading">Categories</div>

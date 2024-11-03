@@ -15,23 +15,33 @@
                 <table class="table align-items-center table-flush">
                     <thead class="thead-light ">
                         <tr>
+                            <th class="col-1">No</th>
                             <th class="col-3">Name</th>
-                            <th class="col-2">Photo</th>
-                            <th class="col-3">Teaser</th>
-                            <th class="col-3"></th>
+                            <th class="col-3">Photo</th>
+                            {{-- <th class="col-3">Teaser</th> --}}
+                            <th class="col-5">Content</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($blogs as $blog)
-                          <tr>
-                            {{-- <a href="{{ route('blogs.detail', ['id' => $blog->id]) }}">View Blog Details</a> --}}
 
-                            <td class="col-3"> <a href="{{ route('blogs.detail', $blog) }}" > <h3 style="">{{$blog->title}} </h3> </a> </td>
-                            <td class="col-2"> <img width="200px" src="{{ asset($blog->image )}}"/> </td>
-                            <td class="col-3"> <h5 style="">{{$blog->teaser}} </h5></td>                        
-                            <td class="col-2">
-                              <span class="btn btn-sm btn-info"><a href="{{route('blogs.show', $blog)}}" target="_blank"> Read Blog </a></span>
-                            </td>    
+                        {{-- Roll Number --}}
+                        @php
+                            $num = 0;
+                        @endphp
+
+                        @foreach ($blogs as $blog)
+                        
+                            @php
+                                $num++;
+                            @endphp
+
+                          <tr>                            
+                            <td class="col-1 h3"> {{ $num }} </td>
+                            <td class="col-3"> <a href="{{ route('blogs.detail', $blog) }}" >  <h5 style="">{{$blog->title}} </h5> </a> </td>
+                            <td class="col-3"> <img width="250px" src="{{ asset($blog->image )}}"/> </td>
+                            <td class="col-5"> <h5 style="">{!! Str::limit( $blog->content, 150, '...') !!} </h5></td>
+                            {{-- <td class="col-5"> <h5 style="">{{$blog->teaser}} </h5></td>                         --}}
+                            
                           </tr>
                         @endforeach
                     </tbody>

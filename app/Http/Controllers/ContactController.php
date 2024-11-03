@@ -16,6 +16,14 @@ class ContactController extends Controller
     {
         return view('contacts.contact');
     }
+    
+    public function list()
+    {
+        // dd('hi');
+        $contacts = Contact::all();
+        return view('contacts.messages', compact('contacts'));
+
+    }
 
     public function send(Request $request)
     {

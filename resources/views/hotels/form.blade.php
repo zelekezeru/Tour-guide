@@ -20,6 +20,7 @@
             <small id="addressHelp" class="form-text text-muted">Enter location of the hotel.</small>
         @endif
     </div>
+    
     <div class="form-group col-lg-4">
         <label for="capacity">Guest Capacity</label>
         <input type="text" value="{{ old('capacity') ? old('capacity') : $hotel->capacity }}" name="capacity"  class="form-control" id="capacity" aria-describedby="capacityHelp"
@@ -34,7 +35,7 @@
     <div class="row">
     <div class="form-group col-lg-8">
     <label for="description">Description</label>
-    <textarea  class="form-control"  value="{{ old('description') ? old('description') : $hotel->description }}" name="description" id="mytextarea"  rows="5"  placeholder="Enter Hotel description Here" required></textarea>
+    <textarea  class="form-control"  value="{{ old('description') ? old('description') : $hotel->description }}" name="description" id="mytextarea"  rows="5"  placeholder="Enter Hotel description Here" required> {{ $hotel->description }} </textarea>
                 
     @if ($errors->has('description'))
         <small id="nameHelp" class="form-text text-danger">{{$errors->first('description')}}</small>
@@ -42,13 +43,13 @@
         <small id="nameHelp" class="form-text text-muted">Description the hotel.</small>
     @endif
     </div>
-    <div class="form-group col-lg-4">
+    {{-- <div class="form-group col-lg-4">
         <label for="image">Hotel Thumbnail Picture</label>
         <div class="custom-file">
-        <input type="file" name="image" class="custom-file-input" id="image" required>
+        <input type="file" name="image" class="custom-file-input" id="image" src="{{ $hotel->images->first() ?? asset('images/default.jpg') }}" required>
         <label class="custom-file-label" for="customFile">Choose Picture</label>
         </div>
-    </div>
+    </div> --}}
     </div>
     <div class="row">
     <div class="form-group col-lg-4">

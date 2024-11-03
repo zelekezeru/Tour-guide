@@ -18,6 +18,11 @@ class Hotel extends Model
 
     public function locations()
     {
-        return $this->hasany(Location::class);
+        return $this->hasMany(Location::class);
+    }
+    
+    public function itenararies()
+    {
+        return $this->hasMany(Itenarary::class);
     }
 }

@@ -21,8 +21,6 @@ return new class extends Migration
             $table->longText('content');
             $table->string('image');
             $table->integer('views')->default(0);
-            // $table->date('date');
-            // $table->string('comment_id');
             $table->timestamps();
         });
     }

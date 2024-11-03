@@ -7,6 +7,7 @@ use App\Models\Blog;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\Testimonial;
+use App\Models\Location;
 use App\Models\Home;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,9 @@ class HomeController extends Controller
         $tours = Tour::all();
         $travels = Travel::all();
         $testimonials = Testimonial::all();
+        $locations = Location::all();
         
-        return view('index', compact('hotels', 'blogs', 'tours', 'travels', 'testimonials'));
+        return view('index', compact('hotels', 'blogs', 'tours', 'travels', 'testimonials', 'locations'));
     }
 
     /**
