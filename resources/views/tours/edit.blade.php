@@ -29,7 +29,7 @@
                 @if ($errors->has('title'))
                     <small id="nameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
                 @else
-                    <small id="addressHelp" class="form-text text-muted">Enter the title of the tour here.</small>
+                    <small id="addressHelp" class="form-text text-muted">Enter tour title here.</small>
                 @endif
             </div>
             <div class="form-group col-lg-4">
@@ -68,7 +68,7 @@
                   <label for="image">Tour Thumbnail Picture</label>
                   <div class="custom-file">
                   <input type="file" name="image" class="custom-file-input" id="image">
-                  <label class="custom-file-label" for="customFile">Choose Picture</label>
+                  <label class="custom-file-label" for="customFile">Change Picture</label>
                   </div>
               </div>
           </div>

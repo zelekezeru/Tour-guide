@@ -44,7 +44,7 @@
                       <small id="nameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
                         
                     @else
-                      <small id="nameHelp" class="form-text text-muted">Blog Title Here.</small>
+                      <small id="nameHelp" class="form-text text-muted">Itenarary Title Here.</small>
                         
                     @endif
                   </div>
@@ -65,12 +65,12 @@
                   <div class="form-group col-lg-4">
                     <label for="mytextarea">Itenarary Description</label>
                     
-                    <textarea name="description" id="editor"></textarea>
+                    <textarea name="description" id="editor"> {!! $itenarary->description !!} </textarea>
                     
                     @if ($errors->has('content'))
                       <small class="form-text text-danger">{{$errors->first('content')}}</small>												
                     @else
-                      <small class="form-text text-muted">Type the blog content here.</small>
+                      <small class="form-text text-muted">Type the Itenarary Description here.</small>
                     @endif 
                     
                   </div>

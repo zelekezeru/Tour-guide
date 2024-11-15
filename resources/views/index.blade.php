@@ -3,7 +3,7 @@
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
-            <li style="background-image: url(images/img_bg_1.jpg);">
+            <li style="background-image: url('{{ asset('images/img_bg_1.jpg') }}');">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -29,7 +29,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url(images/img_bg_5.jpg);">
+            <li style="background-image: url('{{ asset('images/img_bg_3.jpg') }}');">
                 <div class="overlay"></div>
                 <div class="container-fluids">
                     <div class="row">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url(images/img_bg_4.jpg);">
+            <li style="background-image: url('{{ asset('images/img_bg_4.jpg') }}');">
                 <div class="overlay"></div>
                 <div class="container-fluid">
                     <div class="row">
@@ -264,27 +264,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Popular Destination</h2>
+                    <h2>Popular Destinations</h2>
                 </div>
             </div>
         </div>
         <div class="tour-wrap">
             @foreach( $tours as $tour)
-            @foreach( $tour->itenararies as $itenarary)
-                @if ($itenarary->title)
-                    <a href="#" class="tour-entry animate-box">
-                        <div class="tour-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});">
-                        </div>
-                        <span class="desc">
-                            {{-- <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p> --}}
-                            <h2>{{ $itenarary->title }}</h2>
-                            <span class="city">{{ $itenarary->tour->title }}</span>
-                            <span class="price">{{ $itenarary->hotel->name }}</span>
-                        </span>
-                    </a>
-                @else
-                @endif
-            @endforeach
+                <a href="#" class="tour-entry animate-box">
+                    <div class="tour-img" style="background-image: url({{ $tour->image ? asset($tour->image) : asset($tour->image) }});">
+                    </div>
+                    <span class="desc">
+                        {{-- <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p> --}}
+                        <h2>{{ $tour->title }}</h2>
+                        <span class="city">{{ $tour->country }}, {{ $tour->city }}</span>
+                        <span class="price">{{ $tour->location }}</span>
+                    </span>
+                </a>
             @endforeach
         </div>
     </div>
@@ -298,14 +293,14 @@
                 </div>
             </div>
             <div class="blog-flex">
-                <div class="f-entry-img" style="background-image: url(images/blog-3.jpg);">
+                <div class="f-entry-img" style="background-image: url('{{ asset('images/blogcover.jpg') }}');">
                 </div>
                 <div class="blog-entry aside-stretch-right">
                     <div class="row">
                         @foreach($blogs as $blog)
                             <div class="col-md-12 animate-box">
                                 <a href="blog.html" class="blog-post">
-                                    <span class="img" style="background-image: url({{ $blog->image }});"></span>
+                                    <span class="img" style="background-image: url({{ asset($blog->image) }});"></span>
                                     <div class="desc">
                                         <span class="date">{{ $blog->created_at->format('M Y') }}</span>
                                         <h3>{{ $blog->title }}</h3>
@@ -395,173 +390,81 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Most Popular Travel Places of Ethiopia</h2>
-                    <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                    <h2>Most Popular Tour Options</h2>
+                    {{-- <p>We love to tell our successful far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p> --}}
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="f-tour">
-                        <div class="row row-pb-md">
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-1.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-2.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-3.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-4.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
+
+                    @foreach($tours as $tour)
+
+                        <div class="f-tour">
+                            <div class="row row-pb-md">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        
+                                        @if (count($tour->itenararies) !== 0)
+                                        @foreach ($tour->itenararies as $itenarary)
+                                            @if ($itenarary->title)
+                                        
+                                            <div class="col-md-6 animate-box">
+                                                <a  href="tours.html" class="f-tour-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});">
+                                                    <div class="desc">
+                                                        <h3>{{ $itenarary->title }} </h3>
+                                                        <p class="price"><span>{{ $itenarary->description }}</span> <small>, Day {{ $itenarary->day_number }}</small></p>
+                                                    </div>
+                                                </a>
+                                            </div>                                        
+											@endif
+										@endforeach
+								
+									@else
+											<h2>Great Experience!</h2>
+									@endif
+                                        <div class="col-md-6 animate-box">
+                                            
+                                        </div>
+                                        
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 animate-box">
-                                <div class="desc">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Lalibela, North</h3>
-                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h4>Best Tours City</h4>
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Addis</a></li>
-                                                        <li><a href="#">Milan</a></li>
-                                                        <li><a href="#">Genoa</a></li>
-                                                        <li><a href="#">Verona</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Venice</a></li>
-                                                        <li><a href="#">Bologna</a></li>
-                                                        <li><a href="#">Trieste</a></li>
-                                                        <li><a href="#">Florence</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Palermo</a></li>
-                                                        <li><a href="#">Siena</a></li>
-                                                        <li><a href="#">San Marino</a></li>
-                                                        <li><a href="#">Naples</a></li>
-                                                    </ul>
-                                                </div>
+                                <div class="col-md-6 animate-box">
+                                    <div class="desc">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h3>{{ $tour->title }}</h3>
+                                                <p>{{ $tour->country }}, {{ $tour->location }}, {{ $tour->city }}</p><br>
                                             </div>
-                                            <p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
+                                            <div class="col-md-12">
+                                                <h4>Tour Components</h4>
+                                                <div class="row">
+                                                    @if (count($tour->itenararies) !== 0)
+                                                    @foreach ($tour->itenararies as $itenarary)
+                                                        @if ($itenarary->title)
+                                                    
+
+                                                    <div class="col-md-8 col-sm-8 col-xs-8">
+                                                        <ul>
+                                                            <li class="col"><p class="price"><span>Day {{ $itenarary->day_number }}, </span>{{ $itenarary->title }}, {{ $itenarary->hotel->name }}, By {{ $itenarary->transport_type }}</a></li>
+                                                        </ul>
+                                                    </div>                                    
+                                                    @endif
+                                                @endforeach
+                                        
+                                                @else
+                                                        <h2>Great Tour!</h2>
+                                                @endif
+                                                    
+                                                </div>
+                                                <p><a href="tours.html" class="btn btn-primary">View All Tours</a></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-    
-                    <div class="f-tour">
-                        <div class="row">
-                            <div class="col-md-6 col-md-push-6">
-                                <div class="row">
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-5.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-6.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-7.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-6 animate-box">
-                                        <a  href="tours.html" class="f-tour-img" style="background-image: url(images/tour-8.jpg);">
-                                            <div class="desc">
-                                                <h3>Addis - 5 Days</h3>
-                                                <p class="price"><span>$120</span> <small>/ person</small></p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 animate-box col-md-pull-6 text-right">
-                                <div class="desc">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <h3>Gondar, North</h3>
-                                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p><br>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <h4>Best Tours City</h4>
-                                            <div class="row">
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Addis</a></li>
-                                                        <li><a href="#">Milan</a></li>
-                                                        <li><a href="#">Genoa</a></li>
-                                                        <li><a href="#">Verona</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Venice</a></li>
-                                                        <li><a href="#">Bologna</a></li>
-                                                        <li><a href="#">Trieste</a></li>
-                                                        <li><a href="#">Florence</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-md-4 col-sm-4 col-xs-4">
-                                                    <ul>
-                                                        <li><a href="#">Palermo</a></li>
-                                                        <li><a href="#">Siena</a></li>
-                                                        <li><a href="#">San Marino</a></li>
-                                                        <li><a href="#">Naples</a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <p><a href="tours.html" class="btn btn-primary">View All Places</a></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        
+                    @endforeach
                 </div>
             </div>
         </div>
