@@ -15,6 +15,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ItenararyController;
 use App\Http\Controllers\LocationController;
+use App\Http\Middleware\RoleMiddleware;
 use App\Livewire\SweetAlertNotification;
 
 Route::get('/dashboard', function () {
@@ -54,7 +55,7 @@ Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
 
 Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
 //Tour
-Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list');
+Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list')->middleware([RoleMiddleware::class.':ADMFIN,EDITOR']);
 
 Route::get('/tours/search', [TourController::class, 'search'])->name('tours.search');
 
