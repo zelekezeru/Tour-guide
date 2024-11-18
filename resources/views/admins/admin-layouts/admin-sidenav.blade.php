@@ -17,20 +17,24 @@
             <div class="sidebar-heading">
                 Services
             </div>
-            {{-- Users --}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1" aria-expanded="true" aria-controls="collapseBootstrap1">
-                    <i class="far fa-fw fa-window-maximize"></i>
-                    <span>Users</span>
-                </a>
-                <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Users</h6>
-                        <a class="collapse-item" href="{{ route('users.list') }}">Users List</a>
-                        {{-- <a class="collapse-item" href="buttons.html">Buttons</a> --}}
+            @if (auth()->user()->role === "SUPER_ADMIN")
+                {{-- Users --}}
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap1" aria-expanded="true" aria-controls="collapseBootstrap1">
+                        <i class="far fa-fw fa-window-maximize"></i>
+                        <span>Users</span>
+                    </a>
+                    <div id="collapseBootstrap1" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Users</h6>
+                            <a class="collapse-item" href="{{ route('users.list') }}">Users List</a>
+                            <a class="collapse-item" href="{{ route('users.create') }}">Register New User</a>
+                            {{-- <a class="collapse-item" href="buttons.html">Buttons</a> --}}
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+                
+            @endif
             {{-- Tours --}}
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2" aria-expanded="true" aria-controls="collapseBootstrap2">

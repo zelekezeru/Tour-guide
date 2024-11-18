@@ -19,7 +19,8 @@
                             <tr>
                                 <th class="col-3">Name</th>
                                 <th class="col-3">Email</th>
-                                <th class="col-4">Edit</th>
+                                <th class="col-4">Role</th>
+                                <th class="col-2">Edit</th>
                                 <th class="col-2">Remove</th>
                             </tr>
                         </thead>
@@ -27,6 +28,10 @@
                             <tr>
                                 <td class="col-3"> <h3 style="">{{$user->name}} </h3> </a> </td>
                                 <td class="col-3"> <h5 style="">{{$user->email}} </h5></td>
+                                <td class="col-2">
+                                    <h5 style="">{{$user->role}} </h5>
+                                </td>
+
                                 <td class="col-2">
                                     <span class="btn btn-lg btn-warning"><a href="{{route('users.edit', $user)}}"> Edit </a></span>
                                 </td>
@@ -37,7 +42,6 @@
                                         <input type="submit" value="Delete" class="btn btn-lg btn-danger">
                                     </form>
                                 </td>
-                                <td class="col-2"> <h5 style="">{{$user->role}} </h5></td>
                             </tr>
                         </tbody>
                     </table>

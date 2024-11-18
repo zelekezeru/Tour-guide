@@ -17,7 +17,7 @@ use Illuminate\View\View;
 
 class HotelController extends Controller implements HasMiddleware
 {
-
+    
     public static function middleware()
     {
         return [new Middleware(RoleMiddleware::class.":ADMIN,EDITOR", except: ['index', 'show'])];
