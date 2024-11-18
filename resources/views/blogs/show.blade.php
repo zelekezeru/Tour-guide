@@ -33,7 +33,7 @@
   </div>
   </article>
   
-  <div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+  <div id="colorlib-subscribe" style="background-image: url( {{ asset('images/img_bg_2.jpg') }});" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row">

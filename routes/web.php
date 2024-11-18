@@ -49,7 +49,7 @@ Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
 
 Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
 //Tour
-Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list')->middleware([RoleMiddleware::class.':ADMFIN,EDITOR']);
+Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list')->middleware([RoleMiddleware::class.':ADMIN,EDITOR']);
 
 Route::get('/tours/search', [TourController::class, 'search'])->name('tours.search');
 

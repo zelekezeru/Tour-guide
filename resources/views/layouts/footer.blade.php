@@ -54,9 +54,9 @@
                 <div class="col-md-12 text-center">
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is the property of </span> <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://aeztechnologies.com" target="_blank">AEZ Technologies</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is the property  </span> <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://aeztechnologies.com" target="_blank">AEZ Technologies</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span> 
-                        <span class="block"> : <a href="http://unsplash.co/" target="_blank">Grace Tour &amp; Travel</a> , <a href="http://pexels.com/" target="_blank">Grace</a></span>
+                        <span class="block"> : Grace Tour &amp; Travel , <a href="http://pexels.com/" target="_blank">Grace</a></span>
                     </p>
                 </div>
             </div>
