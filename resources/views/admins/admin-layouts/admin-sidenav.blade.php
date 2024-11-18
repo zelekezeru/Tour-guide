@@ -27,7 +27,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Users</h6>
                         <a class="collapse-item" href="{{ route('users.list') }}">Users List</a>
-                        {{-- <a class="collapse-item" href="buttons.html">Buttons</a> --}}
+                        <a class="collapse-item" href="{{ route('register') }}">Register Users</a>
                     </div>
                 </div>
             </li>

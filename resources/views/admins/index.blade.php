@@ -106,7 +106,7 @@
                             </a>
                         </div>
 
-                        <!-- Area Chart -->
+                        {{-- <!-- Area Chart -->
                         <div class="col-xl-8 col-lg-7">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -130,9 +130,9 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- Message From Customer-->
-                        <div class="col-xl-4 col-lg-5 ">
+                        <div class="col-xl-8 col-lg-8 ">
                             <div class="card">
                                 <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-light">Message From Clients</h6>
@@ -141,7 +141,7 @@
                                     @foreach ($contacts as $contact)
                                         <div class="customer-message align-items-center">
                                         <a class="font-weight-bold" href="#">
-                                            <div class="text-truncate message-title">{{ Str::limit($contact->message, 40, '...') }}</div>
+                                            <div class="text-truncate message-title">{{ Str::limit($contact->message, 100, '...') }}</div>
                                             <div class="small text-gray-500 message-time font-weight-bold">{{ $contact->firstName }} {{ $contact->lastName }}</div>
                                         </a>
                                     </div>
@@ -161,7 +161,7 @@
                             </div>
                         </div>
 
-                        <!-- Pie Chart -->
+                        {{-- <!-- Pie Chart -->
                         <div class="col-xl-4 col-lg-5">
                             <div class="card mb-4">
                                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -259,7 +259,7 @@
                                 <div class="card-footer"></div>
                             </div>
                         </div>
-                        
+                         --}}
                     </div>                    
 
                 </div>
