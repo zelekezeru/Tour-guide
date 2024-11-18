@@ -39,6 +39,7 @@
 
         <!-- Owl Carousel -->
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+        
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
         
         <!-- Date Picker -->

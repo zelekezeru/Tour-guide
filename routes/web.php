@@ -19,14 +19,7 @@ use App\Http\Controllers\LocationController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Livewire\SweetAlertNotification;
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('/zeru', function () {
-    return view('zerubbabelzeleke');
-})->name('zeru');
+Route::get('/dashboard', [AdminController::class, 'index'])->middleware(['auth', 'verified'])->name('admin.dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
