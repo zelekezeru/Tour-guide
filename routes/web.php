@@ -37,7 +37,6 @@ Route::post('/contacts/send', [ContactController::class, 'send'])->name('contact
 // FOR SENDING EMAIL
 route::post('contacts/send', [ContactController::class, 'send'])->name('contacts.send');
 
-//ADMIN PANEL LIST, Search AND SHOW METHODS
 //Hotel
 Route::get('/hotels/list', [HotelController::class, 'list'])->name('hotels.list');
 
@@ -49,7 +48,7 @@ Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
 
 Route::get('/blogs/detail/{blog}', [BlogController::class, 'detail'])->name('blogs.detail');
 //Tour
-Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list')->middleware([RoleMiddleware::class.':ADMIN,EDITOR']);
+Route::get('/tours/list', [TourController::class, 'list'])->name('tours.list');
 
 Route::get('/tours/search', [TourController::class, 'search'])->name('tours.search');
 

@@ -63,7 +63,7 @@ class BlogController extends Controller
             'image' => 'required|image|mimes:jpg,png'
         ]);
 
-        $data['user_id'] = auth()->user()->id;
+        $data['user_id'] = 1;
 
         $file = $request->file('image');
 

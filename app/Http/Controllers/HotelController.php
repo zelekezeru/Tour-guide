@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\RoleMiddleware;
 use App\Models\Hotel;
 use App\Models\Location;
 use App\Models\Image;
 use Illuminate\Http\Request;
+use App\Http\Middleware\RoleMiddleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +20,7 @@ class HotelController extends Controller implements HasMiddleware
     
     public static function middleware()
     {
-        return [new Middleware(RoleMiddleware::class.":ADMIN,EDITOR", except: ['index', 'show'])];
+        return [new Middleware(RoleMiddleware::class.":ADMIN,EDITOR,SUPER_ADMIN", except: ['index', 'show'])];
     }
     /*
      * Display a listing of the resource.
