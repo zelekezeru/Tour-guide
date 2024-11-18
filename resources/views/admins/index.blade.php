@@ -18,6 +18,7 @@
                     <div class="row mb-3">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <a href="{{ route('users.list') }}">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="row align-items-center">
@@ -34,10 +35,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                </a>
                             </div>
+                            </a>
                         </div>
                         <!-- Earnings (Annual) Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <a href="{{ route('hotels.list') }}">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -55,9 +59,11 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <!-- New User Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <a href="{{ route('tours.list') }}">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -75,9 +81,11 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
+                            <a href="{{ route('travels.list') }}">
                             <div class="card h-100">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -95,6 +103,7 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Area Chart -->
@@ -118,6 +127,35 @@
                                 <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Message From Customer-->
+                        <div class="col-xl-4 col-lg-5 ">
+                            <div class="card">
+                                <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="m-0 font-weight-bold text-light">Message From Clients</h6>
+                                </div>
+                                <div>
+                                    @foreach ($contacts as $contact)
+                                        <div class="customer-message align-items-center">
+                                        <a class="font-weight-bold" href="#">
+                                            <div class="text-truncate message-title">{{ Str::limit($contact->message, 40, '...') }}</div>
+                                            <div class="small text-gray-500 message-time font-weight-bold">{{ $contact->firstName }} {{ $contact->lastName }}</div>
+                                        </a>
+                                    </div>
+                                    @endforeach
+                                    @if (count($contacts ) < 1)                                            
+                                        <div class="customer-message align-items-center">
+                                            <a href="#">
+                                                <div class="text-warning message-title">No comments yet!
+                                                </div>
+                                            </a>
+                                        </div>
+                                    @endif
+                                    <div class="card-footer text-center">
+                                        <a class="m-0 small text-primary card-link" href="{{ route('contacts.list') }}">View More <i class="fas fa-chevron-right"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -215,77 +253,14 @@
                                                 <td><span class="badge badge-success">Delivered</span></td>
                                                 <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
                                             </tr>
-                                            <tr>
-                                                <td><a href="#">RA5324</a></td>
-                                                <td>Jaenab Bajigur</td>
-                                                <td>Gundam 90' Edition</td>
-                                                <td><span class="badge badge-warning">Shipping</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">RA8568</a></td>
-                                                <td>Rivat Mahesa</td>
-                                                <td>Oblong T-Shirt</td>
-                                                <td><span class="badge badge-danger">Pending</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">RA1453</a></td>
-                                                <td>Indri Junanda</td>
-                                                <td>Hat Rounded</td>
-                                                <td><span class="badge badge-info">Processing</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                            </tr>
-                                            <tr>
-                                                <td><a href="#">RA1998</a></td>
-                                                <td>Udin Cilok</td>
-                                                <td>Baby Powder</td>
-                                                <td><span class="badge badge-success">Delivered</span></td>
-                                                <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
                                 <div class="card-footer"></div>
                             </div>
                         </div>
-                        <!-- Message From Customer-->
-                        <div class="col-xl-4 col-lg-5 ">
-                            <div class="card">
-                                <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-light">Message From Clients</h6>
-                                </div>
-                                <div>
-                                    @foreach ($contacts as $contact)
-                                        <div class="customer-message align-items-center">
-                                        <a class="font-weight-bold" href="#">
-                                            <div class="text-truncate message-title">{{ Str::limit($contact->message, 15, '...') }}</div>
-                                            <div class="small text-gray-500 message-time font-weight-bold">{{ $contact->firstName }} {{ $contact->lastName }}</div>
-                                        </a>
-                                    </div>
-                                    @endforeach
-                                    @if (count($contacts ) < 1)                                            
-                                        <div class="customer-message align-items-center">
-                                            <a href="#">
-                                                <div class="text-warning message-title">No comments yet!
-                                                </div>
-                                            </a>
-                                        </div>
-                                    @endif
-                                    <div class="card-footer text-center">
-                                        <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Row-->
-
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <p>Do you like this template ? you can download from <a href="https://github.com/indrijunanda/Grace Tour" class="btn btn-primary btn-sm" target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;GitHub</a></p>
-                        </div>
-                    </div>
+                        
+                    </div>                    
 
                 </div>
                 <!---Container Fluid-->

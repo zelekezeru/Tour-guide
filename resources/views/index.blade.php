@@ -456,7 +456,7 @@
                                                 @endif
                                                     
                                                 </div>
-                                                <p><a href="tours.html" class="btn btn-primary">View All Tours</a></p>
+                                                <p><a href="{{ route('tours.index') }}" class="btn btn-primary">View All Tours</a></p>
                                             </div>
                                         </div>
                                     </div>
@@ -478,11 +478,15 @@
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
                     <h2>Sign Up for a Newsletter</h2>
                     <p>Sign up for our mailing list to get latest updates and offers.</p>
-                    <form class="form-inline qbstp-header-subscribe">
+					<form  method="POST" class="form-inline qbstp-header-subscribe" action="{{ route('contacts.send') }}">
+						@csrf
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
+                                <input type="text" value="NewsLetter" name="firstName">
+                                    <input type="text" value="User" name="lastName">
+                                    <input type="text" value="Send me News Letter" name="message">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="email" placeholder="Enter your email">
+                                    <input type="text" class="form-control" id="email"  id="email" name="email" value="{{ old('email') ? old('email') : '' }}" placeholder="Enter your email">
                                     <button type="submit" class="btn btn-primary">Subscribe</button>
                                 </div>
                             </div>

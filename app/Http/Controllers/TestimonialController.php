@@ -101,7 +101,9 @@ class TestimonialController extends Controller
     public function destroy(Testimonial $testimonial)
     {
         Storage::disk('public')->delete($testimonial->image);
+
         $testimonial->delete();
+        
         return redirect(route('testimonials.index'));
     }
 }

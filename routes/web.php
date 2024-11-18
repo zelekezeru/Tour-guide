@@ -13,6 +13,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItenararyController;
 use App\Http\Controllers\LocationController;
 use App\Http\Middleware\RoleMiddleware;
@@ -66,7 +67,12 @@ Route::get('/travels/list', [TravelController::class, 'list'])->name('travels.li
 
 Route::get('/travels/search', [TravelController::class, 'search'])->name('travels.search');
 
-Route::get('/travels/detail/{travel}', [TravelController::class, 'detail'])->name('travels.detail');
+//User
+Route::get('/users/list', [UserController::class, 'list'])->name('users.list');
+
+Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
+
+Route::get('/users/detail/{user}', [UserController::class, 'detail'])->name('users.detail');
 
 //Contact
 Route::get('/contacts/list', [ContactController::class, 'list'])->name('contacts.list');
@@ -126,4 +132,6 @@ Route::resource('testimonials', TestimonialController::class);
 Route::get('alert', SweetAlertNotification::class);
 
 Route::resource('admins', AdminController::class);
+
+Route::resource('users', UserController::class);
 
