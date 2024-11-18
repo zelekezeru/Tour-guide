@@ -23,6 +23,7 @@
         <label for="role">Select Role:</label> <select name="role" id="role">
             <option value="ADMIN" {{ old('role') == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
             <option value="EDITOR" {{ old('role') == 'EDITOR' ? 'selected' : '' }}>EDITOR</option>
+            <option value="USER" {{ old('role') == 'USER' ? 'selected' : '' }}>USER</option>
         </select>
     </div>
 
