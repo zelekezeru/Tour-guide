@@ -28,7 +28,7 @@ class BlogController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function creayte()
+    public function create()
     {
         return view('blogs.create');
     }
