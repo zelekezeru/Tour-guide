@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
-    
+
     <!-- Invoice Example -->
     <div class="col mb-4">
         <div class="card">
@@ -47,16 +47,16 @@
                             </td>
                             <td class="col-2">
                                 <span class="btn btn-sm btn-info"><a href="{{route('images.hotel', $hotel->id)}}"> Add Photos </a></span>
-                            </td>                            
+                            </td>
                           </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     </div>
 </div>
 
-    
-@endsection 
+
+@endsection

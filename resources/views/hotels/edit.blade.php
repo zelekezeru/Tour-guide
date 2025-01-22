@@ -22,6 +22,7 @@
         <form action="{{ route('hotels.update', $hotel) }}" method="POST" enctype="multipart/form-data">
           @csrf
           @method('PATCH')
+
           @include('hotels.form')
 
           <button type="submit" class="btn btn-primary">Submit</button>
@@ -30,5 +31,5 @@
     </div>
 </div>
 
-    
+
 @endsection

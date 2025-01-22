@@ -1,5 +1,5 @@
 <x-guest-layout>
-    
+
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-            </li>	   	
+            </li>
             </ul>
         </div>
     </aside>
@@ -74,7 +74,7 @@
                     </div>
 
                     {{-- Tour Search --}}
-                    
+
                     <div class="tab-content">
                         <div id="tour" class="tab-pane fade in active">
                             <form action="{{ route('tours.search') }}" method="GET" class="colorlib-form">
@@ -84,7 +84,7 @@
                                     <label for="date">Where:</label>
                                     <div class="form-field">
                                         <i class="icon icon-arrow-down3"></i>
-                                        <select name="location" id="location" class="form-control bg-dark">                                            
+                                        <select name="location" id="location" class="form-control bg-dark">
                                             <option class="text-primary">Choose Location</option>
                                             @foreach($tours as $tour)
                                                 <option class="text-primary" value="{{ $tour->location }}">{{ $tour->location }}</option>
@@ -93,7 +93,7 @@
                                     </div>
                                 </div>
                                 </div>
-                                
+
                                 <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="date">Check-In:</label>
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 </div>
-                                
+
                                 <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="date">Check-out:</label>
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                                
+
                             <div class="col-md-3">
                             <div class="form-group">
                                 <label for="date">Check-in:</label>
@@ -167,7 +167,7 @@
                     </div>
 
                     {{-- Travel Search --}}
-                    
+
                     <div id="travel" class="tab-pane fade">
                         <form action="{{ route('travels.search') }}" method="GET" class="colorlib-form">
                             <div class="row">
@@ -176,9 +176,9 @@
                                 <label for="date">Where:</label>
                                 <div class="form-field">
                                     <i class="icon icon-arrow-down3"></i>
-                                    <select name="location" id="location-travel" class="form-control bg-dark">      
+                                    <select name="location" id="location-travel" class="form-control bg-dark">
                                         <option class="text-primary" value="">Choose Location</option>
-                                        @foreach($travels as $travel)                                        
+                                        @foreach($travels as $travel)
                                             <option class="text-primary" value="{{ $travel->location }}">{{ $travel->location }}</option>
                                         @endforeach
                                     </select>
@@ -210,13 +210,13 @@
                         </form>
                     </div>
 
-                    
+
                 </div>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <div id="colorlib-services">
         <div class="container">
             <div class="row no-gutters">
@@ -259,7 +259,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="colorlib-tour colorlib-light-grey">
         <div class="container">
             <div class="row">
@@ -283,8 +283,8 @@
             @endforeach
         </div>
     </div>
-    
-    
+
+
     <div id="colorlib-blog">
         <div class="container">
             <div class="row">
@@ -309,13 +309,13 @@
                                 </a>
                             </div>
                         @endforeach
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-        
+
     <div id="colorlib-hotel">
         <div class="container">
             <div class="row">
@@ -328,7 +328,7 @@
                 <div class="col-md-12 animate-box">
                     <div class="owl-carousel">
                         @foreach ($hotels as $hotel)
-                            
+
                             <div class="item">
                                 <div class="hotel-entry">
                                     <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->images->first()->image ) }}">
@@ -340,7 +340,7 @@
                                             <span><i class="icon-star-full"></i></span>
                                             @endfor
                                             <h3><p>{{$hotel->name}} </p></h3>
-                                        <span class="place">{{ $hotel->address}}</span>                                        
+                                        <span class="place">{{ $hotel->address}}</span>
 									    <p>{{ Str::limit($hotel->description, 95, '...') }}</p>
                                     </div>
                                 </div>
@@ -353,7 +353,7 @@
             </div>
         </div>
     </div>
-    
+
     <div id="colorlib-testimony" class="colorlib-light-grey">
         <div class="container">
             <div class="row">
@@ -362,7 +362,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2 animate-box">						
+                <div class="col-md-8 col-md-offset-2 animate-box">
                     <div class="owl-carousel2">
 
                         @foreach($testimonials as $testimonial)
@@ -379,13 +379,13 @@
                             </div>
 
                         @endforeach
-                        
+
                     </div>
                 </div>
-            </div>	
+            </div>
         </div>
     </div>
-    
+
     <div class="colorlib-tour">
         <div class="container">
             <div class="row">
@@ -403,11 +403,11 @@
                             <div class="row row-pb-md">
                                 <div class="col-md-6">
                                     <div class="row">
-                                        
+
                                         @if (count($tour->itenararies) !== 0)
                                         @foreach ($tour->itenararies as $itenarary)
                                             @if ($itenarary->title)
-                                        
+
                                             <div class="col-md-6 animate-box">
                                                 <a  href="tours.html" class="f-tour-img" style="background-image: url({{ $itenarary->image ? asset('storage/'.$itenarary->image) : asset($tour->image) }});">
                                                     <div class="desc">
@@ -415,17 +415,17 @@
                                                         <p class="price"><span>{{ $itenarary->description }}</span> <small>, Day {{ $itenarary->day_number }}</small></p>
                                                     </div>
                                                 </a>
-                                            </div>                                        
+                                            </div>
 											@endif
 										@endforeach
-								
+
 									@else
 											<h2>Great Experience!</h2>
 									@endif
                                         <div class="col-md-6 animate-box">
-                                            
+
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="col-md-6 animate-box">
@@ -441,20 +441,20 @@
                                                     @if (count($tour->itenararies) !== 0)
                                                     @foreach ($tour->itenararies as $itenarary)
                                                         @if ($itenarary->title)
-                                                    
+
 
                                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                                         <ul>
                                                             <li class="col"><p class="price"><span>Day {{ $itenarary->day_number }}, </span>{{ $itenarary->title }}, {{ $itenarary->hotel->name }}, By {{ $itenarary->transport_type }}</a></li>
                                                         </ul>
-                                                    </div>                                    
+                                                    </div>
                                                     @endif
                                                 @endforeach
-                                        
+
                                                 @else
                                                         <h2>Great Tour!</h2>
                                                 @endif
-                                                    
+
                                                 </div>
                                                 <p><a href="{{ route('tours.index') }}" class="btn btn-primary">View All Tours</a></p>
                                             </div>
@@ -463,14 +463,14 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
-    
-    
+
+
     <div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
