@@ -17,7 +17,7 @@ use Illuminate\View\View;
 
 class HotelController extends Controller implements HasMiddleware
 {
-    
+
     public static function middleware()
     {
         return [new Middleware(RoleMiddleware::class.":ADMIN,EDITOR,SUPER_ADMIN", except: ['index', 'show'])];
@@ -28,19 +28,19 @@ class HotelController extends Controller implements HasMiddleware
 
     public function index()
     {
-        $hotels = Hotel::all();
-        
+        $hotels = Hotel::paginate(10);
+
         return view('hotels.index', compact('hotels'));
     }
 
-    
+
     /**
      * Display a Admin list of the resource.
      */
 
     public function list()
     {
-        
+
         $hotels = Hotel::all();
 
         return view('hotels.list', compact('hotels'));
@@ -54,8 +54,8 @@ class HotelController extends Controller implements HasMiddleware
     {
 
         $hotels = Hotel::where('location', $request->location)
-                        ->get();     
-        
+                        ->get();
+
         return view('hotels.index', compact('hotels'));
     }
 
@@ -64,7 +64,7 @@ class HotelController extends Controller implements HasMiddleware
      */
 
     public function create()
-    {        
+    {
         $hotel = new Hotel();
 
         return view('hotels.create', compact('hotel'));
@@ -76,7 +76,7 @@ class HotelController extends Controller implements HasMiddleware
 
     public function store(Request $request)
     {
-        
+
         $data = $request->validate([
             'name' => 'required|string',
             'location' => 'required|string',
@@ -88,12 +88,12 @@ class HotelController extends Controller implements HasMiddleware
         ]);
 
         $hotel = Hotel::create($data);
-        
+
         $location = Location::create([
             'hotel_id' => $hotel->id,
             'location' => $hotel->location, ]);
 
-        
+
         $image = new Image();
 
         $image->hotel_id = $hotel->id;
@@ -152,7 +152,7 @@ class HotelController extends Controller implements HasMiddleware
         ]);
 
         $hotel->update($data);
-        
+
         $location = Location::create([
             'hotel_id' => $hotel->id,
             'location' => $hotel->location, ]);
@@ -160,14 +160,14 @@ class HotelController extends Controller implements HasMiddleware
         $location = Location::where('hotel_id', $hotel->id )->first();
 
         $loc = $request->validate([ 'location' => 'required|string',]);
-        
+
         $location->update($loc);
 
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($hotel->image);
             $file = $request->file('image');
-            $path = $file->store('uploads', 'public'); 
-            
+            $path = $file->store('uploads', 'public');
+
             $hotel->image = 'storage/'.$path;
         }
 

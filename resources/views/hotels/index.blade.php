@@ -1,4 +1,3 @@
-
 @section('title') Hotels @endsection
 
 
@@ -33,7 +32,7 @@
 				<div class="col-md-12">
 					<div class="row">
 						<div class="wrap-division">
-              
+
 							@foreach ($hotels as $hotel)
 								<div class="col-md-4 col-sm-4 animate-box">
 								<div class="hotel-entry">
@@ -41,7 +40,7 @@
 									<p class="price"><span>{{$hotel->price}} </span><small> Birr /night</small></p>
 									</a>
 									<div class="desc">
-									<p class="star"><span>                        
+									<p class="star"><span>
 										@for ($i = 0; $i < $hotel->rating; $i++)
 										<img width="20px" src="{{ asset('images/star.png') }}"/>
 										@endfor
@@ -58,14 +57,7 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12 text-center">
-							<ul class="pagination">
-								<li class="disabled"><a href="#">&laquo;</a></li>
-								<li class="active"><a href="#">1</a></li>
-								<li><a href="#">2</a></li>
-								<li><a href="#">3</a></li>
-								<li><a href="#">4</a></li>
-								<li><a href="#">&raquo;</a></li>
-							</ul>
+							{{ $hotels->links() }}
 						</div>
 					</div>
 				</div>			

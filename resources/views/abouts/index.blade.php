@@ -5,7 +5,7 @@
 	<aside id="colorlib-hero">
 		<div class="flexslider">
 			<ul class="slides">
-			   <li style="background-image: url(images/cover-img-5.jpg);">
+			   <li style="background-image: url( {{ asset('images/about.jpg') }});">
 				   <div class="overlay"></div>
 				   <div class="container-fluid">
 					   <div class="row">
@@ -53,7 +53,7 @@
 
 								<div class="row row-pb-sm">
 									<div class="col-md-6">
-										<img class="img-responsive" src="images/hotel-7.jpg" alt="">
+										<img class="img-responsive" src="{{ asset('images/about-info.jpg') }}" alt="">
 									</div>
 									<div class="col-md-6">
 										<p>At Grace Tours, we view life as a canvas, each person wielding their own brush. Our mission? To transform your life into a masterpiece through travel and unforgettable experiences. With unwavering dedication, we curate amazing, fun, safe, and memorable adventures—all at a price that invites you to explore again and again.</p>
@@ -80,7 +80,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 animate-box">						
+				<div class="col-md-8 col-md-offset-2 animate-box">
 					<div class="owl-carousel2">
 						<div class="item">
 							<div class="testimony text-center">
@@ -114,7 +114,7 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
 
@@ -144,4 +144,4 @@
 </x-guest-layout>
 
 
-		
+

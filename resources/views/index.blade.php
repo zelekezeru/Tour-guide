@@ -274,7 +274,6 @@
                     <div class="tour-img" style="background-image: url({{ $tour->image ? asset($tour->image) : asset($tour->image) }});">
                     </div>
                     <span class="desc">
-                        {{-- <p class="star"><span><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i><i class="icon-star-full"></i></span> 545 Reviews</p> --}}
                         <h2>{{ $tour->title }}</h2>
                         <span class="city">{{ $tour->country }}, {{ $tour->city }}</span>
                         <span class="price">{{ $tour->location }}</span>
@@ -289,11 +288,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Recent Blog</h2>
+                    <h2>Recent Blogs</h2>
                 </div>
             </div>
             <div class="blog-flex">
-                <div class="f-entry-img" style="background-image: url('{{ asset('images/blogcover.jpg') }}');">
+                {{-- <div class="f-entry-img" style="background-image: url('{{ asset('images/blogcover.jpg') }}');"> --}}
                 </div>
                 <div class="blog-entry aside-stretch-right">
                     <div class="row">
@@ -331,7 +330,7 @@
 
                             <div class="item">
                                 <div class="hotel-entry">
-                                    <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->images->first()->image ) }}">
+                                    <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->image ) }}">
                                         <p class="price"><span>{{ $hotel->price}}</span><small> /night</small></p>
                                     </a>
                                     <div class="desc">
@@ -358,7 +357,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Our Satisfied Guests says</h2>
+                    <h2>Our Satisfied Guests say</h2>
                 </div>
             </div>
             <div class="row">
@@ -369,7 +368,7 @@
 
                             <div class="item">
                                 <div class="testimony text-center">
-                                    <span class="img-user" style="background-image: url({{ $testimonial->image }});"></span>
+                                    <span class="img-user" style="background-image: url({{ asset($testimonial->image) }});"></span>
                                     <span class="user">{{ $testimonial->name }}</span>
                                     <small>{{ $testimonial->address }}</small>
                                     <blockquote>
@@ -471,7 +470,7 @@
     </div>
 
 
-    <div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
+    <div id="colorlib-subscribe" style="background-image: url({{ asset('images/img_bg_2.jpg') }});" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -482,9 +481,6 @@
 						@csrf
                         <div class="row">
                             <div class="col-md-12 col-md-offset-0">
-                                <input type="text" value="NewsLetter" name="firstName">
-                                    <input type="text" value="User" name="lastName">
-                                    <input type="text" value="Send me News Letter" name="message">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="email"  id="email" name="email" value="{{ old('email') ? old('email') : '' }}" placeholder="Enter your email">
                                     <button type="submit" class="btn btn-primary">Subscribe</button>

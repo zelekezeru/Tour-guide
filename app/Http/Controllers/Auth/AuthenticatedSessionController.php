@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -16,7 +17,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+
+        $user = User::first();
+
+        if ($user == null) {
+
+            $user = User::first();
+
+            $firstUser = $user === null;
+
+            return view('auth.register', compact('firstUser'));
+
+        }
+        else {
+            return view('auth.login');
+        }
     }
 
     /**

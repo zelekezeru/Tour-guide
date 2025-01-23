@@ -58,22 +58,25 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<div class="row">
 					<div class="col-md-12 animate-box">
 						<div class="owl-carousel">
 							@foreach ($hotel->images as $image)
-								
+                                @if($image->id == $hotel->images->first()->id)
+                                    @continue
+                                @endif
+
 								<div class="item">
 									<div class="hotel-entry">
 										<img class="hotel-img" style="background-image"  src="{{ asset( $image->image ) }}">
 									</div>
 									<h4>{{ $image->description }}</h4>
-													
+
 								</div>
-	
+
 							@endforeach
-	
+
 						</div>
 					</div>
 				</div>

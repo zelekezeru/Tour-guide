@@ -54,17 +54,7 @@
 </div>
 
 <script>
-// document.getElementById('images').addEventListener('change', function() {
-//     const fileCount = this.files.length;
 
-
-
-
-//     for (let index = 0; index < fileCount; index++) {
-    //     }
-    
-    // });
-    
     document.getElementById('images').addEventListener('change', function() {
         let textAreas = "";
         let i = 0;
@@ -90,7 +80,7 @@
                         </div>
                     `;
                     filesProcessed++;
-                        
+
                     // Once all files have been processed, update the innerHTML
                     if (filesProcessed === totalFiles) {
                         console.log(textAreas);
@@ -105,5 +95,5 @@
 
 
 </script>
-    
+
 @endsection

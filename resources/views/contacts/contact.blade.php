@@ -7,7 +7,7 @@
 	<aside id="colorlib-hero">
 		<div class="flexslider">
 			<ul class="slides">
-				<li style="background-image: url(images/cover-img-3.jpg);">
+				<li style="background-image: url( {{ asset('images/contact-us.jpg') }});">
 					<div class="overlay"></div>
 					<div class="container-fluid">
 						<div class="row">
@@ -81,7 +81,7 @@
 							<input type="submit" value="Send Message" class="btn btn-primary">
 						</div>
 
-					</form>		
+					</form>
 				</div>
 				<div class="col-md-10 col-md-offset-1 animate-box">
 					<h3>Contact Information</h3>

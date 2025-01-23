@@ -15,7 +15,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        $tours = Tour::all();
+        $tours = Tour::paginate(10);
 
         return view('tours.index', compact('tours'));
     }
@@ -35,8 +35,8 @@ class TourController extends Controller
     {
 
         $tours = Tour::where('location', $request->location)
-                        ->get();        
-        
+                        ->get();
+
         return view('tours.index', compact('tours'));
     }
 
@@ -55,7 +55,7 @@ class TourController extends Controller
     {
         // dd($request->all());
         $data = $request->validate([
-            // 'user_id' => '', 
+            // 'user_id' => '',
             'title' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string',
@@ -66,28 +66,28 @@ class TourController extends Controller
             'reviews' => 'required',
             'image' => 'image'
         ]);
-        
+
         $file = $request->file('image');
         $path = $file->store('uploads', 'public');
-        
+
         $tour = Tour::create($data);
         $tour->image = 'storage/'.$path;
         $tour->save();
-        
+
         $location = Location::create([
             'tour_id' => $tour->id,
             'location' => $tour->location, ]);
 
-        for ($i=1; $i <= $tour->duration; $i++) { 
+        for ($i=1; $i <= $tour->duration; $i++) {
             Itenarary::create([
                 'tour_id' => $tour->id,
                 'day_number' => $i
             ]);
         }
-        
+
         return redirect(route('itenararies.edit', $tour->id));
     }
-    
+
     /**
      * Display the specified resource.
      */
@@ -95,7 +95,7 @@ class TourController extends Controller
     {
         return view('tours.show', compact('tour'));
     }
-    
+
     public function detail(Tour $tour)
     {
         return view('tours.detail', compact('tour'));
@@ -114,7 +114,7 @@ class TourController extends Controller
     public function update(Request $request, Tour $tour)
     {
         $data = $request->validate([
-            // 'user_id' => '', 
+            // 'user_id' => '',
             'title' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string',
@@ -136,7 +136,7 @@ class TourController extends Controller
 
             $last_day = count($tour->itenararies);
 
-            for ($i=1; $i <= $added_days ; $i++) { 
+            for ($i=1; $i <= $added_days ; $i++) {
 
                 Itenarary::create([
                     'tour_id' => $tour->id,
@@ -144,7 +144,7 @@ class TourController extends Controller
                 ]);
                 $last_day++;
             };
-            
+
         } elseif ($request->duration < $tour->duration) {
             $redirect_route_name = route('itenararies.edit', $tour->id);
 
@@ -162,13 +162,13 @@ class TourController extends Controller
         $location = Location::where('tour_id', $tour->id )->first();
 
         $loc = $request->validate([ 'location' => 'required|string',]);
-        
+
         $location->update($loc);
 
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete('uploads/'.basename($tour->image));
             $file = $request->file('image');
-            $path = $file->store('uploads', 'public');         
+            $path = $file->store('uploads', 'public');
             $tour->image = 'storage/'.$path;
         }
 
@@ -184,7 +184,7 @@ class TourController extends Controller
     {
         Storage::disk('public')->delete('uploads/'.basename($tour->image));
 
-        foreach ($tour->images as $image) {            
+        foreach ($tour->images as $image) {
             Storage::disk('public')->delete('uploads/'.basename($image->image));
         }
 

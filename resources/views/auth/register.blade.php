@@ -16,8 +16,8 @@
     {{-- For the Footer --}}
     <link href="{{ asset('admin/css/ruang-admin.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.2.0/ckeditor5.css" />
-    <link  href="{{ asset('css/icomoon.css') }}" rel="stylesheet"> 
-    
+    <link  href="{{ asset('css/icomoon.css') }}" rel="stylesheet">
+
 </head>
 
 <body id="page-top">
@@ -34,31 +34,35 @@
                                 <div class="login-form">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4 btn btn-primary btn-lg text-white">Register</h1>
-                                    </div> 
-                                    
+                                    </div>
+
+                                    @if ($firstUser)
+                                        <h6 class="mb-4 text-warning text-center">You're the first User to the System, You'll automatically be assigned to the <br> <span class="text-success">Role of ADMIN!</span></h6>
+                                    @endif
+
                                     <form method="POST" action="{{ route('register') }}">
                                         @csrf
-                                
+
                                         <div class="form-group">
                                             <x-input-label for="name" :value="__('Name')" />
                                             <x-text-input id="name" class="form-control" type="text" name="name" :value="old('name')" required
                                                 autofocus autocomplete="name" />
                                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                                         </div>
-                                        <div class="form-group">                                        
-                                            <!-- Email Address -->                                        
+                                        <div class="form-group">
+                                            <!-- Email Address -->
                                             <x-input-label for="email" :value="__('Email')" />
                                             <x-text-input id="email" class="form-control" type="email" name="email" :value="old('email')" required
                                                 autocomplete="username" />
                                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                                        </div>  
+                                        </div>
                                         <div class="row">
                                             <div class="col">
                                                 <x-input-label for="password" :value="__('Password')" />
 
                                                 <x-text-input id="password" class="form-control" type="password" name="password" required
                                                     autocomplete="new-password" />
-                                        
+
                                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                             </div>
 
@@ -70,16 +74,21 @@
                                             </div>
                                         </div>
                                             <hr>
-                                        <div class="form-group col-4">                                        
-                                            <!-- Role -->        
-                                            <x-input-label for="email" :value="__('Select Role')" />
-                                            <select class="form-control" name="role" id="role">
-                                                <option value="#">Choose Oprion</option>
-                                                <option value="ADMIN" {{ old('role') == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
-                                                <option value="EDITOR" {{ old('role') == 'EDITOR' ? 'selected' : '' }}>EDITOR</option>
-                                                <option value="USER" {{ old('role') == 'USER' ? 'selected' : '' }}>USER</option>
-                                            </select>
-                                        </div>
+                                        @if ($firstUser)
+                                            <input type="text" class="form-control" readonly name="role" value="ADMIN">
+                                        @else
+
+                                            <div class="form-group col-4">
+                                                <!-- Role -->
+                                                <x-input-label for="email" :value="__('Select Role')" />
+                                                <select class="form-control" name="role" id="role">
+                                                    <option value="#">Choose Oprion</option>
+                                                    <option value="ADMIN" {{ old('role') == 'ADMIN' ? 'selected' : '' }}>ADMIN</option>
+                                                    <option value="EDITOR" {{ old('role') == 'EDITOR' ? 'selected' : '' }}>EDITOR</option>
+                                                    <option value="USER" {{ old('role') == 'USER' ? 'selected' : '' }}>USER</option>
+                                                </select>
+                                            </div>
+                                        @endif
 
                                         <hr>
                                         <div class="form-group col">
@@ -103,7 +112,7 @@
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a> --}}
                                     </form>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -112,6 +121,6 @@
             </div>
         </div>
     </div>
-    
+
 </body>
 </html>

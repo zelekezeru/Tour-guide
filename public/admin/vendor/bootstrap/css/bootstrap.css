@@ -3722,12 +3722,12 @@ input[type="button"].btn-block {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 0.85rem;
-  color: #757575;
+  color: #201717;
   text-align: left;
   list-style: none;
-  background-color: #fff;
+  background-color: #c25f5f;
   background-clip: padding-box;
-  border: 1px solid #e3e6f0;
+  border: 1px solid #131d3b;
   border-radius: 0.35rem;
 }
 

@@ -37,8 +37,6 @@ class ImageController extends Controller
      */
     public function hotel_image(Request $request)
     {
-        dd($request->all());
-        //
         for ($i = 0; $i < count($request->file('images')); $i++) {
             $file = $request->file('images')[$i];
             $path = $file->store('uploads', 'public');

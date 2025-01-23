@@ -23,7 +23,7 @@
         <meta name="twitter:card" content="" />
 
         <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
-        
+
         <!-- Animate.css -->
         <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
         <!-- Icomoon Icon Fonts-->
@@ -39,9 +39,9 @@
 
         <!-- Owl Carousel -->
         <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
-        
+
         <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
-        
+
         <!-- Date Picker -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.css') }}">
         <!-- Flaticons  -->
@@ -59,19 +59,15 @@
 
 	</head>
 	<body>
-        <div class="colorlib-loader"></div>
         <div id="page">
             @include('layouts.guest-nav')
             {{-- Main Page Contents go here --}}
-            
+
             {{ $slot }}
-            
+
             @include('layouts.footer')
         </div>
-        <a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
-        <div class="gototop js-top">
-	    </div>
-	
+
 	<!-- jQuery -->
 	<script src="{{ asset('js/jquery.min.js') }}"></script>
 	<!-- jQuery Easing -->

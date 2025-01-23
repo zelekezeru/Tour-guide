@@ -14,10 +14,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
-        return view('blogs.blog', compact('blogs'));
+        $blogs = Blog::paginate(10);
+        
+        return view('blogs.index', compact('blogs'));
     }
-    
+
     public function list()
     {
         // dd('hi');
@@ -68,13 +69,13 @@ class BlogController extends Controller
         $file = $request->file('image');
 
         $path = $file->store('uploads/blog-images', 'public');
-        
+
         $blog = Blog::create($data);
 
         $blog->image = 'storage/'.$path;
 
         $blog->save();
-        
+
         return redirect(route('blogs.show', $blog->id));
     }
 
@@ -90,8 +91,8 @@ class BlogController extends Controller
     {
         return view('blogs.detail', compact('blog'));
     }
-    
-    
+
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -117,13 +118,13 @@ class BlogController extends Controller
             Storage::disk('public')->delete('uploads/blog-images/'.basename($blog->image));
             $file = $request->file('image');
             $path = $file->store('uploads/blog-images', 'public');
-            
+
             $blog->image = 'storage/'.$path;
         }
-        
+
         $blog->save();
 
-        return redirect(route('blogs.index'));
+        return redirect(route('blogs.blog'));
     }
 
     /**
@@ -133,7 +134,7 @@ class BlogController extends Controller
     {
         Storage::disk('public')->delete('uploads/blog-images/'.basename($blog->image));
         $blog->delete();
-        
-        return redirect(route('blogs.index'));
+
+        return redirect(route('blogs.blog'));
     }
 }
