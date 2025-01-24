@@ -1,5 +1,5 @@
 <x-guest-layout>
-	
+
 	<aside id="colorlib-hero">
 		<div class="flexslider">
 			<ul class="slides">
@@ -9,7 +9,7 @@
 					   <div class="row">
 						   <div class="col-md-6 col-sm-12 col-md-offset-3 slider-text">
 							   <div class="slider-text-inner text-center">
-									<h2>By GRACE Tour And Travel</h2>
+									<h2>By GRACE 40 Tour And Travel</h2>
 									<h1>Our Services</h1>
 							   </div>
 						   </div>
@@ -19,7 +19,7 @@
 			  </ul>
 		  </div>
 	</aside>
-	
+
 	<div id="colorlib-services">
 		<div class="container">
 			<div class="row">
@@ -62,7 +62,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<div id="colorlib-testimony" class="colorlib-light-grey">
 		<div class="container">
 			<div class="row">
@@ -72,7 +72,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2 animate-box">						
+				<div class="col-md-8 col-md-offset-2 animate-box">
 					<div class="owl-carousel2">
 						<div class="item">
 							<div class="testimony text-center">
@@ -106,11 +106,11 @@
 						</div>
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">

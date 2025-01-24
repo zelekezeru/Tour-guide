@@ -12,7 +12,7 @@
 						<div class="row">
 							<div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 								<div class="slider-text-inner text-center">
-									<h2>By GRACE Tour And Travel</h2>
+									<h2>By GRACE 40 Tour And Travel</h2>
 									<h1>Available Tours</h1>
 								</div>
 							</div>
@@ -47,7 +47,7 @@
 						</div>
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                {{ $hotels->links() }}
+                                {{ $tours->links() }}
                             </div>
                         </div>
 					</div>

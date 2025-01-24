@@ -4,7 +4,7 @@
             <div class="row row-pb-md">
                 <div class="col-md-3 colorlib-widget">
                     <h4>Tour and Travel</h4>
-                    <p>Grace Tour and Travels is the best tour company based in Southern region of Ethiopia, Arba Minch city dedicated to provide inbound travel services and hospitality.</p>
+                    <p>GRACE 40 Tour And Travels is the best tour company based in Southern region of Ethiopia, Arba Minch city dedicated to provide inbound travel services and hospitality.</p>
                     <p>
                         <ul class="colorlib-social-icons">
                             <li><a href="#"><i class="icon-twitter"></i></a></li>

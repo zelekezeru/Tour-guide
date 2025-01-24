@@ -8,17 +8,15 @@
       <div class="col h3 mb-0 text-gray-800">
         <h1 class="h3 mb-0 text-gray-800">Add Itenararies To Tour </h1> <h1 class="text-warning"> {{ $tour->title }}</h1>
       </div>
-      <form action="" method="POST">
-        @csrf
-        @method('delete')
-        <button class="btn btn-danger"> Delete The Last Day </button>
       </form>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Tours</li>
-        <li class="breadcrumb-item active" aria-current="page">Create Itenarary</li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('tours.index')}}">Tours </a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="{{route('itenararies.edit', $tour->id)}}">Create Itenarary</a></li>
       </ol>
     </div>
+
+      <a href="{{route('tours.show', $tour->id)}}"><button class="btn btn-info btn-sm"> Back to Tour View </button></a>
 
         <!-- Form Basic -->
       @foreach ($tour->itenararies as $itenarary)
@@ -42,37 +40,37 @@
                     placeholder="Title" required>
                     @if ($errors->has('title'))
                       <small id="nameHelp" class="form-text text-danger">{{$errors->first('title')}}</small>
-                        
+
                     @else
                       <small id="nameHelp" class="form-text text-muted">Itenarary Title Here.</small>
-                        
+
                     @endif
                   </div>
-    
+
                   <div class="form-group col-lg-4">
                     <label for="transport_type">Transport Type</label>
                     <input type="text" name="transport_type" value="{{ $itenarary->transport_type }}" class="form-control" id="transport_type" aria-describedby="nameHelp"
                     placeholder="Transport Type" required>
                     @if ($errors->has('transport_type'))
                       <small id="nameHelp" class="form-text text-danger">{{$errors->first('transport_type')}}</small>
-                        
+
                     @else
                       <small id="nameHelp" class="form-text text-muted">Transport Type Here.</small>
-                        
+
                     @endif
                   </div>
 
                   <div class="form-group col-lg-4">
                     <label for="mytextarea">Itenarary Description</label>
-                    
+
                     <textarea name="description" id="editor"> {!! $itenarary->description !!} </textarea>
-                    
+
                     @if ($errors->has('content'))
-                      <small class="form-text text-danger">{{$errors->first('content')}}</small>												
+                      <small class="form-text text-danger">{{$errors->first('content')}}</small>
                     @else
                       <small class="form-text text-muted">Type the Itenarary Description here.</small>
-                    @endif 
-                    
+                    @endif
+
                   </div>
 
                   <div class="form-group col-lg-4">
@@ -94,11 +92,11 @@
                       @enderror
                     </div>
                   </div>
-                  
+
                 </div>
 
                 <button type="submit" class="btn btn-primary">Update Day {{ $itenarary->day_number }} </button>
-              </form> 
+              </form>
             </div>
           </div>
       @endforeach

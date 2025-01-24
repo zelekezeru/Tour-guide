@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
                             <div class="slider-text-inner text-center">
-                                <h2>Grace Tour and Travel</h2>
+                                <h2>GRACE 40 Tour And Travel</h2>
                                 <h1>Your satisfaction is our primary goal</h1>
                             </div>
                         </div>

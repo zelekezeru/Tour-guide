@@ -164,7 +164,9 @@ class HotelController extends Controller implements HasMiddleware
         $location->update($loc);
 
         if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($hotel->image);
+            if ($hotel->image) {
+                Storage::disk('public')->delete($hotel->image);
+            }
             $file = $request->file('image');
             $path = $file->store('uploads', 'public');
 
@@ -173,7 +175,7 @@ class HotelController extends Controller implements HasMiddleware
 
         $hotel->save();
 
-        return redirect(route('hotels.index'));
+        return redirect(route('hotels.list'));
     }
 
     /**
@@ -184,7 +186,9 @@ class HotelController extends Controller implements HasMiddleware
     {
 
         foreach ($hotel->images as $image) {
-            Storage::disk('public')->delete('uploads/'.basename($image->image));
+            if ($image->image) {
+                Storage::disk('public')->delete('uploads/'.basename($image->image));
+            }
         }
 
         $hotel->delete();

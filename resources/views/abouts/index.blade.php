@@ -11,7 +11,7 @@
 					   <div class="row">
 						   <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 							   <div class="slider-text-inner text-center">
-								   <h2>By GRACE Tour And Travel</h2>
+								   <h2>By GRACE 40 Tour And Travel</h2>
 								   <h1>About us</h1>
 							   </div>
 						   </div>
@@ -45,7 +45,7 @@
 						<h2>About Us</h2>
 						<div class="row">
 							<div class="col-md-12">
-								<p>Grace Tour and Travels, nestled in the vibrant city of Arba Minch in Ethiopia’s Southern region, invites you to explore the heart of this captivating land. Our mission is to curate unforgettable experiences for our guests, blending warm Ethiopian hospitality with authentic adventures.</p>
+								<p>GRACE 40 Tour And Travels, nestled in the vibrant city of Arba Minch in Ethiopia’s Southern region, invites you to explore the heart of this captivating land. Our mission is to curate unforgettable experiences for our guests, blending warm Ethiopian hospitality with authentic adventures.</p>
 
 								<p>As you embark on your journey, discover the mystical Nechisar National Park, where wildlife roams freely against a backdrop of lush landscapes. Cruise the serene waters of Lake Chamo, where hippos and crocodiles thrive, and witness the sun’s golden embrace at sunset. Dive into the bustling markets of Arba Minch, where vibrant colors, aromatic spices, and friendly faces await.</p>
 

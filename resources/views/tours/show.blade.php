@@ -1,5 +1,5 @@
 <x-guest-layout>
-	
+
 	<aside id="colorlib-hero">
 		<div class="flexslider">
 			<ul class="slides">
@@ -9,8 +9,8 @@
 					   <div class="row">
 						   <div class="col-md-6 col-md-offset-3 col-sm-12 col-xs-12 slider-text">
 							   <div class="slider-text-inner text-center">
-									<h2>By GRACE Tour And Travel</h2>
-									<h1>Tour Overview</h1>
+									<h2>By GRACE 40 Tour And Travel</h2>
+									<h1>{{ $tour->title }}</h1>
 							   </div>
 						   </div>
 					   </div>
@@ -19,7 +19,7 @@
 			  </ul>
 		  </div>
 	</aside>
-	
+
 	<div class="colorlib-wrap">
 		<div class="container">
 			<div class="row">
@@ -31,7 +31,7 @@
 									<h2>{{ $tour->title }}</h2>
 								</div>
 								<div class="row">
-									
+
 									@if (count($tour->itenararies) !== 0)
 										@foreach ($tour->itenararies as $itenarary)
 											@if ($itenarary->title)
@@ -71,7 +71,7 @@
 
 											@endif
 										@endforeach
-								
+
 									@else
 											<h2>Itenararies Coming Soon!</h2>
 									@endif
@@ -83,7 +83,7 @@
 						</div>
 					</div>
 				</div>
-	
+
 				<!-- SIDEBAR-->
 				<div class="col-md-3">
 					<div class="sidebar-wrap">
@@ -130,14 +130,14 @@
 						  </div>
 						</form>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div id="colorlib-subscribe" style="background-image: url(images/img_bg_2.jpg);" data-stellar-background-ratio="0.5">
 		<div class="overlay"></div>
 		<div class="container">
