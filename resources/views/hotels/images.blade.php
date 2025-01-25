@@ -5,7 +5,15 @@
 
 <div class="container-fluid" id="container-wrapper">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-      <h1 class="h3 mb-0 text-gray-800">Forms</h1>
+        <div class="row">
+            <h1 class="h3 mb-0 text-gray-800">{{ $hotel->name }}, </h1>
+        </div>
+        <div class="row">
+            <h4>{{ $hotel->location }}</h4>
+        </div>
+
+      <br>
+
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home')}}">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page"><a href="{{ route('hotels.index')}}">Hotels</a></li>
@@ -20,37 +28,80 @@
         </div>
     </div>
 
-        <div class="col-md-12">
-            <div class="wrap-division">
-                <div class="col-md-12 col-md-offset-0 heading2 animate-box">
-                    <h2>{{ $hotel->name }}, </h2>
-                    <h4>{{ $hotel->location }}</h4>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body">
-        <form action="{{ route('hotels.image') }}" method="POST" enctype="multipart/form-data">
-          @csrf
-
-          <input type="text" name="hotel_id" value="{{ $hotel->id }}" hidden>
-
-            <div class="form-group col-lg-4">
-                <label for="image">Add More Pictures Here</label>
-                <div class="custom-file">
-                <input type="file" name="images[]" class="custom-file-input" id="images" multiple required>
-                <label class="custom-file-label" for="customFile">Choose Picture</label>
-                </div>
-            </div>
-
-            <div id="textAreasSection">
+    <div class="col-md-12">
+        <div class="wrap-division">
+            <div class="col-md-12 col-md-offset-0 heading2 animate-box">
+                <h2>{{ $hotel->name }}, </h2>
 
             </div>
-
-          <button type="submit" class="btn btn-primary">Add Image</button>
-        </form>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col">
+            <form action="{{ route('hotels.image') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+
+                <input type="text" name="hotel_id" value="{{ $hotel->id }}" hidden>
+
+                  <div class="form-group col-lg-6">
+                      <label for="image">Add More Pictures Here</label>
+                      <div class="custom-file">
+                      <input type="file" name="images[]" class="custom-file-input" id="images" multiple required>
+                      <label class="custom-file-label" for="customFile">Choose Picture</label>
+                      </div>
+                  </div>
+
+                  <div id="textAreasSection">
+                    <textarea  class="form-control" value="{{ old('description') }}" name="description" id="mytextarea" rows="2" placeholder="Enter Image description Here" required></textarea>
+                            @if ($errors->has('description'))
+                                <small id="nameHelp" class="form-text text-danger">{{$errors->first('description')}}</small>
+                            @else
+                                <small id="nameHelp" class="form-text text-muted">Description about the Image.</small>
+                            @endif
+                  </div>
+
+                <button type="submit" class="btn btn-primary">Add Image</button>
+              </form>
+
+        </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Images uploaded to {{ $hotel->name }}</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Image</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($hotel->images as $image)
+                            <tr>
+                                <td><img width="100px" src="{{ asset($image->image) }}" alt=""></td>
+                                <td>{{ $image->description }}</td>
+                                <td>
+                                    <a href="{{ route('images.destroy', $image->id) }}"
+                                       onclick="event.preventDefault(); document.getElementById('delete-form-{{ $image->id }}').submit();">
+                                       Delete
+                                    </a>
+                                    {{-- <form id="delete-form-{{ $image->id }}" action="{{ route('images.destroy', $image->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form> --}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script>

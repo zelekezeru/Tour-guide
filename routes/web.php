@@ -43,6 +43,10 @@ Route::get('/hotels/list', [HotelController::class, 'list'])->name('hotels.list'
 Route::get('/hotels/search', [HotelController::class, 'search'])->name('hotels.search');
 
 Route::get('/hotels/detail/{hotel}', [HotelController::class, 'detail'])->name('hotels.detail');
+
+// Add this route for deleting hotel images
+Route::delete('/hotels/images/{image}', [ImageController::class, 'delete'])->name('hotels.images.delete');
+
 //Blog
 Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
 
@@ -91,7 +95,6 @@ Route::get('/image/travel/{id}', [ImageController::class, 'travel'])->name('imag
 
 Route::post('/travels/image', [ImageController::class, 'travel_image'])->name('travels.image');
 
-
 //Itenarary routes
 Route::get('itenararies/{tour}/edit', [ItenararyController::class, 'edit'])->name('itenararies.edit');
 
@@ -126,4 +129,6 @@ Route::get('alert', SweetAlertNotification::class);
 Route::resource('admins', AdminController::class);
 
 Route::resource('users', UserController::class);
+
+Route::resource('image', ImageController::class);
 

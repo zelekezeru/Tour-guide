@@ -9,7 +9,7 @@
         <div class="card">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">HOTELS</h6>
-                <a class="m-0 float-right btn btn-primary btn-sm" href="{{ route('hotels.create') }}">ADD HOTEL</a>
+                <a class="m-0 float-right btn btn-sm btn-primary btn-sm" href="{{ route('hotels.create') }}">ADD HOTEL</a>
             </div>
             <div class="table-responsive row">
                 <table class="table align-items-center table-flush">
