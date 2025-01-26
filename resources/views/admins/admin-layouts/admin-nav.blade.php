@@ -54,7 +54,7 @@
                             Message Center
                         </h6>
                         @foreach ($contacts as $contact)
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('contacts.show', $contact->id) }}">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('contacts.list') }}">
                                 <div class="dropdown-list-image mr-3">
                                     <img class="rounded-circle" src="{{ asset('images/userIcon.png') }}" style="max-width: 60px" alt="">
                                     <div class="status-indicator bg-success"></div>
