@@ -330,7 +330,7 @@
 
                             <div class="item">
                                 <div class="hotel-entry">
-                                    <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->image ) }}">
+                                    <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}"> <img class="hotel-img" style="background-image"  src="{{ asset($hotel->images->first()->image ) }}">
                                         <p class="price"><span>{{ $hotel->price}}</span><small> /night</small></p>
                                     </a>
                                     <div class="desc">
