@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 
 class BlogController extends Controller
 {
@@ -14,8 +15,12 @@ class BlogController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $blogs = Blog::paginate(10);
-        
+
         return view('blogs.index', compact('blogs'));
     }
 

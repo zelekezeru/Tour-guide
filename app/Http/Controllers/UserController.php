@@ -9,12 +9,8 @@ use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Redirect;
 
-class UserController extends Controller implements HasMiddleware
+class UserController extends Controller
 {
-    public static function middleware()
-    {
-        return [new Middleware(RoleMiddleware::class.":SUPER_ADMIN")];
-    }
     /**
      * Display a listing of the resource.
      */
@@ -53,7 +49,7 @@ class UserController extends Controller implements HasMiddleware
     {
         //
     }
-    
+
     public function detail(User $user)
     {
         return view('users.detail', compact('user'));

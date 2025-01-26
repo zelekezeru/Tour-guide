@@ -6,6 +6,7 @@ use App\Mail\ContactUs;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\View;
 
 class ContactController extends Controller
 {
@@ -14,9 +15,13 @@ class ContactController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         return view('contacts.contact');
     }
-    
+
     public function list()
     {
         // dd('hi');

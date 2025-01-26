@@ -444,7 +444,11 @@
 
                                                     <div class="col-md-8 col-sm-8 col-xs-8">
                                                         <ul>
-                                                            <li class="col"><p class="price"><span>Day {{ $itenarary->day_number }}, </span>{{ $itenarary->title }}, {{ $itenarary->hotel->name }}, By {{ $itenarary->transport_type }}</a></li>
+                                                            <li class="col"><p class="price"><span>Day {{ $itenarary->day_number }}, </span>{{ $itenarary->title }},
+                                                            @if ($itenarary->hotel)
+                                                                {{ $itenarary->hotel->name }},
+                                                            @endif
+                                                            By {{ $itenarary->transport_type }}</a></li>
                                                         </ul>
                                                     </div>
                                                     @endif

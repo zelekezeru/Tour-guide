@@ -10,6 +10,7 @@ use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\User;
 use App\Models\Contact;
+use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
 {
@@ -18,13 +19,17 @@ class AdminController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $hotel = count(Hotel::all());
         $blog = count(Blog::all());
         $tour = count(Tour::all());
         $travel = count(Travel::all());
         $user = count(User::all());
         $contacts = Contact::all();
-        
+
         return view('admins.index', compact('hotel', 'blog', 'tour', 'travel', 'user', 'contacts'));
     }
 

@@ -10,6 +10,7 @@ use App\Models\Testimonial;
 use App\Models\Location;
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -18,13 +19,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $hotels = Hotel::all();
         $blogs = Blog::all();
         $tours = Tour::all();
         $travels = Travel::all();
         $testimonials = Testimonial::all();
         $locations = Location::all();
-        
+
         return view('index', compact('hotels', 'blogs', 'tours', 'travels', 'testimonials', 'locations'));
     }
 

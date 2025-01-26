@@ -7,6 +7,7 @@ use App\Models\Tour;
 use App\Models\Location;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 
 class TourController extends Controller
 {
@@ -15,6 +16,10 @@ class TourController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $tours = Tour::paginate(10);
 
         return view('tours.index', compact('tours'));

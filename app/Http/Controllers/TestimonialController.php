@@ -6,6 +6,7 @@ use App\Models\Testimonial;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 
 class TestimonialController extends Controller
 {
@@ -14,12 +15,16 @@ class TestimonialController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $testimonials = Testimonial::all();
 
         return view('testimonials.index', compact('testimonials'));
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -44,7 +49,7 @@ class TestimonialController extends Controller
             'testimony' => 'required|string',
             'image' => 'required'
         ]);
-        
+
         $file = $request->file('image');
         $path = $file->store('uploads', 'public');
 
@@ -87,8 +92,8 @@ class TestimonialController extends Controller
         if ($request->hasFile('image')) {
             Storage::disk('public')->delete($testimonial->image);
             $file = $request->file('image');
-            $path = $file->store('uploads', 'public');   
-            // dd($path);         
+            $path = $file->store('uploads', 'public');
+            // dd($path);
             $testimonial->image = 'storage/'.$path;
         }
         $testimonial->save();
@@ -103,7 +108,7 @@ class TestimonialController extends Controller
         Storage::disk('public')->delete($testimonial->image);
 
         $testimonial->delete();
-        
+
         return redirect(route('testimonials.index'));
     }
 }

@@ -1,5 +1,4 @@
-
-        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+<nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
             <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
                 <i class="fa fa-bars"></i>
             </button>
@@ -141,6 +140,7 @@
                         <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
                     </div>
                 </li>
+
                 <div class="topbar-divider d-none d-sm-block"></div>
                 <li class="nav-item dropdown no-arrow">
                     @if( Auth::user() )
@@ -150,11 +150,11 @@
                                     <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{{ route('users.detail', Auth::user()->id) }}">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Profile
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Settings
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">
+                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Dashbord
                                     </a>
                                     <a class="dropdown-item" href="#">
                                         <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log
@@ -163,7 +163,7 @@
                                     <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-                    
+
                                         <x-responsive-nav-link :href="route('logout')"
                                                 onclick="event.preventDefault();
                                                             this.closest('form').submit();">
@@ -172,7 +172,7 @@
                                     </form>
                                 </div>
                             </li>
-                            
+
                         @endif
                 </li>
             </ul>

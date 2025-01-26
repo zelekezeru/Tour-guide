@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\View;
 use App\Models\Travel;
 use App\Models\Location;
 use Illuminate\Http\Request;
@@ -15,14 +16,19 @@ class TravelController extends Controller
      */
     public function index()
     {
+        if (!View::exists('index')) {
+            abort(404, 'View not found.');
+        }
+
         $travels = Travel::all();
+        
         return view('travels.index', compact('travels'));
     }
 
     public function list()
     {
         $travels = Travel::all();
-        
+
         return view('travels.list', compact('travels'));
     }
 
@@ -34,11 +40,11 @@ class TravelController extends Controller
     {
 
         $travels = Travel::where('location', $request->location)
-                        ->get();        
-        
+                        ->get();
+
         return view('travels.index', compact('travels'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -54,7 +60,7 @@ class TravelController extends Controller
     {
         // dd($request);
         // Log::info('Submitted Data:', $request->all());
-        
+
         $data = $request->validate([
             'title' => 'required|string',
             'country' => 'required|string',
@@ -74,7 +80,7 @@ class TravelController extends Controller
         $path = $file->store('uploads', 'public');
 
         $travel = Travel::create($data);
-        
+
         $location = Location::create([
             'travel_id' => $travel->id,
             'location' => $travel->location, ]);
@@ -126,12 +132,12 @@ class TravelController extends Controller
             'image' => 'image'
         ]);
 
-        $travel->update($data);        
+        $travel->update($data);
 
         $location = Location::where('travel_id', $travel->id )->first();
 
         $loc = $request->validate([ 'location' => 'required|string',]);
-        
+
         $location->update($loc);
 
         if (!$request->input('round_trip')) {
