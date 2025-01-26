@@ -131,10 +131,10 @@ class ImageController extends Controller
         dd($id);
         Storage::disk('public')->delete(str_replace('storage/', '', $image->image));
         $image->delete();
-
+        
         return redirect()->back()->with('success', 'Image deleted successfully.');
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
@@ -158,7 +158,7 @@ class ImageController extends Controller
     {
         //
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -166,7 +166,7 @@ class ImageController extends Controller
     {
         //
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
@@ -174,15 +174,16 @@ class ImageController extends Controller
     {
         //
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
         $image = Image::findOrFail($id);
+        Storage::disk('public')->delete(str_replace('storage/', '', $image->image));
         $image->delete();
-
-        return redirect()->route('images.index')->with('success', 'Image deleted successfully');
+        
+        return redirect()->back()->with('success', 'Image deleted successfully');
     }
 }

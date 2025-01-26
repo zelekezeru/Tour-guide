@@ -62,7 +62,7 @@
                   </div>
 
                 <button type="submit" class="btn btn-primary">Add Image</button>
-              </form>
+            </form>
 
         </div>
     <div class="col">
@@ -81,18 +81,19 @@
                     </thead>
                     <tbody>
                         @foreach ($hotel->images as $image)
-                            <tr>
-                                <td><img width="100px" src="{{ asset($image->image) }}" alt=""></td>
-                                <td>{{ $image->description }}</td>
-                                <td>
-                                    <a href="{{ route('hotels.images.delete', $image->id) }}"
-                                       onclick="event.preventDefault(); document.getElementById('delete-form-{{ $image->id }}').submit();">
-                                       Delete
-                                    </a>
-                                    {{-- <form id="delete-form-{{ $image->id }}" action="{{ route('images.destroy', $image->id) }}" method="POST" style="display: none;">
+                        <tr>
+                            <td><img width="100px" src="{{ asset($image->image) }}" alt=""></td>
+                            <td>{{ $image->description }}</td>
+                            <td>
+                                {{-- <a href="{{ route('hotels.images.destroy', $image->id) }}"
+                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $image->id }}').submit();">
+                                    Delete
+                                </a> --}}
+                                    <form id="delete-form-{{ $image->id }}" action="{{ route('hotels.images.destroy', $image->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                    </form> --}}
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach

@@ -45,7 +45,7 @@ Route::get('/hotels/search', [HotelController::class, 'search'])->name('hotels.s
 Route::get('/hotels/detail/{hotel}', [HotelController::class, 'detail'])->name('hotels.detail');
 
 // Add this route for deleting hotel images
-Route::delete('/hotels/images/{image}', [ImageController::class, 'delete'])->name('hotels.images.delete');
+Route::delete('/hotels/images/{image}', [ImageController::class, 'destroy'])->name('hotels.images.destroy');
 
 //Blog
 Route::get('/blogs/list', [BlogController::class, 'list'])->name('blogs.list');
