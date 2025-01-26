@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
-    
+
     <!-- Invoice Example -->
     <div class="col mb-4">
         <div class="card shadow-sm rounded">
@@ -19,7 +19,7 @@
                         <tr>
                             <th class="col-2 text-center">Title</th>
                             <th class="col-3 text-center">Address</th>
-                            <th class="col-2 text-center">Starting</th>
+                            <th class="col-2 text-center">Depature</th>
                             <th class="col-2 text-center">Destination</th>
                             <th class="col-1 text-center">Price</th>
                             <th class="col-2 text-center">Duration</th>
@@ -29,9 +29,10 @@
                         @foreach ($travels as $travel)
                           <tr>
                             <td class="text-center">
-                                <a href="{{ route('travels.detail', $travel) }}">
+                                {{-- <a href="{{ route('travels.detail', ['travel' => $travel->id]) }}"> --}}
                                     <h5 class="text-primary">{{ $travel->title }}</h5>
-                                </a>
+                                {{-- </a> --}}
+
                             </td>
                             <td class="text-center">
                                 <h5>{{ $travel->country }}, {{ $travel->city }}</h5>
@@ -53,7 +54,7 @@
                     </tbody>
                 </table>
             </div>
-            
+
         </div>
     </div>
 </div>

@@ -54,13 +54,13 @@
           </div>
           <div class="row">
               <div class="form-group col-lg-4">
-                  <label for="starting">Starting</label>
+                  <label for="starting">Depature</label>
                   <input type="starting" value="{{ old('starting') ? old('starting') : '' }}" name="starting" class="form-control" id="starting" aria-describedby="emailHelp"
-                  placeholder="Enter starting">
+                  placeholder="Enter Depature">
                   @if ($errors->has('starting'))
                       <small id="nameHelp" class="form-text text-danger">{{$errors->first('starting')}}</small>
                   @else
-                      <small id="emailHelp" class="form-text text-muted">Enter Starting here.</small>
+                      <small id="emailHelp" class="form-text text-muted">Enter Depature here.</small>
                   @endif
               </div>
               <div class="form-group col-lg-4">
@@ -149,5 +149,5 @@
     </div>
 </div>
 
-    
+
 @endsection

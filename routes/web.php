@@ -60,8 +60,9 @@ Route::get('/tours/detail/{tour}', [TourController::class, 'detail'])->name('tou
 
 //Travel
 Route::get('/travels/list', [TravelController::class, 'list'])->name('travels.list');
-
 Route::get('/travels/search', [TravelController::class, 'search'])->name('travels.search');
+
+Route::get('/travels/detail/{travel}', [TravelController::class, 'detail'])->name('travels.detail');
 
 //User
 Route::get('/users/list', [UserController::class, 'list'])->name('users.list');

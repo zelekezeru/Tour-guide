@@ -21,7 +21,7 @@ class TravelController extends Controller
         }
 
         $travels = Travel::all();
-        
+
         return view('travels.index', compact('travels'));
     }
 
@@ -83,7 +83,7 @@ class TravelController extends Controller
 
         $location = Location::create([
             'travel_id' => $travel->id,
-            'location' => $travel->location, ]);
+            'location' => $travel->city, ]);
 
 
         $travel->image = 'storage/'.$path;
