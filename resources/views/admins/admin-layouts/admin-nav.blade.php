@@ -44,30 +44,10 @@
                         <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                     </div>
                 </li> --}}
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <span class="badge badge-warning badge-counter">{{ count($contacts ) }}</span>
-                    </a>
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                        <h6 class="dropdown-header">
-                            Message Center
-                        </h6>
-                        @foreach ($contacts as $contact)
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('contacts.list') }}">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="{{ asset('images/userIcon.png') }}" style="max-width: 60px" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">{{ Str::limit($contact->message, 30, '...') }}</div>
-                                    <div class="small text-gray-500">{{ $contact->firstName }} {{ $contact->lastName }} . {{ $contact->created_at->diffForHumans() }}</div>
-                                </div>
-                            </a>
-                        @endforeach
-                        <a class="dropdown-item text-center small text-gray-500" href="{{ route('contacts.index') }}">Read More Messages</a>
-                    </div>
-                </li>
+
+                @yield('contacts')
+
+
                 <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-tasks fa-fw"></i>
