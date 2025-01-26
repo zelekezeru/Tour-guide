@@ -6,20 +6,21 @@
     
     <!-- Invoice Example -->
     <div class="col mb-4">
-        <div class="card">
+        <div class="card shadow-sm rounded">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">BLOGS</h6>
-                <a class="m-0 float-right btn btn-primary btn-sm" href="{{ route('blogs.create') }}">ADD BLOG</a>
+                <a class="btn btn-sm btn-success" href="{{ route('blogs.create') }}">
+                    <i class="fas fa-plus-circle"></i> Add Blog
+                </a>
             </div>
-            <div class="table-responsive row">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light ">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-items-center table-flush">
+                    <thead class="thead-light">
                         <tr>
-                            <th class="col-1">No</th>
-                            <th class="col-3">Name</th>
-                            <th class="col-3">Photo</th>
-                            {{-- <th class="col-3">Teaser</th> --}}
-                            <th class="col-5">Content</th>
+                            <th class="col-1 text-center">No</th>
+                            <th class="col-3 text-center">Title</th>
+                            <th class="col-3 text-center">Photo</th>
+                            <th class="col-5 text-center">Content</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,12 +37,18 @@
                             @endphp
 
                           <tr>                            
-                            <td class="col-1 h3"> {{ $num }} </td>
-                            <td class="col-3"> <a href="{{ route('blogs.detail', $blog) }}" >  <h5 style="">{{$blog->title}} </h5> </a> </td>
-                            <td class="col-3"> <img width="250px" src="{{ asset($blog->image )}}"/> </td>
-                            <td class="col-5"> <h5 style="">{!! Str::limit( $blog->content, 150, '...') !!} </h5></td>
-                            {{-- <td class="col-5"> <h5 style="">{{$blog->teaser}} </h5></td>                         --}}
-                            
+                            <td class="text-center">{{ $num }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('blogs.detail', $blog) }}">
+                                    <h5 class="text-primary">{{ $blog->title }}</h5>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <img width="250px" class="img-fluid rounded" src="{{ asset($blog->image) }}" alt="Blog Image" />
+                            </td>
+                            <td class="text-center">
+                                <h5>{!! Str::limit($blog->content, 150, '...') !!}</h5>
+                            </td>
                           </tr>
                         @endforeach
                     </tbody>
@@ -52,5 +59,4 @@
     </div>
 </div>
 
-    
-@endsection 
+@endsection

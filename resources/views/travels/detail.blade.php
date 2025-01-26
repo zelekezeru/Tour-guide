@@ -3,53 +3,48 @@
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
-    <div class="col mb-4">
-        <div class="card">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <div class="col-10">
-                    <h4 class="m-0 font-weight-bold text-primary">{{ $travel->name}}</h4>
+    <div class="row mb-4">
+        <!-- Travel Details Card -->
+        <div class="col-lg-12">
+            <div class="card shadow-sm rounded">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-10">
+                        <h4 class="m-0 font-weight-bold text-primary">{{ $travel->title }}</h4>
+                    </div>
+
+                    <div class="col-2 text-right">
+                        <a href="{{ route('travels.edit', $travel) }}" class="btn btn-sm btn-warning mr-2">Edit</a>
+                        <form action="{{ route('travels.destroy', $travel) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="col-1">
-                    <span class="btn btn-lg btn-warning"><a href="{{route('travels.edit', $travel)}}"> Edit </a></span>
-                </div>
-                <div class="col-1">
-                    <form action="{{ route('travels.destroy', $travel) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Delete" class="btn btn-lg btn-danger">
-                    </form>
+
+                <div class="card-body">
+                    <!-- Travel Overview -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5><strong>Starting:</strong> {{ $travel->starting }}</h5>
+                            <h5><strong>Destination:</strong> {{ $travel->destination }}</h5>
+                            <h5><strong>Price:</strong> ${{ number_format($travel->price, 2) }}</h5>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <img class="img-fluid rounded" width="300px" src="{{ asset($travel->image) }}" alt="Travel Image">
+                        </div>
+                    </div>
+
+                    <!-- Travel Description -->
+                    <div class="mt-4">
+                        <h5><strong>Description:</strong></h5>
+                        <p>{{ $travel->description ?? 'No description available.' }}</p>
+                    </div>
                 </div>
             </div>
-                <div class="table-responsive row">
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light ">
-                            <tr>
-                                <th class="col-3">Name</th>
-                                <th class="col-2">Photo</th>
-                                <th class="col-3">Starting</th>
-                                <th class="col-2">Destination</th>
-                                <th class="col-2">Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-3"> <a href="{{ route('travels.detail', ['travel' => $travel->id]) }}" > <h3 style="">{{$travel->title}} </h3> </a> </td>
-                                <td class="col-2"> <img width="200px" src="{{ asset($travel->image )}}"/> </td>
-                                <td class="col-3"> <h5 style="">{{$travel->starting}} </h5></td>
-                                <td class="col-3"> <h5 style="">{{$travel->destination}} </h5></td>
-                                <td class="col-3"> <h5 style="">{{$travel->price}} </h5></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
-
-            
         </div>
     </div>
 </div>
 
-    
-@endsection 
+@endsection

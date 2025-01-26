@@ -3,59 +3,52 @@
 @section('content')
 
 <div class="container-fluid" id="container-wrapper">
-    <div class="col mb-4">
-        <div class="card">
-            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <div class="col-8">
-                    <h4 class="m-0 font-weight-bold text-primary">{{ $hotel->name}}</h4>
+    <div class="row mb-4">
+        <!-- Hotel Details Card -->
+        <div class="col-lg-12">
+            <div class="card shadow-sm rounded">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <div class="col-8">
+                        <h4 class="m-0 font-weight-bold text-primary">{{ $hotel->name }}</h4>
+                    </div>
+
+                    <div class="col-4 text-right">
+                        <a href="{{ route('images.hotel', $hotel->id) }}" class="btn btn-sm btn-info mr-2">Add Photos</a>
+                        <a href="{{ route('hotels.edit', $hotel) }}" class="btn btn-sm btn-warning mr-2">Edit</a>
+                        <form action="{{ route('hotels.destroy', $hotel) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                    </div>
                 </div>
-                
-                <div class="col-1">
-                    <span class="btn btn-sm btn-info"><a href="{{route('images.hotel', $hotel->id)}}"> Add Photos </a></span>
-                </div>
-                <div class="col-1">
-                    <span class="btn btn-lg btn-warning"><a href="{{route('hotels.edit', $hotel)}}"> Edit </a></span>
-                </div>
-                <div class="col-1">
-                    <form action="{{ route('hotels.destroy', $hotel) }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" value="Delete" class="btn btn-lg btn-danger">
-                    </form>
+
+                <div class="card-body">
+                    <!-- Hotel Overview -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5><strong>Location:</strong> {{ $hotel->location }}</h5>
+                            <h5><strong>Rating:</strong> 
+                                @for ($i = 0; $i < $hotel->rating; $i++)
+                                    <img width="20px" src="{{ asset('images/star.png') }}" alt="Star">
+                                @endfor
+                            </h5>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <img class="img-fluid rounded" width="300px" src="{{ asset($hotel->images->first()->image) }}" alt="Hotel Image">
+                        </div>
+                    </div>
+
+                    <!-- Hotel Description -->
+                    <div class="mt-4">
+                        <h5><strong>Description:</strong></h5>
+                        <p>{{ $hotel->description ?? 'No description available.' }}</p>
+                    </div>
                 </div>
             </div>
-                <div class="table-responsive row">
-                    <table class="table align-items-center table-flush">
-                        <thead class="thead-light ">
-                            <tr>
-                                <th class="col-3">Name</th>
-                                <th class="col-2">Photo</th>
-                                <th class="col-3">Location</th>
-                                <th class="col-2">Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="col-3"> <a href="{{ route('hotels.show', ['hotel' => $hotel->id]) }}" > <h3 style="">{{$hotel->name}} </h3> </a> </td>
-                                <td class="col-2"> <img width="200px" src="{{ asset($hotel->images->first()->image )}}"/> </td>
-                                <td class="col-3"> <h5 style="">{{$hotel->location}} </h5></td>
-                                <td  class="row">
-                                    @for ($i = 0; $i < $hotel->rating; $i++)
-                                        <img width="25px" src="{{ asset('images/star.png') }}"/>
-                                    @endfor
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-
-
-            
         </div>
     </div>
 </div>
 
-    
-@endsection 
+@endsection

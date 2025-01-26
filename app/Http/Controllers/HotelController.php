@@ -88,10 +88,11 @@ class HotelController extends Controller implements HasMiddleware
         ]);
 
         $hotel = Hotel::create($data);
-
+        
         $location = Location::create([
             'hotel_id' => $hotel->id,
-            'location' => $hotel->location, ]);
+            'location' => $hotel->location, 
+        ]);
 
 
         $image = new Image();

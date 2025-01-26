@@ -85,7 +85,7 @@
                                 <td><img width="100px" src="{{ asset($image->image) }}" alt=""></td>
                                 <td>{{ $image->description }}</td>
                                 <td>
-                                    <a href="{{ route('images.destroy', $image->id) }}"
+                                    <a href="{{ route('hotels.images.delete', $image->id) }}"
                                        onclick="event.preventDefault(); document.getElementById('delete-form-{{ $image->id }}').submit();">
                                        Delete
                                     </a>

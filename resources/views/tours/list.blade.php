@@ -6,22 +6,24 @@
     
     <!-- Invoice Example -->
     <div class="col mb-4">
-        <div class="card">
+        <div class="card shadow-sm rounded">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">TOURS</h6>
-                <a class="m-0 float-right btn btn-primary btn-sm" href="{{ route('tours.create') }}">ADD TOUR</a>
+                <a class="btn btn-sm btn-success" href="{{ route('tours.create') }}">
+                    <i class="fas fa-plus-circle"></i> Add Tour
+                </a>
             </div>
-            <div class="table-responsive row">
-                <table class="table align-items-center table-flush">
-                    <thead class="thead-light ">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover align-items-center table-flush">
+                    <thead class="thead-light">
                         <tr>
-                            <th class="col-1">No</th>
-                            <th class="col-3">Title</th>
-                            <th class="col-2">Address</th>
-                            <th class="col-2">Location</th>
-                            <th class="col-1">Duration</th>
-                            <th class="col-1">Price</th>
-                            <th class="col-2">Rating</th>
+                            <th class="col-1 text-center">No</th>
+                            <th class="col-3 text-center">Title</th>
+                            <th class="col-2 text-center">Address</th>
+                            <th class="col-2 text-center">Location</th>
+                            <th class="col-1 text-center">Duration</th>
+                            <th class="col-1 text-center">Price</th>
+                            <th class="col-2 text-center">Rating</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,17 +39,30 @@
                             @endphp
 
                           <tr>
-                            <td class="col-1 h3"> {{ $num }} </td>
-                            <td class="col-3"> <a href="{{ route('tours.detail', ['tour' => $tour->id]) }}" > <h3 style="">{{$tour->title }} </h3> </a> </td>
-                            <td class="col-2"> <h5 style="">{{$tour->country }}, {{$tour->city }} </h5></td>
-                            <td class="col-2"> <h5 style="">{{$tour->location }} </h5></td>
-                            <td class="col-1"> <h5 style="">{{$tour->duration}} </h5></td>
-                            <td class="col-1"> <h5 style="">{{$tour->price}} </h5></td>
-                            <td class="col-2"> 
-                                @for ($i = 0; $i < $tour->rating; $i++)
-                                    <img width="25px" src="{{ asset('images/star.png') }}"/>
-                                @endfor
+                            <td class="text-center">{{ $num }}</td>
+                            <td class="text-center">
+                                <a href="{{ route('tours.detail', ['tour' => $tour->id]) }}">
+                                    <h5 class="text-primary">{{ $tour->title }}</h5>
+                                </a>
                             </td>
+                            <td class="text-center">
+                                <h5>{{ $tour->country }}, {{ $tour->city }}</h5>
+                            </td>
+                            <td class="text-center">
+                                <h5>{{ $tour->location }}</h5>
+                            </td>
+                            <td class="text-center">
+                                <h5>{{ $tour->duration }}</h5>
+                            </td>
+                            <td class="text-center">
+                                <h5>{{ $tour->price }}</h5>
+                            </td>
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center">
+                                    @for ($i = 0; $i < $tour->rating; $i++)
+                                        <img width="25px" src="{{ asset('images/star.png') }}" alt="Star Rating"/>
+                                    @endfor
+                                </div>
                             </td>                            
                           </tr>
                         @endforeach
@@ -59,5 +74,4 @@
     </div>
 </div>
 
-    
-@endsection 
+@endsection
