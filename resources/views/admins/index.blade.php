@@ -27,7 +27,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $user }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
                                                 <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> Total registered users</span>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -50,7 +50,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $hotel }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
                                                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> Registered Hotels in the System</span>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -72,7 +72,7 @@
                                             <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $tour }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
                                                 <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> Available Tour Options</span>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -94,7 +94,7 @@
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $travel }}</div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
                                                 <span class="text-success mr-2"><i class="fas fa-arrow-down"></i> Travel Options Offered</span>
-                                                
+
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -106,31 +106,6 @@
                             </a>
                         </div>
 
-                        {{-- <!-- Area Chart -->
-                        <div class="col-xl-8 col-lg-7">
-                            <div class="card mb-4">
-                                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Monthly Recap Report</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-area">
-                                        <canvas id="myAreaChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <!-- Message From Customer-->
                         <div class="col-xl-8 col-lg-8 ">
                             <div class="card">
@@ -140,13 +115,13 @@
                                 <div>
                                     @foreach ($contacts as $contact)
                                         <div class="customer-message align-items-center">
-                                        <a class="font-weight-bold" href="#">
+                                        <a class="font-weight-bold" href="{{ route('contacts.list') }}">
                                             <div class="text-truncate message-title">{{ Str::limit($contact->message, 100, '...') }}</div>
                                             <div class="small text-gray-500 message-time font-weight-bold">{{ $contact->firstName }} {{ $contact->lastName }}</div>
                                         </a>
                                     </div>
                                     @endforeach
-                                    @if (count($contacts ) < 1)                                            
+                                    @if (count($contacts ) < 1)
                                         <div class="customer-message align-items-center">
                                             <a href="#">
                                                 <div class="text-warning message-title">No comments yet!
@@ -260,10 +235,10 @@
                             </div>
                         </div>
                          --}}
-                    </div>                    
+                    </div>
 
                 </div>
                 <!---Container Fluid-->
 
-    
+
 @endsection

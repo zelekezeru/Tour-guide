@@ -264,7 +264,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 text-center colorlib-heading animate-box">
-                    <h2>Popular Destinations</h2>
+                    <h2>Popular Tourist Destinations</h2>
                 </div>
             </div>
         </div>
@@ -378,7 +378,6 @@
                             </div>
 
                         @endforeach
-
                     </div>
                 </div>
             </div>
@@ -404,7 +403,7 @@
                                     <div class="row">
 
                                         @if (count($tour->itenararies) !== 0)
-                                        @foreach ($tour->itenararies as $itenarary)
+                                        @foreach ($tour->itenararies->take(4) as $itenarary)
                                             @if ($itenarary->title)
 
                                             <div class="col-md-6 animate-box">
@@ -438,7 +437,7 @@
                                                 <h4>Tour Components</h4>
                                                 <div class="row">
                                                     @if (count($tour->itenararies) !== 0)
-                                                    @foreach ($tour->itenararies as $itenarary)
+                                                    @foreach ($tour->itenararies->take(4) as $itenarary)
                                                         @if ($itenarary->title)
 
 

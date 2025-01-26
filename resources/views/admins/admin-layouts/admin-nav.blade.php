@@ -20,7 +20,7 @@
                         </form>
                     </div>
                 </li>
-                <li class="nav-item dropdown no-arrow mx-1">
+                {{-- <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
                         <span class="badge badge-danger badge-counter">3+</span>
@@ -40,62 +40,32 @@
                                 <span class="font-weight-bold">A new monthly report is ready to download!</span>
                             </div>
                         </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-success">
-                                    <i class="fas fa-donate text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 7, 2019</div>
-                                $290.29 has been deposited into your account!
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="mr-3">
-                                <div class="icon-circle bg-warning">
-                                    <i class="fas fa-exclamation-triangle text-white"></i>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="small text-gray-500">December 2, 2019</div>
-                                Spending Alert: We've noticed unusually high spending for your account.
-                            </div>
-                        </a>
+
                         <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                     </div>
-                </li>
+                </li> --}}
                 <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-envelope fa-fw"></i>
-                        <span class="badge badge-warning badge-counter">2</span>
+                        <span class="badge badge-warning badge-counter">{{ count($contacts ) }}</span>
                     </a>
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
                             Message Center
                         </h6>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="img/man.png" style="max-width: 60px" alt="">
-                                <div class="status-indicator bg-success"></div>
-                            </div>
-                            <div class="font-weight-bold">
-                                <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.
+                        @foreach ($contacts as $contact)
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('contacts.show', $contact->id) }}">
+                                <div class="dropdown-list-image mr-3">
+                                    <img class="rounded-circle" src="{{ asset('images/userIcon.png') }}" style="max-width: 60px" alt="">
+                                    <div class="status-indicator bg-success"></div>
                                 </div>
-                                <div class="small text-gray-500">Udin Cilok · 58m</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item d-flex align-items-center" href="#">
-                            <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="img/girl.png" style="max-width: 60px" alt="">
-                                <div class="status-indicator bg-default"></div>
-                            </div>
-                            <div>
-                                <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                <div class="small text-gray-500">Jaenab · 2w</div>
-                            </div>
-                        </a>
-                        <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate">{{ Str::limit($contact->message, 30, '...') }}</div>
+                                    <div class="small text-gray-500">{{ $contact->firstName }} {{ $contact->lastName }} . {{ $contact->created_at->diffForHumans() }}</div>
+                                </div>
+                            </a>
+                        @endforeach
+                        <a class="dropdown-item text-center small text-gray-500" href="{{ route('contacts.index') }}">Read More Messages</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown no-arrow mx-1">

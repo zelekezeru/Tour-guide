@@ -63,7 +63,7 @@
                   <div class="form-group col-lg-4">
                     <label for="mytextarea">Itenarary Description</label>
 
-                    <textarea name="description" id="editor"> {!! $itenarary->description !!} </textarea>
+                    <textarea class="form-control"  name="description" id="editor"> {!! $itenarary->description !!} </textarea>
 
                     @if ($errors->has('content'))
                       <small class="form-text text-danger">{{$errors->first('content')}}</small>
@@ -73,7 +73,7 @@
 
                   </div>
 
-                  <div class="form-group col-lg-4">
+                  <div class="form-group col-lg-4 mr-4">
                     <label for="hotel{{$itenarary->id}}">Hotel</label>
                     <select class="form-control" id="hotel{{$itenarary->id}}" name="hotel_id">
                       @foreach ($hotels as $hotel)
@@ -82,14 +82,27 @@
                     </select>
                   </div>
 
-                  <div class="form-group col-lg-4">
+                  <div class="form-group col-lg-7">
+
                     <label for="email">Itenarary Image</label>
-                    <div class="custom-file">
-                      <input type="file" name="image" class="custom-file-input" id="customFile">
-                      <label class="custom-file-label" for="customFile">Choose Picture</label>
-                      @error('image')
-                        <small id="nameHelp" class="form-text text-danger">{{$message}}</small>
-                      @enderror
+                    <div class="custom-file row">
+                        <div class="row">
+                            <div class="col">
+                                <input type="file" name="image" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Choose Picture</label>
+
+                            </div>
+                            <div class="col">
+                                <label for="email">Current Image:</label>
+
+                                <img src="{{ asset('storage/' . $itenarary->image) }}" alt="{{ $itenarary->title }}" style="max-width: 150px; max-height: 150px;">
+                                @error('image')
+                                    <div class="form-text text-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+
                     </div>
                   </div>
 

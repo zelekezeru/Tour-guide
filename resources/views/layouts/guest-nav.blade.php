@@ -22,9 +22,8 @@
                         <li><a href="{{ route('abouts.index') }}">About</a></li>
                         <li><a href="{{ route('contacts.index') }}">Contact</a></li>
 
-                        <li class="nav-item dropdown no-arrow">
+                        <li class="nav-item dropdown no-arrow bg-dark">
                             @if( Auth::user() )
-                                <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="img-profile rounded-circle" src="{{ asset( 'images/userIcon.png' ) }}" style="max-width: 60px">
                                         <span class="ml-2 d-none d-lg-inline text-white small">{{ Auth::user()->name }}</span>
@@ -52,7 +51,6 @@
                                             </x-responsive-nav-link>
                                         </form>
                                     </div>
-                                </li>
                             @else
                                 <li class="btn btn-md btn-info mr-5"><a href="{{ route('login') }}">Login</a></li>
                             @endif

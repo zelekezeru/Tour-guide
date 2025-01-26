@@ -42,7 +42,7 @@ class ContactController extends Controller
 
         $contact = Contact::create($data);
 
-        Mail::to('meseleeyasu42@gmail.com')->send(new ContactUs($data));
+        Mail::to('contacts@grace40.com')->send(new ContactUs($data));
 
         return view('contacts.contact');
     }
@@ -91,6 +91,8 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect(route('contacts.list'));
     }
 }
