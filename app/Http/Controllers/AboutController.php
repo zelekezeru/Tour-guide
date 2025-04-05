@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Testimonial;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -17,7 +19,8 @@ class AboutController extends Controller
             abort(404, 'View not found.');
         }
 
-        return view('abouts.index');
+        $testimonials = Testimonial::all();
+        return view('abouts.index', compact('testimonials'));
     }
 
     /**

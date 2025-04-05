@@ -362,9 +362,9 @@
                     <h2>Our Satisfied Guests say</h2>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 animate-box">
-                    <div class="owl-carousel">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 animate-box">
+					<div class="owl-carousel2">
 
                         @foreach($testimonials as $testimonial)
 

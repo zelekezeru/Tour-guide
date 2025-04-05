@@ -1,6 +1,5 @@
 
 @section('title') About Us @endsection
-
 <x-guest-layout>
 	<aside id="colorlib-hero">
 		<div class="flexslider">
@@ -82,36 +81,20 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 animate-box">
 					<div class="owl-carousel2">
+						@foreach($testimonials as $testimonial)
+
 						<div class="item">
-							<div class="testimony text-center">
-								<span class="img-user" style="background-image: url(images/person1.jpg);"></span>
-								<span class="user">Alysha Myers</span>
-								<small>Miami Florida, USA</small>
-								<blockquote>
-									<p>" A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-								</blockquote>
-							</div>
+								<div class="testimony text-center">
+										<span class="img-user" style="background-image: url({{ asset($testimonial->image) }});"></span>
+										<span class="user">{{ $testimonial->name }}</span>
+										<small>{{ $testimonial->address }}</small>
+										<blockquote>
+												<p>{{ $testimonial->testimony }}</p>
+										</blockquote>
+								</div>
 						</div>
-						<div class="item">
-							<div class="testimony text-center">
-								<span class="img-user" style="background-image: url(images/person2.jpg);"></span>
-								<span class="user">James Fisher</span>
-								<small>New York, USA</small>
-								<blockquote>
-									<p>One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-								</blockquote>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimony text-center">
-								<span class="img-user" style="background-image: url(images/person3.jpg);"></span>
-								<span class="user">Jacob Webb</span>
-								<small>Athens, Greece</small>
-								<blockquote>
-									<p>Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
-								</blockquote>
-							</div>
-						</div>
+
+				@endforeach
 					</div>
 				</div>
 			</div>
