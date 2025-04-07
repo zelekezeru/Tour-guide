@@ -19,7 +19,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $firstUser = false;
+        if (! User::exists()) {
+            $firstUser = true;
+        }
+        return view('auth.register', compact('firstUser'));
     }
 
     /**

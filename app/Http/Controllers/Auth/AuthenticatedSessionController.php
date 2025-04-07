@@ -15,23 +15,15 @@ class AuthenticatedSessionController extends Controller
     /**
      * Display the login view.
      */
-    public function create(): View
+    public function create()
     {
 
-        $user = User::first();
-
-        if ($user == null) {
-
-            $user = User::first();
-
-            $firstUser = $user === null;
-
-            return view('auth.register', compact('firstUser'));
-
+        $user = User::exists();
+        if (! $user) {
+            return redirect(route('register'));
         }
-        else {
-            return view('auth.login');
-        }
+
+        return view('auth.login');
     }
 
     /**

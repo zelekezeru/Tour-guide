@@ -29,7 +29,7 @@
                                     </a>
                                     <div class="dropdown">
 
-                                        <a class="" href="#">
+                                        <a class="" href="{{ route('profile.edit') }}">
                                             <i class="fas fa-user fa-sm fa-fw mr-2"></i> Profile
                                         </a>
                                         <a class="" href="{{ route('admin.dashboard') }}">
