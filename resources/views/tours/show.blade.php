@@ -85,7 +85,7 @@
 				</div>
 
 				<!-- SIDEBAR-->
-				<div class="col-md-3">
+				{{-- <div class="col-md-3">
 					<div class="sidebar-wrap">
 						<div class="side search-wrap animate-box">
 							<h3 class="sidebar-heading">Find your hotel</h3>
@@ -132,7 +132,7 @@
 						</div>
 
 					</div>
-				</div>
+				</div> --}}
 			</div>
 		</div>
 	</div>

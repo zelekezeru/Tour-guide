@@ -300,7 +300,7 @@
                     <div class="row">
                         @foreach($blogs as $blog)
                             <div class="col-md-12 animate-box">
-                                <a href="blog.html" class="blog-post">
+                                <a href="{{ route('blogs.show', $blog->id) }}" class="blog-post">
                                     <span class="img" style="background-image: url({{ asset($blog->image) }});"></span>
                                     <div class="desc">
                                         <span class="date">{{ $blog->created_at->format('M Y') }}</span>
