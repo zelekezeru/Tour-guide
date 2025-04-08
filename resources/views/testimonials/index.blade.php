@@ -47,11 +47,11 @@
                                 <span class="btn btn-sm btn-warning"><a href="{{route('testimonials.edit', $testimonial)}}"> Edit </a></span>
                             </div>
                               <div class="col-1">
-                                  <form action="{{ route('testimonials.destroy', $testimonial) }}" method="post">
+                                    <form id="{{ "delete-form-".$testimonial->id }}" action="{{ route('testimonials.destroy', $testimonial) }}" method="post">
                                       @csrf
                                       @method('delete')
-                                      <input type="submit" value="Delete" class="btn btn-sm btn-danger">
-                                  </form>
+                                    </form>
+                                    <button onclick="confirmDelete({{ $testimonial->id }})" class="btn btn-sm btn-danger">Delete</button>
                               </div>  
                             </td>                       
                           </tr>
@@ -64,5 +64,21 @@
     </div>
 </div>
 
-    
+<script>
+    function confirmDelete(id) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You can't undo this action.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + id).submit();
+            }
+        });
+    }
+</script>
 @endsection 

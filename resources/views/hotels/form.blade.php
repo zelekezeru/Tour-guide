@@ -22,7 +22,7 @@
 
     <div class="form-group col-lg-4">
         <label for="capacity">Guest Capacity</label>
-        <input type="text" value="{{ old('capacity') ? old('capacity') : $hotel->capacity }}" name="capacity"  class="form-control" id="capacity" aria-describedby="capacityHelp"
+        <input type="number" value="{{ old('capacity') ? old('capacity') : $hotel->capacity }}" name="capacity"  class="form-control" id="capacity" aria-describedby="capacityHelp"
         placeholder="Capacity">
         @if ($errors->has('capacity'))
             <small id="nameHelp" class="form-text text-danger">{{$errors->first('capacity')}}</small>
