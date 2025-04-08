@@ -39,7 +39,7 @@
     @if ($errors->has('description'))
         <small id="nameHelp" class="form-text text-danger">{{$errors->first('description')}}</small>
     @else
-        <small id="nameHelp" class="form-text text-muted">Description the hotel.</small>
+        <small id="nameHelp" class="form-text text-muted">Description about the hotel.</small>
     @endif
     </div>
     <div class="form-group col-lg-4">
