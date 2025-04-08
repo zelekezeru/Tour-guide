@@ -43,8 +43,8 @@
                     <h4>Contact Information</h4>
                     <ul class="colorlib-footer-links">
                         <li>Southern region of Ethiopia, <br>  Arba Minch City</li>
-                        <li><a href="tel://1234567920">+251 9162 79488</a></li>
-                        <li><a href="mailto:info@yoursite.com">info@gracetourtravel.com</a></li>
+                        <li><a href="tel://+251916279488">+251916279488</a></li>
+                        <li><a href="info@grace40tour.com">info@grace40tour.com</a></li>
                         <li><a href="#">gracetourtravel.com</a></li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is the property  </span> <i class="icon-heart2" aria-hidden="true"></i> by <a href="https://aeztechnologies.com" target="_blank">AEZ Technologies</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></span>
-                        <span class="block"> : Grace Tour &amp; Travel , <a href="http://pexels.com/" target="_blank">Grace</a></span>
+                        <span class="block"> : Grace Tour &amp; Travel , <a href="https://grace40tours.com/" target="_blank">Grace</a></span>
                     </p>
                 </div>
             </div>

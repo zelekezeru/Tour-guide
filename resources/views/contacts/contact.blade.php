@@ -90,13 +90,13 @@
 							<p><span><i class="icon-location"></i></span> Southern region of Ethiopia, <br>  Arba Minch city</p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+251 9162 79488</a></p>
+							<p><span><i class="icon-phone3"></i></span> <a href="tel://+251916279488">+251916279488</a></p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">info@gracetourtravel.com</a></p>
+							<p><span><i class="icon-envelop"></i></span> <a href="mailto:info@grace40tours.com">info@grace40tours.com</a></p>
 						</div>
 						<div class="col-md-3">
-							<p><span><i class="icon-globe"></i></span> <a href="#">gracetourtravel.com</a></p>
+							<p><span><i class="icon-globe"></i></span> <a href="grace40tours.com">grace40tours.com</a></p>
 						</div>
 					</div>
 				</div>
