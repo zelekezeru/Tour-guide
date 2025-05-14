@@ -272,7 +272,7 @@
         </div>
         <div class="tour-wrap">
             @foreach( $tours as $tour)
-                <a href="#" class="tour-entry animate-box">
+                <a href="{{ route('tours.show', $tour) }}" class="tour-entry animate-box">
                     <div class="tour-img" style="background-image: url({{ $tour->image ? asset($tour->image) : asset($tour->image) }});">
                     </div>
                     <span class="desc">
