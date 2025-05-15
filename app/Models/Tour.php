@@ -30,4 +30,9 @@ class Tour extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function approvedReviews()
+    {
+        return $this->reviews()->where('isApproved', true)->get();
+    }
 }

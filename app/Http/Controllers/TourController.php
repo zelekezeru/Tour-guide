@@ -95,12 +95,12 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
-        $tour->load(['reviews' => fn ($q) => $q->where('isApproved', true)]);
-
-        return view('tours.show', compact('tour'));
+        $reviews = $tour->approvedReviews();
+        
+        return view('tours.show', compact('tour', 'reviews'));
     }
 
-    public function detail(Tour $tour)
+    public function detail(Tour $tour) 
     {
         return view('tours.detail', compact('tour'));
     }
