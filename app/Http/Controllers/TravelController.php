@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\View;
-use App\Models\Travel;
 use App\Models\Location;
+use App\Models\Travel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\View;
 
 class TravelController extends Controller
 {
@@ -16,7 +16,7 @@ class TravelController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
@@ -35,12 +35,11 @@ class TravelController extends Controller
     /**
      * Search Results
      */
-
     public function search(Request $request)
     {
 
         $travels = Travel::where('location', $request->location)
-                        ->get();
+            ->get();
 
         return view('travels.index', compact('travels'));
     }
@@ -73,7 +72,7 @@ class TravelController extends Controller
             'rating' => 'required',
             'round_trip' => '',
             'reviews' => 'required',
-            'image' => 'required'
+            'image' => 'required',
         ]);
 
         $file = $request->file('image');
@@ -85,9 +84,9 @@ class TravelController extends Controller
             'travel_id' => $travel->id,
             'location' => $travel->city, ]);
 
-
         $travel->image = 'storage/'.$path;
         $travel->save();
+
         return redirect(route('travels.show', $travel->id));
     }
 
@@ -129,18 +128,18 @@ class TravelController extends Controller
             'rating' => 'required',
             'round_trip' => '',
             'reviews' => 'required',
-            'image' => 'image'
+            'image' => 'image',
         ]);
 
         $travel->update($data);
 
-        $location = Location::where('travel_id', $travel->id )->first();
+        $location = Location::where('travel_id', $travel->id)->first();
 
-        $loc = $request->validate([ 'location' => 'required|string',]);
+        $loc = $request->validate(['location' => 'required|string']);
 
         $location->update($loc);
 
-        if (!$request->input('round_trip')) {
+        if (! $request->input('round_trip')) {
             $travel->round_trip = false;
         }
 
@@ -162,6 +161,7 @@ class TravelController extends Controller
     {
         Storage::disk('public')->delete($travel->image);
         $travel->delete();
+
         return redirect(route('travels.index'));
     }
 }

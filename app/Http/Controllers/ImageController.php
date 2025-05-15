@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
 use App\Models\Hotel;
+use App\Models\Image;
 use App\Models\Tour;
+use App\Models\Travel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Travel;
-use Illuminate\Http\RedirectResponse;
-use App\Http\Middleware\RoleMiddleware;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 
 class ImageController extends Controller
 {
@@ -25,10 +18,12 @@ class ImageController extends Controller
     {
         //
     }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function hotel($id){
+    public function hotel($id)
+    {
 
         $hotel = Hotel::find($id);
 
@@ -47,7 +42,7 @@ class ImageController extends Controller
                 $image = Image::create([
                     'hotel_id' => $request->hotel_id,
                     'description' => $request->descriptions[$i] ?? '',
-                    'image' => 'storage/' . $path,
+                    'image' => 'storage/'.$path,
                 ]);
             }
         }
@@ -60,7 +55,8 @@ class ImageController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function travel($id){
+    public function travel($id)
+    {
 
         $travel = Travel::find($id);
 
@@ -79,7 +75,7 @@ class ImageController extends Controller
                 $image = Image::create([
                     'travel_id' => $request->travel_id,
                     'description' => $request->descriptions[$i] ?? '',
-                    'image' => 'storage/' . $path,
+                    'image' => 'storage/'.$path,
                 ]);
             }
         }
@@ -89,12 +85,11 @@ class ImageController extends Controller
         return redirect(route('travels.show', compact('travel')));
     }
 
-
-
     /**
      * Show the form for creating a new resource.
      */
-    public function tour($id){
+    public function tour($id)
+    {
 
         $tour = Tour::find($id);
 
@@ -113,7 +108,7 @@ class ImageController extends Controller
                 $image = Image::create([
                     'tour_id' => $request->tour_id,
                     'description' => $request->descriptions[$i] ?? '',
-                    'image' => 'storage/' . $path,
+                    'image' => 'storage/'.$path,
                 ]);
             }
         }
@@ -131,10 +126,10 @@ class ImageController extends Controller
         dd($id);
         Storage::disk('public')->delete(str_replace('storage/', '', $image->image));
         $image->delete();
-        
+
         return redirect()->back()->with('success', 'Image deleted successfully.');
     }
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -158,7 +153,7 @@ class ImageController extends Controller
     {
         //
     }
-    
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -166,7 +161,7 @@ class ImageController extends Controller
     {
         //
     }
-    
+
     /**
      * Update the specified resource in storage.
      */
@@ -174,7 +169,7 @@ class ImageController extends Controller
     {
         //
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
@@ -183,7 +178,7 @@ class ImageController extends Controller
         $image = Image::findOrFail($id);
         Storage::disk('public')->delete(str_replace('storage/', '', $image->image));
         $image->delete();
-        
+
         return redirect()->back()->with('success', 'Image deleted successfully');
     }
 }

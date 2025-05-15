@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Middleware\RoleMiddleware;
-use Illuminate\Http\Request;
 use App\Models\User;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
@@ -58,10 +55,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        
-    }
+    public function edit(string $id) {}
 
     /**
      * Update the specified resource in storage.
@@ -77,6 +71,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
         return Redirect::route('users.list');
     }
 }

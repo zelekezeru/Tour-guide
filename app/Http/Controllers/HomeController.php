@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
 use App\Models\Blog;
+use App\Models\Home;
+use App\Models\Hotel;
+use App\Models\Location;
+use App\Models\Testimonial;
 use App\Models\Tour;
 use App\Models\Travel;
-use App\Models\Testimonial;
-use App\Models\Location;
-use App\Models\Home;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -19,7 +19,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 

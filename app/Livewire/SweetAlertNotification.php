@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class SweetAlertNotification extends Component
 {
-
     protected $listeners = ['remove'];
 
     public function render()
@@ -19,23 +18,25 @@ class SweetAlertNotification extends Component
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'success',
             'message' => 'Created Successfully!',
-            'text' => 'It will list on the user\'s table soon.'
+            'text' => 'It will list on the user\'s table soon.',
         ]);
     }
+
     public function alertError()
     {
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'error',
             'message' => 'Error!',
-            'text' => 'Error Occured. Please try again later.'
+            'text' => 'Error Occured. Please try again later.',
         ]);
     }
+
     public function alertInfo()
     {
         $this->dispatchBrowserEvent('swal:modal', [
             'type' => 'info',
             'message' => 'Information',
-            'text' => 'This is an informative message.'
+            'text' => 'This is an informative message.',
         ]);
     }
 
@@ -49,6 +50,7 @@ class SweetAlertNotification extends Component
             'itemId' => $itemId,
         ]);
     }
+
     public function alertSave()
     {
         $this->dispatchBrowserEvent('swal:modal', [

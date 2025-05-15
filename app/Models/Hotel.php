@@ -20,7 +20,7 @@ class Hotel extends Model
     {
         return $this->hasMany(Location::class);
     }
-    
+
     public function itenararies()
     {
         return $this->hasMany(Itenarary::class);

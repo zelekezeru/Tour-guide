@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Testimonial;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -15,11 +14,12 @@ class AboutController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
         $testimonials = Testimonial::all();
+
         return view('abouts.index', compact('testimonials'));
     }
 

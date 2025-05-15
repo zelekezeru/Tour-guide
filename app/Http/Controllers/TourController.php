@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Itenarary;
-use App\Models\Tour;
 use App\Models\Location;
+use App\Models\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -16,7 +16,7 @@ class TourController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
@@ -35,12 +35,11 @@ class TourController extends Controller
     /**
      * Search Results
      */
-
     public function search(Request $request)
     {
 
         $tours = Tour::where('location', $request->location)
-                        ->get();
+            ->get();
 
         return view('tours.index', compact('tours'));
     }
@@ -67,7 +66,7 @@ class TourController extends Controller
             'location' => 'required|string',
             'price' => 'required',
             'duration' => 'required',
-            'image' => 'image'
+            'image' => 'image',
         ]);
 
         $file = $request->file('image');
@@ -81,10 +80,10 @@ class TourController extends Controller
             'tour_id' => $tour->id,
             'location' => $tour->location, ]);
 
-        for ($i=1; $i <= $tour->duration; $i++) {
+        for ($i = 1; $i <= $tour->duration; $i++) {
             Itenarary::create([
                 'tour_id' => $tour->id,
-                'day_number' => $i
+                'day_number' => $i,
             ]);
         }
 
@@ -96,7 +95,8 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
-        $tour->load(['reviews' => fn($q) => $q->where('isApproved', true)]);
+        $tour->load(['reviews' => fn ($q) => $q->where('isApproved', true)]);
+
         return view('tours.show', compact('tour'));
     }
 
@@ -104,6 +104,7 @@ class TourController extends Controller
     {
         return view('tours.detail', compact('tour'));
     }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -125,7 +126,7 @@ class TourController extends Controller
             'location' => 'required|string',
             'price' => 'required',
             'duration' => 'required',
-            'image' => 'image'
+            'image' => 'image',
         ]);
 
         $redirect_route_name = route('tours.detail', $tour);
@@ -138,21 +139,21 @@ class TourController extends Controller
 
             $last_day = count($tour->itenararies);
 
-            for ($i=1; $i <= $added_days ; $i++) {
+            for ($i = 1; $i <= $added_days; $i++) {
 
                 Itenarary::create([
                     'tour_id' => $tour->id,
                     'day_number' => $last_day + 1,
                 ]);
                 $last_day++;
-            };
+            }
 
         } elseif ($request->duration < $tour->duration) {
             $redirect_route_name = route('itenararies.edit', $tour->id);
 
             $removed_days = $tour->duration - $request->duration;
 
-            $itenararies_to_be_removed = $tour->itenararies()->orderBy('id', 'desc')->take($removed_days)->get();            ;
+            $itenararies_to_be_removed = $tour->itenararies()->orderBy('id', 'desc')->take($removed_days)->get();
 
             foreach ($itenararies_to_be_removed as $itenarary) {
                 $itenarary->delete();
@@ -161,9 +162,9 @@ class TourController extends Controller
 
         $tour->update($data);
 
-        $location = Location::where('tour_id', $tour->id )->first();
+        $location = Location::where('tour_id', $tour->id)->first();
 
-        $loc = $request->validate([ 'location' => 'required|string',]);
+        $loc = $request->validate(['location' => 'required|string']);
 
         $location->update($loc);
 

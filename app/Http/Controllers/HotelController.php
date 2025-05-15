@@ -2,25 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hotel;
-use App\Models\Location;
-use App\Models\Image;
-use Illuminate\Http\Request;
 use App\Http\Middleware\RoleMiddleware;
+use App\Models\Hotel;
+use App\Models\Image;
+use App\Models\Location;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
-
 
 class HotelController extends Controller implements HasMiddleware
 {
-
     public static function middleware()
     {
-        return [new Middleware(RoleMiddleware::class.":ADMIN,EDITOR,SUPER_ADMIN", except: ['index', 'show'])];
+        return [new Middleware(RoleMiddleware::class.':ADMIN,EDITOR,SUPER_ADMIN', except: ['index', 'show'])];
     }
     /*
      * Display a listing of the resource.
@@ -33,11 +29,9 @@ class HotelController extends Controller implements HasMiddleware
         return view('hotels.index', compact('hotels'));
     }
 
-
     /**
      * Display a Admin list of the resource.
      */
-
     public function list()
     {
 
@@ -49,12 +43,11 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Search Results
      */
-
     public function search(Request $request)
     {
 
         $hotels = Hotel::where('location', $request->location)
-                        ->get();
+            ->get();
 
         return view('hotels.index', compact('hotels'));
     }
@@ -62,10 +55,9 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Show the form for creating a new resource.
      */
-
     public function create()
     {
-        $hotel = new Hotel();
+        $hotel = new Hotel;
 
         return view('hotels.create', compact('hotel'));
     }
@@ -73,7 +65,6 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Store a newly created resource in storage.
      */
-
     public function store(Request $request)
     {
 
@@ -88,14 +79,13 @@ class HotelController extends Controller implements HasMiddleware
         ]);
 
         $hotel = Hotel::create($data);
-        
+
         $location = Location::create([
             'hotel_id' => $hotel->id,
-            'location' => $hotel->location, 
+            'location' => $hotel->location,
         ]);
 
-
-        $image = new Image();
+        $image = new Image;
 
         $image->hotel_id = $hotel->id;
 
@@ -115,7 +105,6 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Display the specified resource.
      */
-
     public function show(Hotel $hotel)
     {
         // Return a view with the hotel details
@@ -130,7 +119,6 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Show the form for editing the specified resource.
      */
-
     public function edit(Hotel $hotel)
     {
         return view('hotels.edit', compact('hotel'));
@@ -139,7 +127,6 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Update the specified resource in storage.
      */
-
     public function update(Request $request, Hotel $hotel)
     {
         $data = $request->validate([
@@ -158,9 +145,9 @@ class HotelController extends Controller implements HasMiddleware
             'hotel_id' => $hotel->id,
             'location' => $hotel->location, ]);
 
-        $location = Location::where('hotel_id', $hotel->id )->first();
+        $location = Location::where('hotel_id', $hotel->id)->first();
 
-        $loc = $request->validate([ 'location' => 'required|string',]);
+        $loc = $request->validate(['location' => 'required|string']);
 
         $location->update($loc);
 
@@ -182,7 +169,6 @@ class HotelController extends Controller implements HasMiddleware
     /**
      * Remove the specified resource from storage.
      */
-
     public function destroy(Hotel $hotel)
     {
 

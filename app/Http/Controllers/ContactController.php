@@ -15,7 +15,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
@@ -26,6 +26,7 @@ class ContactController extends Controller
     {
         // dd('hi');
         $contacts = Contact::all();
+
         return view('contacts.messages', compact('contacts'));
 
     }
@@ -46,6 +47,7 @@ class ContactController extends Controller
 
         return view('contacts.contact');
     }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -12,6 +12,7 @@ class ItenararyController extends Controller
     public function edit(Tour $tour)
     {
         $hotels = Hotel::all();
+
         return view('itenararies.edit', compact('tour', 'hotels'));
     }
 
@@ -31,6 +32,7 @@ class ItenararyController extends Controller
 
         $itenarary->update($data);
         $itenarary->save();
+
         return redirect(route('itenararies.edit', $itenarary->tour->id));
     }
 
@@ -46,7 +48,7 @@ class ItenararyController extends Controller
         $itenarary->tour->duration--;
         $itenarary->tour->save();
         $itenarary->delete();
-        
+
         return redirect(route('itenararies.edit', $tour));
     }
 }

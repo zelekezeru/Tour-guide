@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Testimonial;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -15,7 +14,7 @@ class TestimonialController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
@@ -24,13 +23,12 @@ class TestimonialController extends Controller
         return view('testimonials.index', compact('testimonials'));
     }
 
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $testimonial = new Testimonial();
+        $testimonial = new Testimonial;
 
         return view('testimonials.create', compact('testimonial'));
     }
@@ -47,7 +45,7 @@ class TestimonialController extends Controller
             'address' => 'required|string',
             'email' => 'required|email',
             'testimony' => 'required|string',
-            'image' => 'required'
+            'image' => 'required',
         ]);
 
         $file = $request->file('image');
@@ -56,6 +54,7 @@ class TestimonialController extends Controller
         $testimonial = Testimonial::create($data);
         $testimonial->image = 'storage/'.$path;
         $testimonial->save();
+
         return redirect(route('testimonials.index'));
     }
 
@@ -86,7 +85,7 @@ class TestimonialController extends Controller
             'address' => 'required|string',
             'email' => 'required|email',
             'testimony' => 'required|string',
-            'image' => 'required'
+            'image' => 'required',
         ]);
         $testimonial->update($data);
         if ($request->hasFile('image')) {
@@ -97,6 +96,7 @@ class TestimonialController extends Controller
             $testimonial->image = 'storage/'.$path;
         }
         $testimonial->save();
+
         return redirect(route('testimonials.index'));
     }
 

@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
@@ -15,7 +14,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 
@@ -28,9 +27,11 @@ class BlogController extends Controller
     {
         // dd('hi');
         $blogs = Blog::all();
+
         return view('blogs.list', compact('blogs'));
 
     }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -53,10 +54,11 @@ class BlogController extends Controller
 
             return response()->json([
                 'uploaded' => true,
-                'url' => url(Storage::url($path))
+                'url' => url(Storage::url($path)),
             ]);
         }
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -66,7 +68,7 @@ class BlogController extends Controller
             'title' => 'required|string',
             'content' => 'required|string',
             'teaser' => 'required|string',
-            'image' => 'required|image|mimes:jpg,png'
+            'image' => 'required|image|mimes:jpg,png',
         ]);
 
         $data['user_id'] = 1;
@@ -96,7 +98,6 @@ class BlogController extends Controller
     {
         return view('blogs.detail', compact('blog'));
     }
-
 
     /**
      * Show the form for editing the specified resource.

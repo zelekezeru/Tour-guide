@@ -34,7 +34,6 @@ class BookingController extends Controller
             'booking_id' => $booking->id,
             'location' => $booking->location, ]);
 
-        
     }
 
     /**

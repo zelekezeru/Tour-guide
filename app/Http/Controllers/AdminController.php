@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin;
-use Illuminate\Http\Request;
-use App\Models\Hotel;
 use App\Models\Blog;
+use App\Models\Contact;
+use App\Models\Hotel;
 use App\Models\Tour;
 use App\Models\Travel;
 use App\Models\User;
-use App\Models\Contact;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
 class AdminController extends Controller
@@ -19,7 +19,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if (!View::exists('index')) {
+        if (! View::exists('index')) {
             abort(404, 'View not found.');
         }
 

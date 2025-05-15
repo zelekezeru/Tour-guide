@@ -18,7 +18,7 @@ class ReviewController extends Controller
 
     public function list()
     {
-        
+
         $reviews = Review::orderBy('created_at', 'desc')->paginate(15);
 
         return view('reviews.list', compact('reviews'));
@@ -50,7 +50,7 @@ class ReviewController extends Controller
 
         if ($fields['photo']) {
             $image = $fields['photo'];
-            $fields['photo'] = 'storage/' . $image->store('reviewers', 'public'); 
+            $fields['photo'] = 'storage/'.$image->store('reviewers', 'public');
         }
         $review = Review::create($fields);
 
