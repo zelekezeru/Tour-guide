@@ -94,34 +94,11 @@
               </div>
               
           </div>
-          <div class="row">
-            <div class="form-group col-lg-3">
-                <label for="rating">Rating</label>
-                <input type="number" value="{{ old('rating') ? old('rating') : '' }}" name="rating" class="form-control" id="name" aria-describedby="nameHelp"
-                placeholder="Rating" required>
-                @if ($errors->has('rating'))
-                    <small id="nameHelp" class="form-text text-danger">{{$errors->first('rating')}}</small>
-                @else
-                    <small id="nameHelp" class="form-text text-muted">Enter the rating of the tour.</small>
-                @endif
-              </div>
-              <div class="form-group col-lg-3">
-                <label for="reviews">Reviews</label>
-                <input type="number" value="{{ old('reviews') ? old('reviews') : '' }}" name="reviews" class="form-control" id="name" aria-describedby="nameHelp"
-                placeholder="Reviews" required>
-                @if ($errors->has('reviews'))
-                    <small id="nameHelp" class="form-text text-danger">{{$errors->first('reviews')}}</small>
-                @else
-                    <small id="nameHelp" class="form-text text-muted">Enter the reviews of the tour.</small>
-                @endif
-              </div>
-              
-          </div>
+
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
         </div>
     </div>
 </div>
-
     
 @endsection

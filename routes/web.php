@@ -16,6 +16,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ItenararyController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Livewire\SweetAlertNotification;
 
@@ -105,6 +106,15 @@ Route::delete('itenararies/{itenarary}', [ItenararyController::class, 'destroy']
 
 //blog images uploader
 Route::post('/upload-blog-images', [BlogController::class, 'upload'])->name('ckeditor.blog.upload');
+
+
+// Review
+
+Route::post('reviews/{tour}', [ReviewController::class, 'store'])->name('reviews.store');
+Route::get('/reviews/list', [ReviewController::class, 'list'])->name('reviews.list');
+Route::get('reviews/{review}', [ReviewController::class, 'detail'])->name('reviews.detail');
+Route::put('reviews/{review}', [ReviewController::class, 'approve'])->name('reviews.approve');
+Route::delete('reviews/{review}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
 // FOR RESOURCE ROUTES
 Route::resource('abouts', AboutController::class);

@@ -101,6 +101,21 @@
             </div>
         </div>
     </li>
+    {{-- Reviews --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseBootstrap77"
+            aria-expanded="true" aria-controls="collapseBootstrap77">
+            <i class="far fa-fw fa-window-maximize"></i>
+            <span>Reviews</span>
+        </a>
+        <div id="collapseBootstrap77" class="collapse" aria-labelledby="headingBootstrap"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Reviews</h6>
+                <a class="collapse-item" href="{{ route('reviews.list') }}">Reviews List</a>
+            </div>
+        </div>
+    </li>
     {{-- Bookings --}}
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"

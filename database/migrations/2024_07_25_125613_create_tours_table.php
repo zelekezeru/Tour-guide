@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('location');
             $table->float('price');
             $table->integer('duration');
-            $table->integer('rating');
-            $table->integer('reviews');
             $table->string('image');
             $table->timestamps();
         });

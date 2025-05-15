@@ -50,6 +50,9 @@
         <!-- Theme style  -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+        <link href="{{ asset('admin/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
+
         <!-- Modernizr JS -->
         <script src="{{ asset('js/modernizr-2.6.2.min.js') }}"></script>
         <!-- FOR IE9 below -->

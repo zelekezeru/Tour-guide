@@ -67,8 +67,6 @@ class TourController extends Controller
             'location' => 'required|string',
             'price' => 'required',
             'duration' => 'required',
-            'rating' => 'required',
-            'reviews' => 'required',
             'image' => 'image'
         ]);
 
@@ -98,6 +96,7 @@ class TourController extends Controller
      */
     public function show(Tour $tour)
     {
+        $tour->load(['reviews' => fn($q) => $q->where('isApproved', true)]);
         return view('tours.show', compact('tour'));
     }
 
@@ -126,8 +125,6 @@ class TourController extends Controller
             'location' => 'required|string',
             'price' => 'required',
             'duration' => 'required',
-            'rating' => 'required',
-            'reviews' => 'required',
             'image' => 'image'
         ]);
 

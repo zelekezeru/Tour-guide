@@ -75,6 +75,117 @@
 									@else
 											<h2>Itenararies Coming Soon!</h2>
 									@endif
+<!-- Review Form -->
+<div class="col-md-12 animate-box">
+    <h3>Leave a Review</h3>
+    <form action="{{ route('reviews.store', $tour) }}" method="post" enctype="multipart/form-data">
+        @csrf
+
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="full_name" class="form-control" placeholder="Your Full Name" value="{{ old('full_name') }}">
+            @error('full_name')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email (optional):</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Your email (optional)" value="{{ old('email') }}">
+            @error('email')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="photo">Your Photo (optional):</label>
+            <input type="file" id="photo" name="photo" class="form-control" accept="image/*">
+            @error('photo')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="rating">Rating (1-5):</label>
+            <select id="rating" name="rating" class="form-control">
+                <option disabled selected>Select a rating</option>
+                @for($i = 5; $i >= 1; $i--)
+                    <option value="{{ $i }}" {{ old('rating') == $i ? 'selected' : '' }}>
+                        {{ $i }} Star{{ $i > 1 ? 's' : '' }}
+                    </option>
+                @endfor
+            </select>
+            @error('rating')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <div class="form-group">
+            <label for="review">Your Review:</label>
+            <textarea id="review" name="review" class="form-control" rows="4" placeholder="Write your review here...">{{ old('review') }}</textarea>
+            @error('review')
+                <small class="text-danger">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <button class="btn btn-primary">Submit Review</button>
+    </form>
+</div>
+
+
+<!-- Overall Rating -->
+<div class="col-md-12 animate-box">
+    <h3>Overall Rating</h3>
+    @php
+        $reviewCount = $tour->reviews->count();
+        $averageRating = $reviewCount ? round($tour->reviews->avg('rating'), 1) : 0;
+    @endphp
+    <div class="d-flex align-items-center">
+        <h4 class="mb-0 mr-2">{{ $averageRating }}</h4>
+        <div>
+            @for ($i = 1; $i <= 5; $i++)
+                <i class="{{ $i <= $averageRating ? 'fas' : 'far' }} fa-star text-warning"></i>
+            @endfor
+        </div>
+    </div>
+    <p>Based on {{ $reviewCount }} review{{ $reviewCount !== 1 ? 's' : '' }}</p>
+</div>
+
+<!-- User Reviews -->
+<div class="col-md-12 animate-box mt-5">
+    <h3>User Reviews</h3>
+    @forelse($tour->reviews as $review)
+        <div class="p-3 mb-4" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); border-radius: 8px; background-color: #fff;">
+            <div class="d-flex align-items-center mb-2">
+                @if($review->photo)
+                    <img src="{{ asset( $review->photo) }}"
+                         alt="{{ $review->full_name }}"
+                         style="width: 40px; height: 40px; object-fit: cover; border-radius: 50%; margin-right: 12px;">
+                @else
+                    <div style="width: 40px; height: 40px; border-radius: 50%; background: #ccc; margin-right: 12px;"
+                         class="d-flex align-items-center justify-content-center text-white font-weight-bold">
+                        {{ strtoupper(substr($review->full_name, 0, 1)) }}
+                    </div>
+                @endif
+                <div>
+                    <strong>{{ $review->full_name }}</strong>
+                    <small class="text-muted d-block">{{ $review->created_at->diffForHumans() }}</small>
+                </div>
+            </div>
+            <div>
+                @for ($i = 1; $i <= 5; $i++)
+                    <i class="{{ $i <= $review->rating ? 'fas' : 'far' }} fa-star text-warning"></i>
+                @endfor
+            </div>
+            <p class="mt-2 mb-1">{{ $review->review }}</p>
+        </div>
+    @empty
+        <p>No reviews yet. Be the first to review this tour!</p>
+    @endforelse
+</div>
+
+
+
 									<div class="col-md-12 animate-box text-center">
 										<p><a href="#" class="btn btn-primary">Book Now!</a></p>
 									</div>
