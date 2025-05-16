@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\RoleMiddleware;
 use App\Models\Itenarary;
 use App\Models\Location;
 use App\Models\Tour;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\View;
 
-class TourController extends Controller
+class TourController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return [new Middleware(RoleMiddleware::class.':ADMIN,EDITOR,SUPER_ADMIN', except: ['index', 'show'])];
+    }
     /**
      * Display a listing of the resource.
      */

@@ -2,12 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\RoleMiddleware;
 use App\Models\Review;
 use App\Models\Tour;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Support\Facades\Storage;
 
-class ReviewController extends Controller
+class ReviewController extends Controller implements HasMiddleware
 {
+    public static function middleware()
+    {
+        return [new Middleware(RoleMiddleware::class.':ADMIN,EDITOR,SUPER_ADMIN', except: ['index', 'show'])];
+    }
     /**
      * Display a listing of the resource.
      */
@@ -100,6 +108,12 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        if ($review->photo) {
+            Storage::disk('public')->delete($review->photo);
+        }
+
+        $review->delete();
+
+        return redirect()->back();
     }
 }
